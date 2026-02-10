@@ -1,31 +1,33 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import styles from './Button.module.css';
 
 /**
- * Relay Button Component - Based on USWDS Button
- * Customizable button component that extends USWDS design system
+ * Relay Button Component
+ * Synced from Figma design - pill-shaped button with design tokens
+ * 
+ * Token mappings:
+ * - Primary: --Brand-Purple-Base → --relay-purple-base (#333366)
+ * - Secondary: --Brand-Blue-Base → --relay-blue-base (#004B87)
+ * - Outline: --Brand-Purple-Base → --relay-purple-base (#333366)
+ * 
+ * Design specs from Figma:
+ * - Border radius: 40px (pill shape)
+ * - Padding: 12px vertical, 24px horizontal
+ * - Font: 16px, Bold, white text
  */
 export const Button = ({ 
-  variant = 'default',
+  variant = 'primary',
   size = 'medium',
   children,
-  outline = false,
   disabled = false,
   onClick,
   ...props 
 }) => {
-  const baseClass = 'usa-button';
-  const variantClass = variant !== 'default' ? `usa-button--${variant}` : '';
-  const sizeClass = size === 'big' ? 'usa-button--big' : '';
-  const outlineClass = outline ? 'usa-button--outline' : '';
-  const disabledClass = disabled ? 'usa-button--disabled' : '';
-  
   const classes = [
-    baseClass,
-    variantClass,
-    sizeClass,
-    outlineClass,
-    disabledClass
+    styles.button,
+    styles[`button-${variant}`],
+    size !== 'medium' ? styles[`button-${size}`] : ''
   ].filter(Boolean).join(' ');
 
   return (
@@ -41,16 +43,20 @@ export const Button = ({
 };
 
 Button.propTypes = {
-  /** Button variant - determines color scheme */
-  variant: PropTypes.oneOf(['default', 'secondary', 'accent-cool', 'accent-warm', 'base', 'outline', 'inverse']),
+  /** Button variant - maps to Figma component variants and design tokens */
+  variant: PropTypes.oneOf(['primary', 'secondary', 'outline']),
   /** Button size */
-  size: PropTypes.oneOf(['medium', 'big']),
+  size: PropTypes.oneOf(['small', 'medium', 'large']),
   /** Button contents */
   children: PropTypes.node.isRequired,
-  /** Use outline style */
-  outline: PropTypes.bool,
   /** Disabled state */
   disabled: PropTypes.bool,
   /** Click handler */
   onClick: PropTypes.func,
+};
+
+Button.defaultProps = {
+  variant: 'primary',
+  size: 'medium',
+  disabled: false,
 };

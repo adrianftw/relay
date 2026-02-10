@@ -1,5 +1,8 @@
 // USWDS CSS is loaded via preview-head.html
 
+// Import brand colors from Figma
+import '../src/styles/colors.css';
+
 // Import custom styles
 import '../src/styles/custom.css';
 

@@ -1,12 +1,39 @@
 /* Relay Design System - Custom Styles */
 /* Add your custom CSS here to enhance USWDS components */
 
-/* Example: Custom button hover effects */
-/*
-.usa-button:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-*/
+/* Brand colors are available as CSS custom properties:
+ * 
+ * Purple:
+ * - var(--relay-purple-dark)     #25254B
+ * - var(--relay-purple-base)     #333366
+ * - var(--relay-purple-light)    #6464B7
+ * - var(--relay-purple-lightest) #B2B2F2
+ *
+ * Blue:
+ * - var(--relay-blue-dark)       #043359
+ * - var(--relay-blue-base)       #004B87
+ * - var(--relay-blue-light)      #3573B1
+ * - var(--relay-blue-lightest)   #6ED0F6
+ *
+ * Usage example:
+ * .my-element {
+ *   background-color: var(--relay-purple-base);
+ *   color: var(--relay-blue-light);
+ * }
+ */
 
-/* Your custom styles go here */
+/* Custom button enhancements - Updated from Figma designs */
+.usa-button {
+  /* Custom border radius from Figma */
+  border-radius: 12px;
+  
+  /* Optional: Add smooth transitions */
+  transition: all 0.2s ease-in-out;
+}
+
+.usa-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Your additional custom styles go here */

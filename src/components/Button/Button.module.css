@@ -1,0 +1,59 @@
+/* Button Component Styles */
+/* Using design tokens from Figma */
+
+.relay-button {
+  /* Base button styles that use our token system */
+  border-radius: 12px;
+  transition: all 0.2s ease-in-out;
+  font-weight: 600;
+}
+
+/* Primary variant - maps to Figma button with --Brand-Purple-Base background */
+.relay-button-primary {
+  background-color: var(--relay-purple-base); /* Figma: --Brand-Purple-Base (#333366) */
+  border-color: var(--relay-purple-base);
+}
+
+.relay-button-primary:hover {
+  background-color: var(--relay-purple-dark); /* Figma: --Brand-Purple-Dark (#25254B) */
+  border-color: var(--relay-purple-dark);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(37, 37, 75, 0.3);
+}
+
+/* Secondary variant - using blue tokens */
+.relay-button-secondary {
+  background-color: var(--relay-blue-base); /* Figma: --Brand-Blue-Base (#004B87) */
+  border-color: var(--relay-blue-base);
+}
+
+.relay-button-secondary:hover {
+  background-color: var(--relay-blue-dark); /* Figma: --Brand-Blue-Dark (#043359) */
+  border-color: var(--relay-blue-dark);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(4, 51, 89, 0.3);
+}
+
+/* Outline variant - using purple accent */
+.relay-button-outline {
+  background-color: transparent;
+  border: 2px solid var(--relay-purple-base); /* Figma: --Brand-Purple-Base */
+  color: var(--relay-purple-base);
+}
+
+.relay-button-outline:hover {
+  background-color: var(--relay-purple-lightest); /* Figma: --Brand-Purple-Lightest (#B2B2F2) */
+  border-color: var(--relay-purple-dark);
+  color: var(--relay-purple-dark);
+}
+
+/* Size variants */
+.relay-button-small {
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+}
+
+.relay-button-large {
+  padding: 1rem 2rem;
+  font-size: 1.125rem;
+}

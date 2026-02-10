@@ -1,0 +1,31 @@
+/* Relay Design System - Brand Colors from Figma */
+/* Color palette defined in Figma: Color page */
+/* Token mapping: See tokens.js/tokens.json for Figma variable mappings */
+
+:root {
+  /* USPS Purple */
+  /* Figma: --Brand-Purple-Dark */
+  --relay-purple-dark: #25254B;
+  
+  /* Figma: --Brand-Purple-Base */
+  --relay-purple-base: #333366;
+  
+  /* Figma: --Brand-Purple-Light */
+  --relay-purple-light: #6464B7;
+  
+  /* Figma: --Brand-Purple-Lightest */
+  --relay-purple-lightest: #B2B2F2;
+
+  /* USPS Blue */
+  /* Figma: --Brand-Blue-Dark */
+  --relay-blue-dark: #043359;
+  
+  /* Figma: --Brand-Blue-Base */
+  --relay-blue-base: #004B87;
+  
+  /* Figma: --Brand-Blue-Light */
+  --relay-blue-light: #3573B1;
+  
+  /* Figma: --Brand-Blue-Lightest */
+  --relay-blue-lightest: #6ED0F6;
+}

@@ -21,7 +21,7 @@
   --relay-purple-light: #6464B7;
   
   /* Figma: --Brand-Purple-Lightest */
-  --relay-purple-lightest: #B2B2F2;
+  --relay-purple-lightest: #DDDDFF;
 
   /* USPS Blue */
   /* Figma: --Brand-Blue-Darkest */
@@ -37,7 +37,7 @@
   --relay-blue-light: #3573B1;
   
   /* Figma: --Brand-Blue-Lightest */
-  --relay-blue-lightest: #6ED0F6;
+  --relay-blue-lightest: #CEF1FF;
 
   /* ============================================ */
   /* UTILITY COLORS */
@@ -57,7 +57,7 @@
   --relay-red-light: #F9695E;
   
   /* Figma: --Utility-Red-Lightest */
-  --relay-red-lightest: #FF9991;
+  --relay-red-lightest: #FFD8D5;
 
   /* Success (Green) */
   /* Figma: --Utility-Success-Dark */
@@ -70,7 +70,7 @@
   --relay-success-light: #41D764;
   
   /* Figma: --Utility-Success-Lightest */
-  --relay-success-lightest: #56EB79;
+  --relay-success-lightest: #B6FFC7;
 
   /* Warning (Yellow) */
   /* Figma: --Utility-Warning-Dark */

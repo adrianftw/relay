@@ -41,43 +41,43 @@
 
 /* Primary - Figma: Type=default (Purple) */
 .relay-button--primary {
-  background-color: var(--relay-purple-base); /* #333366 */
+  background-color: var(--relay-purple-base);
 }
 
 .relay-button--primary:hover:not(:disabled) {
-  background-color: var(--relay-purple-dark); /* #25254B - Figma hover state */
+  background-color: var(--relay-purple-dark);
 }
 
 .relay-button--primary:active:not(:disabled) {
-  background-color: var(--relay-purple-darkest); /* #191935 - Figma active state */
+  background-color: var(--relay-purple-darkest);
   transform: translateY(1px);
 }
 
 /* Secondary - Figma: Type=secondary (Red) */
 .relay-button--secondary {
-  background-color: var(--relay-red-base); /* #DA291C */
+  background-color: var(--relay-red-base);
 }
 
 .relay-button--secondary:hover:not(:disabled) {
-  background-color: var(--relay-red-dark); /* #A6281F */
+  background-color: var(--relay-red-dark);
 }
 
 .relay-button--secondary:active:not(:disabled) {
-  background-color: var(--relay-red-darkest); /* #69140D */
+  background-color: var(--relay-red-darkest);
   transform: translateY(1px);
 }
 
 /* Accent Cool - Figma: Type=accent-cool (Blue) */
 .relay-button--accent-cool {
-  background-color: var(--relay-blue-base); /* #004B87 */
+  background-color: var(--relay-blue-base);
 }
 
 .relay-button--accent-cool:hover:not(:disabled) {
-  background-color: var(--relay-blue-dark); /* #043359 */
+  background-color: var(--relay-blue-dark);
 }
 
 .relay-button--accent-cool:active:not(:disabled) {
-  background-color: var(--relay-blue-darkest); /* #1E1E1E */
+  background-color: var(--relay-blue-darkest);
   transform: translateY(1px);
 }
 
@@ -87,16 +87,16 @@
 
 /* Medium (default) - Figma: Button regular size */
 .relay-button--medium {
-  padding: 12px 20px; /* Figma: py-[12px] px-[20px] */
-  font-size: 16px; /* Figma: text-[16px] */
-  line-height: 22px; /* Figma: leading-[22px] */
+  padding: 12px 20px;
+  font-size: 16px;
+  line-height: 22px;
 }
 
 /* Large - Figma: ButtonBig size */
 .relay-button--large {
-  padding: 16px 32px; /* Figma: py-[16px] px-[32px] */
-  font-size: 22px; /* Figma: text-[22px] */
-  line-height: 26px; /* Figma: leading-[26px] */
+  padding: 16px 32px;
+  font-size: 22px;
+  line-height: 26px;
 }
 
 /* ============================================ */
@@ -105,8 +105,8 @@
 
 .relay-button--disabled,
 .relay-button:disabled {
-  background-color: var(--relay-gray-03); /* #E8EBEE - Figma disabled bg */
-  color: #454545; /* Figma disabled text color */
+  background-color: var(--relay-gray-03);
+  color: var(--relay-gray-07);
   cursor: not-allowed;
   transform: none;
 }

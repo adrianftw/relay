@@ -33,30 +33,30 @@
 
 /* Purple - Figma: Type=Purple */
 .relay-tag--purple {
-  background-color: var(--relay-purple-lightest); /* #DDDDFF */
-  color: var(--relay-purple-base); /* #333366 */
+  background-color: var(--relay-purple-lightest);
+  color: var(--relay-purple-base);
 }
 
 /* Blue - Figma: Type=Blue */
 .relay-tag--blue {
-  background-color: var(--relay-blue-lightest); /* #CEF1FF */
-  color: var(--relay-blue-base); /* #004B87 */
+  background-color: var(--relay-blue-lightest);
+  color: var(--relay-blue-base);
 }
 
 /* Green - Figma: Type=Green (Success) */
 .relay-tag--green {
-  background-color: var(--relay-success-lightest); /* #B6FFC7 */
-  color: var(--relay-success-dark); /* #196B2C */
+  background-color: var(--relay-success-lightest);
+  color: var(--relay-success-dark);
 }
 
 /* Red - Figma: Type=Red */
 .relay-tag--red {
-  background-color: var(--relay-red-lightest); /* #FFD8D5 */
-  color: var(--relay-red-base); /* #DA291C */
+  background-color: var(--relay-red-lightest);
+  color: var(--relay-red-base);
 }
 
 /* Gray - Figma: Type=Gray */
 .relay-tag--gray {
-  background-color: var(--relay-gray-03); /* #E8EBEE */
-  color: var(--relay-gray-08); /* #232527 */
+  background-color: var(--relay-gray-03);
+  color: var(--relay-gray-08);
 }

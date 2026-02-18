@@ -4,7 +4,16 @@ import './Button.css';
 
 /**
  * Relay Button Component
- * Ready to be styled from Figma design
+ * Styled from Figma design specifications
+ * 
+ * Variants:
+ * - primary: Purple (--relay-purple-base)
+ * - secondary: Red (--relay-red-base) 
+ * - accent-cool: Blue (--relay-blue-base)
+ * 
+ * Sizes:
+ * - medium: 20px horizontal, 12px vertical padding, 16px font
+ * - large: 32px horizontal, 16px vertical padding, 22px font
  */
 export const Button = ({ 
   variant = 'primary',
@@ -14,9 +23,18 @@ export const Button = ({
   onClick,
   ...props 
 }) => {
+  const baseClass = 'relay-button';
+  const variantClass = `relay-button--${variant}`;
+  const sizeClass = `relay-button--${size}`;
+  const disabledClass = disabled ? 'relay-button--disabled' : '';
+  
+  const classes = [baseClass, variantClass, sizeClass, disabledClass]
+    .filter(Boolean)
+    .join(' ');
+
   return (
     <button
-      className={`relay-button relay-button--${variant} relay-button--${size}`}
+      className={classes}
       disabled={disabled}
       onClick={onClick}
       {...props}
@@ -27,10 +45,10 @@ export const Button = ({
 };
 
 Button.propTypes = {
-  /** Button variant */
-  variant: PropTypes.oneOf(['primary', 'secondary', 'outline']),
-  /** Button size */
-  size: PropTypes.oneOf(['small', 'medium', 'large']),
+  /** Button variant - maps to Figma color variants */
+  variant: PropTypes.oneOf(['primary', 'secondary', 'accent-cool']),
+  /** Button size - maps to Figma size variants */
+  size: PropTypes.oneOf(['medium', 'large']),
   /** Button label text */
   label: PropTypes.string.isRequired,
   /** Disabled state */

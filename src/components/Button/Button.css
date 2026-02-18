@@ -1,44 +1,118 @@
-/* Relay Button Component - Base Styles */
-/* Ready to be styled from Figma design */
+/* Relay Button Component - Synced from Figma */
+/* Design specs from Figma: Buttons component set */
 
 .relay-button {
-  /* Base button reset */
-  display: inline-block;
-  font-family: inherit;
-  cursor: pointer;
-  border: 1px solid transparent;
+  /* Base button styles from Figma */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  
+  /* Typography from Figma - Helvetica Bold */
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-weight: 700; /* Bold */
   text-align: center;
+  color: white;
+  line-height: normal;
+  
+  /* Border - Figma: 100px for pill shape */
+  border-radius: 100px;
+  border: none;
+  
+  /* Interactions */
+  cursor: pointer;
+  transition: background-color 0.15s ease-in-out, transform 0.1s ease;
+  user-select: none;
+  -webkit-user-select: none;
+  
+  /* Remove default button styling */
   text-decoration: none;
-  transition: all 0.15s ease-in-out;
+  outline: none;
 }
 
-.relay-button:disabled {
-  cursor: not-allowed;
-  opacity: 0.5;
+.relay-button:focus-visible {
+  outline: 2px solid var(--relay-blue-light);
+  outline-offset: 2px;
 }
 
-/* Variants - ready for Figma styling */
+/* ============================================ */
+/* VARIANTS - Synced from Figma color tokens */
+/* ============================================ */
+
+/* Primary - Figma: Type=default (Purple) */
 .relay-button--primary {
-  /* Add Figma primary button styles here */
+  background-color: var(--relay-purple-base); /* #333366 */
 }
 
+.relay-button--primary:hover:not(:disabled) {
+  background-color: var(--relay-purple-dark); /* #25254B - Figma hover state */
+}
+
+.relay-button--primary:active:not(:disabled) {
+  background-color: var(--relay-purple-darkest); /* #191935 - Figma active state */
+  transform: translateY(1px);
+}
+
+/* Secondary - Figma: Type=secondary (Red) */
 .relay-button--secondary {
-  /* Add Figma secondary button styles here */
+  background-color: var(--relay-red-base); /* #DA291C */
 }
 
-.relay-button--outline {
-  /* Add Figma outline button styles here */
+.relay-button--secondary:hover:not(:disabled) {
+  background-color: var(--relay-red-dark); /* #A6281F */
 }
 
-/* Sizes - ready for Figma dimensions */
-.relay-button--small {
-  /* Add Figma small size here */
+.relay-button--secondary:active:not(:disabled) {
+  background-color: var(--relay-red-darkest); /* #69140D */
+  transform: translateY(1px);
 }
 
+/* Accent Cool - Figma: Type=accent-cool (Blue) */
+.relay-button--accent-cool {
+  background-color: var(--relay-blue-base); /* #004B87 */
+}
+
+.relay-button--accent-cool:hover:not(:disabled) {
+  background-color: var(--relay-blue-dark); /* #043359 */
+}
+
+.relay-button--accent-cool:active:not(:disabled) {
+  background-color: var(--relay-blue-darkest); /* #1E1E1E */
+  transform: translateY(1px);
+}
+
+/* ============================================ */
+/* SIZES - Synced from Figma size variants */
+/* ============================================ */
+
+/* Medium (default) - Figma: Button regular size */
 .relay-button--medium {
-  /* Add Figma medium size here */
+  padding: 12px 20px; /* Figma: py-[12px] px-[20px] */
+  font-size: 16px; /* Figma: text-[16px] */
+  line-height: 22px; /* Figma: leading-[22px] */
 }
 
+/* Large - Figma: ButtonBig size */
 .relay-button--large {
-  /* Add Figma large size here */
+  padding: 16px 32px; /* Figma: py-[16px] px-[32px] */
+  font-size: 22px; /* Figma: text-[22px] */
+  line-height: 26px; /* Figma: leading-[26px] */
+}
+
+/* ============================================ */
+/* DISABLED STATE - Synced from Figma */
+/* ============================================ */
+
+.relay-button--disabled,
+.relay-button:disabled {
+  background-color: var(--relay-gray-03); /* #E8EBEE - Figma disabled bg */
+  color: #454545; /* Figma disabled text color */
+  cursor: not-allowed;
+  transform: none;
+}
+
+.relay-button--disabled:hover,
+.relay-button:disabled:hover {
+  background-color: var(--relay-gray-03);
+  transform: none;
 }

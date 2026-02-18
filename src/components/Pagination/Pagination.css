@@ -1,0 +1,188 @@
+/* Relay Pagination Component - Based on USWDS with Figma customizations */
+/* Design specs from Figma: Pagination component */
+
+.usa-pagination {
+  display: flex;
+  justify-content: center;
+}
+
+.usa-pagination__list {
+  display: flex;
+  gap: 7px;
+  align-items: center;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.usa-pagination__item {
+  display: flex;
+}
+
+/* ============================================ */
+/* PAGE NUMBER BUTTONS */
+/* ============================================ */
+
+.usa-pagination__button {
+  /* Layout - Figma: 40px x 40px buttons */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  
+  /* Typography - Figma: Paragraph/S Bold (14px/20px, Helvetica Bold) */
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 20px;
+  text-align: center;
+  color: var(--relay-purple-base);
+  
+  /* Border - Figma: Grayscale/04 (#DADFE4) */
+  background-color: var(--relay-gray-01);
+  border: 1px solid var(--relay-gray-04);
+  border-radius: 4px;
+  
+  /* Interactions */
+  cursor: pointer;
+  transition: all 0.15s ease-in-out;
+  text-decoration: none;
+  outline: none;
+}
+
+.usa-pagination__button:hover:not(.usa-current):not(:disabled) {
+  background-color: var(--relay-gray-02);
+  border-color: var(--relay-purple-base);
+}
+
+.usa-pagination__button:focus {
+  outline: 2px solid var(--relay-blue-light);
+  outline-offset: 2px;
+}
+
+/* Selected/Current page - Figma: Brand/Purple/Dark (#25254B) */
+.usa-pagination__button.usa-current {
+  background-color: var(--relay-purple-dark);
+  border-color: var(--relay-purple-dark);
+  color: var(--relay-gray-01);
+  cursor: default;
+}
+
+.usa-pagination__button.usa-current:hover {
+  background-color: var(--relay-purple-dark);
+  border-color: var(--relay-purple-dark);
+}
+
+/* ============================================ */
+/* ELLIPSIS / OVERFLOW */
+/* ============================================ */
+
+.usa-pagination__overflow .usa-pagination__button {
+  border: none;
+  background: transparent;
+  cursor: default;
+  color: var(--relay-purple-base);
+}
+
+.usa-pagination__overflow .usa-pagination__button:hover {
+  background: transparent;
+  border: none;
+}
+
+/* ============================================ */
+/* NEXT/PREVIOUS BUTTONS */
+/* ============================================ */
+
+.usa-pagination__arrow {
+  display: flex;
+}
+
+.usa-pagination__link {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 11px 10px;
+  
+  /* Typography - Figma: Paragraph/S Bold */
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 20px;
+  color: var(--relay-purple-base);
+  
+  /* Styling */
+  background: transparent;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  text-decoration: none;
+  outline: none;
+  transition: background-color 0.15s ease-in-out;
+}
+
+.usa-pagination__link:hover:not(:disabled) {
+  background-color: var(--relay-gray-02);
+}
+
+.usa-pagination__link:focus {
+  outline: 2px solid var(--relay-blue-light);
+  outline-offset: 2px;
+}
+
+.usa-pagination__link:disabled {
+  color: var(--relay-gray-05);
+  cursor: not-allowed;
+}
+
+.usa-pagination__link:disabled:hover {
+  background-color: transparent;
+}
+
+.usa-pagination__link-text {
+  font-weight: 700;
+}
+
+/* Icon styling */
+.usa-pagination__link .usa-icon {
+  width: 18px;
+  height: 18px;
+  fill: currentColor;
+}
+
+/* Previous button - icon on left */
+.usa-pagination__previous-page {
+  flex-direction: row;
+}
+
+/* Next button - icon on right */
+.usa-pagination__next-page {
+  flex-direction: row;
+}
+
+/* ============================================ */
+/* RESPONSIVE */
+/* ============================================ */
+
+@media (max-width: 640px) {
+  .usa-pagination__list {
+    gap: 4px;
+  }
+  
+  .usa-pagination__button {
+    width: 36px;
+    height: 36px;
+    font-size: 13px;
+  }
+  
+  .usa-pagination__link {
+    padding: 9px 8px;
+    font-size: 13px;
+  }
+  
+  .usa-pagination__link .usa-icon {
+    width: 16px;
+    height: 16px;
+  }
+}

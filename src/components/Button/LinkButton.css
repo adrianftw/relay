@@ -1,0 +1,77 @@
+/* LinkButton Component Styles */
+
+.relay-link-button {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--relay-space-01);
+  color: var(--relay-purple-base);
+  font-family: 'Helvetica', sans-serif;
+  font-weight: bold;
+  text-decoration: none;
+  background: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.relay-link-button:hover {
+  color: var(--relay-purple-light);
+  text-decoration: underline;
+}
+
+.relay-link-button:active {
+  color: var(--relay-purple-dark);
+}
+
+.relay-link-button:focus-visible {
+  outline: 2px solid var(--relay-purple-base);
+  outline-offset: 4px;
+  border-radius: var(--relay-radius-01);
+}
+
+/* Disabled state */
+.relay-link-button--disabled,
+.relay-link-button:disabled {
+  color: var(--relay-gray-05);
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.relay-link-button--disabled:hover,
+.relay-link-button:disabled:hover {
+  text-decoration: none;
+}
+
+/* Size variants */
+.relay-link-button--xs {
+  font-size: 12px;
+  line-height: 16px;
+}
+
+.relay-link-button--small {
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.relay-link-button--medium {
+  font-size: 16px;
+  line-height: 22px;
+}
+
+.relay-link-button--large {
+  font-size: 18px;
+  line-height: 28px;
+}
+
+/* Icon styling */
+.relay-link-button__icon {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+}
+
+.relay-link-button__text {
+  display: flex;
+  align-items: center;
+}

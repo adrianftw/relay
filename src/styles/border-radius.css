@@ -1,0 +1,37 @@
+/* Relay Design System - Border Radius Tokens from Figma */
+/* Border radius scale defined in Figma: Border Radius page */
+
+:root {
+  /* ============================================ */
+  /* BORDER RADIUS SCALE */
+  /* ============================================ */
+  
+  /* Token 01 - Figma: 4px */
+  --relay-radius-01: 0.25rem; /* 4px */
+  
+  /* Token 02 - Figma: 8px */
+  --relay-radius-02: 0.5rem; /* 8px */
+  
+  /* Token 03 - Figma: 16px */
+  --relay-radius-03: 1rem; /* 16px */
+  
+  /* Token 04 - Figma: 32px */
+  --relay-radius-04: 2rem; /* 32px */
+  
+  /* Special - Full rounded (pill shape) */
+  --relay-radius-full: 9999px;
+  
+  /* Special - Circle */
+  --relay-radius-circle: 50%;
+}
+
+/* ============================================ */
+/* UTILITY CLASSES */
+/* ============================================ */
+
+.relay-rounded-01 { border-radius: var(--relay-radius-01); }
+.relay-rounded-02 { border-radius: var(--relay-radius-02); }
+.relay-rounded-03 { border-radius: var(--relay-radius-03); }
+.relay-rounded-04 { border-radius: var(--relay-radius-04); }
+.relay-rounded-full { border-radius: var(--relay-radius-full); }
+.relay-rounded-circle { border-radius: var(--relay-radius-circle); }

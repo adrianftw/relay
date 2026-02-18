@@ -1,0 +1,178 @@
+/* Relay Design System - Typography from Figma */
+/* Typography styles defined in Figma: Typography page */
+
+:root {
+  /* ============================================ */
+  /* FONT FAMILIES */
+  /* ============================================ */
+  --relay-font-family-base: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  --relay-font-family-heading: 'Public Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+/* ============================================ */
+/* HEADINGS */
+/* ============================================ */
+
+/* H1 - Figma specs */
+.relay-h1 {
+  font-family: var(--relay-font-family-heading);
+  font-weight: 400; /* Regular */
+  font-size: 2.25rem; /* 36px */
+  line-height: 2.125rem; /* 34px */
+}
+
+/* H2 - Figma specs */
+.relay-h2 {
+  font-family: var(--relay-font-family-heading);
+  font-weight: 400; /* Regular */
+  font-size: 1.9375rem; /* 31px */
+  line-height: 2.75rem; /* 44px */
+}
+
+/* H3 - Figma specs */
+.relay-h3 {
+  font-family: var(--relay-font-family-heading);
+  font-weight: 400; /* Regular */
+  font-size: 1.5625rem; /* 25px */
+  line-height: 2.125rem; /* 34px */
+}
+
+/* H4 - Figma specs */
+.relay-h4 {
+  font-family: var(--relay-font-family-heading);
+  font-weight: 400; /* Regular */
+  font-size: 1.375rem; /* 22px */
+  line-height: 2.125rem; /* 34px */
+}
+
+/* H5 - Figma specs */
+.relay-h5 {
+  font-family: var(--relay-font-family-heading);
+  font-weight: 700; /* Bold */
+  font-size: 1.25rem; /* 20px */
+  line-height: 1.5rem; /* 24px */
+}
+
+/* H6 - Figma specs */
+.relay-h6 {
+  font-family: var(--relay-font-family-heading);
+  font-weight: 700; /* Bold */
+  font-size: 1.125rem; /* 18px */
+  line-height: 1.5rem; /* 24px */
+}
+
+/* ============================================ */
+/* PARAGRAPH STYLES */
+/* ============================================ */
+
+/* Paragraph XL - Figma specs */
+.relay-paragraph-xl {
+  font-family: var(--relay-font-family-base);
+  font-weight: 400; /* Regular */
+  font-size: 1.125rem; /* 18px */
+  line-height: 1.75rem; /* 28px */
+}
+
+.relay-paragraph-xl-bold {
+  font-family: var(--relay-font-family-base);
+  font-weight: 700; /* Bold */
+  font-size: 1.125rem; /* 18px */
+  line-height: 1.75rem; /* 28px */
+}
+
+.relay-paragraph-xl-link {
+  font-family: var(--relay-font-family-base);
+  font-weight: 400; /* Regular */
+  font-size: 1.125rem; /* 18px */
+  line-height: 1.75rem; /* 28px */
+  text-decoration: underline;
+  color: var(--relay-blue-base);
+}
+
+.relay-paragraph-xl-link:hover {
+  color: var(--relay-blue-dark);
+}
+
+/* Paragraph Baseline - Figma specs */
+.relay-paragraph-baseline {
+  font-family: var(--relay-font-family-base);
+  font-weight: 400; /* Regular */
+  font-size: 1rem; /* 16px */
+  line-height: 1.75rem; /* 28px */
+}
+
+.relay-paragraph-baseline-bold {
+  font-family: var(--relay-font-family-base);
+  font-weight: 700; /* Bold */
+  font-size: 1rem; /* 16px */
+  line-height: 1.75rem; /* 28px */
+}
+
+.relay-paragraph-baseline-link {
+  font-family: var(--relay-font-family-base);
+  font-weight: 700; /* Bold */
+  font-size: 1rem; /* 16px */
+  line-height: 1.75rem; /* 28px */
+  text-decoration: underline;
+  color: var(--relay-blue-base);
+}
+
+.relay-paragraph-baseline-link:hover {
+  color: var(--relay-blue-dark);
+}
+
+/* Paragraph S - Figma specs */
+.relay-paragraph-s {
+  font-family: var(--relay-font-family-base);
+  font-weight: 400; /* Regular */
+  font-size: 0.875rem; /* 14px */
+  line-height: 1.75rem; /* 28px */
+}
+
+.relay-paragraph-s-bold {
+  font-family: var(--relay-font-family-base);
+  font-weight: 700; /* Bold */
+  font-size: 0.875rem; /* 14px */
+  line-height: 1.75rem; /* 28px */
+}
+
+.relay-paragraph-s-link {
+  font-family: var(--relay-font-family-base);
+  font-weight: 400; /* Regular */
+  font-size: 0.875rem; /* 14px */
+  line-height: 1.75rem; /* 28px */
+  text-decoration: underline;
+  color: var(--relay-blue-base);
+}
+
+.relay-paragraph-s-link:hover {
+  color: var(--relay-blue-dark);
+}
+
+/* Paragraph XS - Figma specs */
+.relay-paragraph-xs {
+  font-family: var(--relay-font-family-base);
+  font-weight: 400; /* Regular */
+  font-size: 0.75rem; /* 12px */
+  line-height: 1.75rem; /* 28px */
+}
+
+.relay-paragraph-xs-bold {
+  font-family: var(--relay-font-family-base);
+  font-weight: 700; /* Bold */
+  font-size: 0.75rem; /* 12px */
+  line-height: 1.75rem; /* 28px */
+}
+
+.relay-paragraph-xs-link {
+  font-family: var(--relay-font-family-base);
+  font-weight: 400; /* Regular */
+  font-size: 0.75rem; /* 12px */
+  line-height: 1.75rem; /* 28px */
+  text-decoration: underline;
+  color: var(--relay-blue-base);
+}
+
+.relay-paragraph-xs-link:hover {
+  color: var(--relay-blue-dark);
+}

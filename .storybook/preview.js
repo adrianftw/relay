@@ -1,7 +1,10 @@
 // USWDS CSS is loaded via preview-head.html
 
-// Import brand colors from Figma
+// Import Relay Design System tokens
 import '../src/styles/colors.css';
+import '../src/styles/typography.css';
+import '../src/styles/spacing.css';
+import '../src/styles/border-radius.css';
 
 // Import custom styles
 import '../src/styles/custom.css';

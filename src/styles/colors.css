@@ -1,9 +1,16 @@
-/* Relay Design System - Brand Colors from Figma */
+/* Relay Design System - All Colors from Figma */
 /* Color palette defined in Figma: Color page */
 /* Token mapping: See tokens.js/tokens.json for Figma variable mappings */
 
 :root {
+  /* ============================================ */
+  /* BRAND COLORS */
+  /* ============================================ */
+  
   /* USPS Purple */
+  /* Figma: --Brand-Purple-Darkest */
+  --relay-purple-darkest: #191935;
+  
   /* Figma: --Brand-Purple-Dark */
   --relay-purple-dark: #25254B;
   
@@ -17,6 +24,9 @@
   --relay-purple-lightest: #B2B2F2;
 
   /* USPS Blue */
+  /* Figma: --Brand-Blue-Darkest */
+  --relay-blue-darkest: #1E1E1E;
+  
   /* Figma: --Brand-Blue-Dark */
   --relay-blue-dark: #043359;
   
@@ -28,4 +38,78 @@
   
   /* Figma: --Brand-Blue-Lightest */
   --relay-blue-lightest: #6ED0F6;
+
+  /* ============================================ */
+  /* UTILITY COLORS */
+  /* ============================================ */
+  
+  /* USPS Red */
+  /* Figma: --Utility-Red-Darkest */
+  --relay-red-darkest: #69140D;
+  
+  /* Figma: --Utility-Red-Dark */
+  --relay-red-dark: #A6281F;
+  
+  /* Figma: --Utility-Red-Base */
+  --relay-red-base: #DA291C;
+  
+  /* Figma: --Utility-Red-Light */
+  --relay-red-light: #F9695E;
+  
+  /* Figma: --Utility-Red-Lightest */
+  --relay-red-lightest: #FF9991;
+
+  /* Success (Green) */
+  /* Figma: --Utility-Success-Dark */
+  --relay-success-dark: #196B2C;
+  
+  /* Figma: --Utility-Success-Base */
+  --relay-success-base: #24A041;
+  
+  /* Figma: --Utility-Success-Light */
+  --relay-success-light: #41D764;
+  
+  /* Figma: --Utility-Success-Lightest */
+  --relay-success-lightest: #56EB79;
+
+  /* Warning (Yellow) */
+  /* Figma: --Utility-Warning-Dark */
+  --relay-warning-dark: #D4B431;
+  
+  /* Figma: --Utility-Warning-Base */
+  --relay-warning-base: #F3CD35;
+  
+  /* Figma: --Utility-Warning-Light */
+  --relay-warning-light: #FBDB57;
+  
+  /* Figma: --Utility-Warning-Lightest */
+  --relay-warning-lightest: #FFEB9B;
+
+  /* ============================================ */
+  /* GRAYSCALE */
+  /* ============================================ */
+  
+  /* Figma: --Grayscale-01 */
+  --relay-gray-01: #FFFFFF;
+  
+  /* Figma: --Grayscale-02 */
+  --relay-gray-02: #F3F6FA;
+  
+  /* Figma: --Grayscale-03 */
+  --relay-gray-03: #E8EBEE;
+  
+  /* Figma: --Grayscale-04 */
+  --relay-gray-04: #DADFE4;
+  
+  /* Figma: --Grayscale-05 */
+  --relay-gray-05: #BDC3C9;
+  
+  /* Figma: --Grayscale-06 */
+  --relay-gray-06: #74787C;
+  
+  /* Figma: --Grayscale-07 */
+  --relay-gray-07: #4F5458;
+  
+  /* Figma: --Grayscale-08 */
+  --relay-gray-08: #232527;
 }

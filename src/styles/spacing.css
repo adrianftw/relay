@@ -1,0 +1,84 @@
+/* Relay Design System - Spacing Tokens from Figma */
+/* Spacing scale defined in Figma: Spacing page */
+
+:root {
+  /* ============================================ */
+  /* SPACING SCALE */
+  /* ============================================ */
+  
+  /* Token 01 - Figma: 4px / 0.25rem */
+  --relay-space-01: 0.25rem; /* 4px */
+  
+  /* Token 02 - Figma: 8px / 0.5rem */
+  --relay-space-02: 0.5rem; /* 8px */
+  
+  /* Token 03 - Figma: 16px / 1rem */
+  --relay-space-03: 1rem; /* 16px */
+  
+  /* Token 04 - Figma: 24px / 1.5rem */
+  --relay-space-04: 1.5rem; /* 24px */
+  
+  /* Token 05 - Figma: 32px / 2rem */
+  --relay-space-05: 2rem; /* 32px */
+  
+  /* Token 06 - Figma: 40px / 2.5rem */
+  --relay-space-06: 2.5rem; /* 40px */
+  
+  /* Token 07 - Figma: 56px / 3.5rem */
+  --relay-space-07: 3.5rem; /* 56px */
+  
+  /* Token 08 - Figma: 64px / 4rem */
+  --relay-space-08: 4rem; /* 64px */
+  
+  /* Token 09 - Figma: 80px / 5rem */
+  --relay-space-09: 5rem; /* 80px */
+  
+  /* Token 10 - Figma: 108px / 6.75rem */
+  --relay-space-10: 6.75rem; /* 108px */
+  
+  /* Token 11 - Figma: 208px / 13rem */
+  --relay-space-11: 13rem; /* 208px */
+}
+
+/* ============================================ */
+/* UTILITY CLASSES */
+/* ============================================ */
+
+/* Margin utilities */
+.relay-m-01 { margin: var(--relay-space-01); }
+.relay-m-02 { margin: var(--relay-space-02); }
+.relay-m-03 { margin: var(--relay-space-03); }
+.relay-m-04 { margin: var(--relay-space-04); }
+.relay-m-05 { margin: var(--relay-space-05); }
+.relay-m-06 { margin: var(--relay-space-06); }
+.relay-m-07 { margin: var(--relay-space-07); }
+.relay-m-08 { margin: var(--relay-space-08); }
+.relay-m-09 { margin: var(--relay-space-09); }
+.relay-m-10 { margin: var(--relay-space-10); }
+.relay-m-11 { margin: var(--relay-space-11); }
+
+/* Padding utilities */
+.relay-p-01 { padding: var(--relay-space-01); }
+.relay-p-02 { padding: var(--relay-space-02); }
+.relay-p-03 { padding: var(--relay-space-03); }
+.relay-p-04 { padding: var(--relay-space-04); }
+.relay-p-05 { padding: var(--relay-space-05); }
+.relay-p-06 { padding: var(--relay-space-06); }
+.relay-p-07 { padding: var(--relay-space-07); }
+.relay-p-08 { padding: var(--relay-space-08); }
+.relay-p-09 { padding: var(--relay-space-09); }
+.relay-p-10 { padding: var(--relay-space-10); }
+.relay-p-11 { padding: var(--relay-space-11); }
+
+/* Gap utilities */
+.relay-gap-01 { gap: var(--relay-space-01); }
+.relay-gap-02 { gap: var(--relay-space-02); }
+.relay-gap-03 { gap: var(--relay-space-03); }
+.relay-gap-04 { gap: var(--relay-space-04); }
+.relay-gap-05 { gap: var(--relay-space-05); }
+.relay-gap-06 { gap: var(--relay-space-06); }
+.relay-gap-07 { gap: var(--relay-space-07); }
+.relay-gap-08 { gap: var(--relay-space-08); }
+.relay-gap-09 { gap: var(--relay-space-09); }
+.relay-gap-10 { gap: var(--relay-space-10); }
+.relay-gap-11 { gap: var(--relay-space-11); }

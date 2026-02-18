@@ -1,0 +1,44 @@
+/* Relay Button Component - Base Styles */
+/* Ready to be styled from Figma design */
+
+.relay-button {
+  /* Base button reset */
+  display: inline-block;
+  font-family: inherit;
+  cursor: pointer;
+  border: 1px solid transparent;
+  text-align: center;
+  text-decoration: none;
+  transition: all 0.15s ease-in-out;
+}
+
+.relay-button:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+/* Variants - ready for Figma styling */
+.relay-button--primary {
+  /* Add Figma primary button styles here */
+}
+
+.relay-button--secondary {
+  /* Add Figma secondary button styles here */
+}
+
+.relay-button--outline {
+  /* Add Figma outline button styles here */
+}
+
+/* Sizes - ready for Figma dimensions */
+.relay-button--small {
+  /* Add Figma small size here */
+}
+
+.relay-button--medium {
+  /* Add Figma medium size here */
+}
+
+.relay-button--large {
+  /* Add Figma large size here */
+}

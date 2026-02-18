@@ -1,0 +1,155 @@
+/* Relay Progress Bar Component - Custom design with Figma tokens */
+/* Design specs from Figma: Progress Bar component */
+
+.relay-progress-bar {
+  width: 100%;
+}
+
+.relay-progress-bar__wrapper {
+  display: flex;
+  align-items: center;
+  gap: var(--relay-space-02);
+}
+
+/* ============================================ */
+/* PROGRESS TRACK (background) */
+/* ============================================ */
+
+.relay-progress-bar__track {
+  position: relative;
+  flex: 1;
+  overflow: hidden;
+  
+  /* Background - Figma: Grayscale/04 (#DADFE4) */
+  background-color: var(--relay-gray-04);
+  
+  /* Border radius - Figma: 4px */
+  border-radius: var(--relay-radius-01);
+  
+  /* Smooth transitions */
+  transition: background-color 0.2s ease;
+}
+
+/* Size variants */
+.relay-progress-bar__track--small {
+  height: 6px;
+}
+
+.relay-progress-bar__track--medium {
+  height: 10px; /* Figma size */
+}
+
+.relay-progress-bar__track--large {
+  height: 14px;
+}
+
+/* ============================================ */
+/* PROGRESS FILL */
+/* ============================================ */
+
+.relay-progress-bar__fill {
+  height: 100%;
+  border-radius: var(--relay-radius-01);
+  
+  /* Smooth animation when value changes */
+  transition: width 0.3s ease, background-color 0.2s ease;
+  
+  /* Default (primary) - Figma: Brand/Purple/Base (#333366) */
+  background-color: var(--relay-purple-base);
+}
+
+/* Color variants */
+.relay-progress-bar__fill--primary {
+  background-color: var(--relay-purple-base);
+}
+
+.relay-progress-bar__fill--success {
+  background-color: var(--relay-success-base);
+}
+
+.relay-progress-bar__fill--warning {
+  background-color: var(--relay-warning-base);
+}
+
+.relay-progress-bar__fill--danger {
+  background-color: var(--relay-red-base);
+}
+
+/* ============================================ */
+/* LABEL */
+/* ============================================ */
+
+.relay-progress-bar__label {
+  /* Typography - Figma: Paragraph/S Bold (14px/20px, Helvetica Bold) */
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 20px;
+  
+  /* Color - Figma: Grayscale/08 (#232527) */
+  color: var(--relay-gray-08);
+  
+  /* Layout */
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+/* ============================================ */
+/* STATES & MODIFIERS */
+/* ============================================ */
+
+/* Indeterminate/loading state */
+.relay-progress-bar--indeterminate .relay-progress-bar__fill {
+  width: 30%;
+  animation: relay-progress-indeterminate 1.5s ease-in-out infinite;
+}
+
+@keyframes relay-progress-indeterminate {
+  0% {
+    transform: translateX(-100%);
+  }
+  50% {
+    transform: translateX(300%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+/* Completed state (100%) */
+.relay-progress-bar__fill[style*="width: 100%"] {
+  border-radius: var(--relay-radius-01);
+}
+
+/* ============================================ */
+/* RESPONSIVE */
+/* ============================================ */
+
+@media (max-width: 640px) {
+  .relay-progress-bar__label {
+    font-size: 13px;
+    line-height: 18px;
+  }
+  
+  .relay-progress-bar__track--small {
+    height: 5px;
+  }
+  
+  .relay-progress-bar__track--medium {
+    height: 8px;
+  }
+  
+  .relay-progress-bar__track--large {
+    height: 12px;
+  }
+}
+
+/* ============================================ */
+/* CARD CONTEXT OPTIMIZATION */
+/* ============================================ */
+
+/* When used in cards, ensure proper spacing */
+.card .relay-progress-bar,
+.usa-card .relay-progress-bar {
+  width: 100%;
+}

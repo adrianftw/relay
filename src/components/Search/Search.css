@@ -1,0 +1,159 @@
+/* Relay Search Component - Based on USWDS with Figma customizations */
+/* Design specs from Figma: search component */
+
+.usa-search {
+  display: flex;
+  position: relative;
+}
+
+/* Screen reader only label */
+.usa-sr-only {
+  position: absolute;
+  left: -10000px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+/* ============================================ */
+/* INPUT FIELD */
+/* ============================================ */
+
+.usa-search .usa-input {
+  /* Remove default browser styling */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  
+  /* Layout */
+  flex: 1;
+  min-width: 0;
+  height: 42px;
+  padding: 0 var(--relay-space-03);
+  
+  /* Typography */
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--relay-gray-08);
+  
+  /* Borders - Figma: Grayscale/05 (#BDC3C9) */
+  border: 1px solid var(--relay-gray-05);
+  border-right: none;
+  border-radius: var(--relay-space-02) 0 0 var(--relay-space-02);
+  
+  /* Background */
+  background-color: var(--relay-gray-01);
+  
+  /* Interactions */
+  outline: none;
+  transition: border-color 0.15s ease-in-out;
+}
+
+.usa-search .usa-input:focus {
+  border-color: var(--relay-purple-base);
+  box-shadow: 0 0 0 2px var(--relay-purple-light);
+}
+
+.usa-search .usa-input::placeholder {
+  color: var(--relay-gray-05);
+  opacity: 1;
+}
+
+/* Remove default clear button in WebKit browsers */
+.usa-search .usa-input::-webkit-search-cancel-button {
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+/* ============================================ */
+/* SEARCH BUTTON */
+/* ============================================ */
+
+.usa-search .usa-button {
+  /* Layout */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 49px;
+  height: 42px;
+  padding: 0 var(--relay-space-03);
+  margin: 0;
+  
+  /* Background - Figma: Brand/Purple/Dark (#25254B) */
+  background-color: var(--relay-purple-dark);
+  
+  /* Border */
+  border: none;
+  border-radius: 0 var(--relay-space-02) var(--relay-space-02) 0;
+  
+  /* Interactions */
+  cursor: pointer;
+  transition: background-color 0.15s ease-in-out;
+  
+  /* Typography */
+  color: var(--relay-gray-01);
+  font-weight: 700;
+  text-decoration: none;
+  outline: none;
+}
+
+.usa-search .usa-button:hover {
+  background-color: var(--relay-purple-darkest);
+}
+
+.usa-search .usa-button:active {
+  background-color: var(--relay-purple-darkest);
+  transform: translateY(1px);
+}
+
+.usa-search .usa-button:focus {
+  outline: 2px solid var(--relay-blue-light);
+  outline-offset: 2px;
+}
+
+/* ============================================ */
+/* BUTTON CONTENT */
+/* ============================================ */
+
+/* Hide text on small screens, show only icon */
+.usa-search__submit-text {
+  display: none;
+}
+
+/* Icon styling */
+.usa-search .usa-icon {
+  width: 24px;
+  height: 24px;
+  fill: currentColor;
+}
+
+/* ============================================ */
+/* SIZE VARIANTS */
+/* ============================================ */
+
+/* Small size - Figma: Size=small (42px height, 290px width) */
+.usa-search--small {
+  width: 100%;
+  max-width: 290px;
+}
+
+.usa-search--small .usa-input {
+  height: 42px;
+}
+
+.usa-search--small .usa-button {
+  height: 42px;
+  min-width: 49px;
+}
+
+/* ============================================ */
+/* RESPONSIVE */
+/* ============================================ */
+
+/* Show search text on larger screens if needed */
+@media (min-width: 640px) {
+  .usa-search--small .usa-button {
+    padding: 0 var(--relay-space-04);
+  }
+}

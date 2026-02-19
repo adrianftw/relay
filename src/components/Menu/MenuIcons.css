@@ -1,0 +1,17 @@
+/* MenuIcons Component Styles */
+
+.relay-menu-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+/* Color variants */
+.relay-menu-icon--purple {
+  color: var(--relay-purple-base);
+}
+
+.relay-menu-icon--white {
+  color: var(--relay-gray-01);
+}

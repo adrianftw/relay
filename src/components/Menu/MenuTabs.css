@@ -1,0 +1,53 @@
+/* MenuTabs Component Styles */
+
+.relay-menu-tab {
+  display: flex;
+  align-items: center;
+  gap: var(--relay-space-02);
+  padding: var(--relay-space-02);
+  background: transparent;
+  border: none;
+  border-radius: var(--relay-radius-01);
+  font-family: 'Helvetica', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  color: var(--relay-purple-dark);
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  width: 100%;
+  text-align: left;
+}
+
+.relay-menu-tab:hover:not(.relay-menu-tab--active) {
+  background: var(--relay-gray-03);
+}
+
+.relay-menu-tab:focus-visible {
+  outline: 2px solid var(--relay-purple-base);
+  outline-offset: 2px;
+}
+
+/* Active state */
+.relay-menu-tab--active {
+  background: var(--relay-purple-base);
+  color: var(--relay-gray-01);
+  cursor: default;
+}
+
+.relay-menu-tab--active:hover {
+  background: var(--relay-purple-base);
+}
+
+/* Icon styling */
+.relay-menu-tab__icon {
+  flex-shrink: 0;
+}
+
+.relay-menu-tab__text {
+  flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

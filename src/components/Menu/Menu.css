@@ -1,0 +1,94 @@
+/* Menu Component Styles */
+
+.relay-menu {
+  display: flex;
+  flex-direction: column;
+  width: 203px;
+  background: var(--relay-gray-01);
+  border-right: 1px solid var(--relay-gray-04);
+  height: 100%;
+}
+
+.relay-menu__container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  padding: var(--relay-space-07) var(--relay-space-04);
+  gap: 256px;
+}
+
+/* Menu sections */
+.relay-menu__section {
+  display: flex;
+  flex-direction: column;
+}
+
+.relay-menu__section--top {
+  gap: var(--relay-space-02);
+}
+
+.relay-menu__section--bottom {
+  gap: 38px;
+}
+
+.relay-menu__bottom-items {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Help section */
+.relay-menu__help {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  padding: 0;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  width: 100%;
+}
+
+.relay-menu__help:hover .relay-menu__help-text {
+  text-decoration: underline;
+}
+
+.relay-menu__help:focus-visible {
+  outline: 2px solid var(--relay-purple-base);
+  outline-offset: 2px;
+  border-radius: var(--relay-radius-01);
+}
+
+.relay-menu__help-avatar {
+  width: 34px;
+  height: 34px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  overflow: hidden;
+  background: var(--relay-gray-04);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.relay-menu__help-avatar-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.relay-menu__help-avatar-placeholder {
+  font-family: 'Helvetica', sans-serif;
+  font-size: 18px;
+  font-weight: bold;
+  color: var(--relay-gray-07);
+}
+
+.relay-menu__help-text {
+  font-family: 'Helvetica', sans-serif;
+  font-size: 12px;
+  line-height: 16px;
+  color: var(--relay-gray-08);
+  flex: 1;
+}

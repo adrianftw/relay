@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { MdMoreVert } from 'react-icons/md';
-import Tag from '../Tag/Tag';
-import ProgressBar from '../ProgressBar/ProgressBar';
+import { Tag } from '../Tag/Tag';
+import { ProgressBar } from '../ProgressBar/ProgressBar';
 import './CampaignRow.css';
 
 /**
@@ -66,7 +66,7 @@ const CampaignRow = ({
 
         {/* Status Tag */}
         <div className="relay-campaign-row__status">
-          <Tag variant={statusVariant}>{status}</Tag>
+          <Tag variant={statusVariant} label={status} />
         </div>
 
         {/* Progress Bar */}

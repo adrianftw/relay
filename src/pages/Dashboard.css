@@ -1,62 +1,22 @@
 /* Dashboard Page Styles */
 
 .dashboard-page {
-  max-width: 1400px;
-  margin: 0 auto;
-}
-
-.dashboard-page__title {
-  font-family: 'Helvetica', sans-serif;
-  font-size: 32px;
-  font-weight: 700;
-  line-height: 40px;
-  color: var(--relay-gray-08);
-  margin: 0 0 var(--relay-space-02) 0;
-}
-
-.dashboard-page__subtitle {
-  font-family: 'Helvetica', sans-serif;
-  font-size: 16px;
-  font-weight: 400;
-  line-height: 22px;
-  color: var(--relay-gray-07);
-  margin: 0 0 var(--relay-space-06) 0;
-}
-
-.dashboard-page__cards {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: var(--relay-space-04);
-}
-
-.dashboard-card {
-  background: var(--relay-gray-01);
-  border: 1px solid var(--relay-gray-04);
-  border-radius: var(--relay-radius-02);
   padding: var(--relay-space-05);
 }
 
-.dashboard-card__title {
+.dashboard-page h1 {
   font-family: 'Helvetica', sans-serif;
-  font-size: 14px;
-  font-weight: 400;
-  line-height: 20px;
-  color: var(--relay-gray-07);
+  font-size: 36px;
+  font-weight: 700;
+  line-height: 42px;
+  color: var(--relay-gray-08);
   margin: 0 0 var(--relay-space-03) 0;
 }
 
-.dashboard-card__value {
+.dashboard-page p {
   font-family: 'Helvetica', sans-serif;
-  font-size: 48px;
-  font-weight: 700;
-  line-height: 56px;
-  color: var(--relay-purple-base);
+  font-size: 16px;
+  line-height: 22px;
+  color: var(--relay-gray-07);
   margin: 0;
-}
-
-/* Responsive adjustments */
-@media (max-width: 768px) {
-  .dashboard-page__cards {
-    grid-template-columns: 1fr;
-  }
 }

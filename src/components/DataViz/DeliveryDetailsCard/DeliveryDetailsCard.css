@@ -1,0 +1,148 @@
+/* DeliveryDetailsCard Component - Built with Relay Tokens */
+
+.relay-delivery-details-card {
+  /* Card Layout - Figma specs */
+  display: flex;
+  flex-direction: column;
+  gap: var(--relay-space-02);
+  width: 488px;
+  height: 260px;
+  
+  /* Spacing */
+  padding: var(--relay-space-04) var(--relay-space-05);
+  
+  /* Background & Border */
+  background: var(--relay-gray-01);
+  border: 1px solid var(--relay-gray-03);
+  border-radius: var(--relay-radius-02);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+}
+
+/* Card Title */
+.relay-delivery-details-card__title {
+  /* Figma: Paragraph/XL Bold (18px/28px, Helvetica Bold) */
+  font-family: 'Helvetica', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 1.125rem; /* 18px */
+  font-weight: 700;
+  line-height: 1.75rem; /* 28px */
+  color: var(--relay-gray-08);
+  text-align: center;
+  margin: 0;
+  width: 100%;
+}
+
+/* Content Container */
+.relay-delivery-details-card__content {
+  display: flex;
+  gap: var(--relay-space-03);
+  align-items: center;
+  width: 100%;
+  flex: 1;
+}
+
+/* Stats Section */
+.relay-delivery-details-card__stats {
+  display: flex;
+  flex-direction: column;
+  gap: var(--relay-space-03);
+  width: 245px;
+}
+
+/* Total Count Section */
+.relay-delivery-details-card__total {
+  display: flex;
+  flex-direction: column;
+  gap: var(--relay-space-01);
+}
+
+.relay-delivery-details-card__count {
+  /* Figma: Header/H2 (31px/44px, Helvetica Bold, Purple) */
+  font-family: 'Helvetica', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 1.9375rem; /* 31px */
+  font-weight: 700;
+  line-height: 2.75rem; /* 44px */
+  color: var(--relay-purple-base);
+  margin: 0;
+}
+
+.relay-delivery-details-card__subtitle {
+  /* Figma: Paragraph/XS (12px/16px, Helvetica Regular) */
+  font-family: 'Helvetica', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 0.75rem; /* 12px */
+  font-weight: 400;
+  line-height: 1rem; /* 16px */
+  color: var(--relay-gray-07);
+  margin: 0;
+}
+
+/* Legend Section */
+.relay-delivery-details-card__legend {
+  display: flex;
+  flex-direction: column;
+  gap: var(--relay-space-02);
+}
+
+.relay-delivery-details-card__legend-row {
+  display: flex;
+  gap: var(--relay-space-03);
+}
+
+.relay-delivery-details-card__legend-item {
+  display: flex;
+  gap: 10px;
+  height: 36px;
+  width: 88px;
+}
+
+.relay-delivery-details-card__legend-indicator-wrapper {
+  display: flex;
+  align-items: center;
+  padding-top: 4px;
+}
+
+.relay-delivery-details-card__legend-indicator {
+  width: 12px;
+  height: 12px;
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+.relay-delivery-details-card__legend-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.relay-delivery-details-card__legend-label {
+  /* Figma: Paragraph/XS Bold (12px/16px, Helvetica Bold) */
+  font-family: 'Helvetica', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 0.75rem; /* 12px */
+  font-weight: 700;
+  line-height: 1rem; /* 16px */
+  color: var(--relay-gray-08);
+  margin: 0;
+}
+
+.relay-delivery-details-card__legend-value {
+  /* Figma: Paragraph/S (14px/20px, Helvetica Regular) */
+  font-family: 'Helvetica', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 0.875rem; /* 14px */
+  font-weight: 400;
+  line-height: 1.25rem; /* 20px */
+  color: var(--relay-gray-08);
+  margin: 0;
+}
+
+/* Chart Section */
+.relay-delivery-details-card__chart {
+  width: 160px;
+  height: 160px;
+  flex-shrink: 0;
+}
+
+/* Hover state */
+.relay-delivery-details-card:hover {
+  border-color: var(--relay-gray-04);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  transition: all 0.2s ease;
+}

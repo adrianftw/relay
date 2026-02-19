@@ -1,12 +1,18 @@
 /* Navigation Component Styles */
 
 .relay-navigation {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
   display: flex;
   align-items: center;
   justify-content: space-between;
   width: 100%;
   padding: var(--relay-space-03) var(--relay-space-05) var(--relay-space-03) var(--relay-space-03);
   border-bottom: 1px solid var(--relay-gray-04);
+  background: #FBFCFF;
+  z-index: 100;
 }
 
 /* Left section: Logo and title */

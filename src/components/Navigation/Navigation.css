@@ -1,0 +1,99 @@
+/* Navigation Component Styles */
+
+.relay-navigation {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: var(--relay-space-03) var(--relay-space-05) var(--relay-space-03) var(--relay-space-03);
+  border-bottom: 1px solid var(--relay-gray-04);
+  background: var(--relay-gray-01);
+}
+
+/* Left section: Logo and title */
+.relay-navigation__left {
+  display: flex;
+  align-items: flex-end;
+  gap: var(--relay-space-03);
+}
+
+.relay-navigation__logo {
+  height: 21px;
+  width: auto;
+}
+
+.relay-navigation__title {
+  font-family: 'Helvetica', sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 16px;
+  color: var(--relay-gray-07);
+  white-space: nowrap;
+}
+
+/* Right section: Action icons */
+.relay-navigation__right {
+  display: flex;
+  align-items: center;
+  gap: var(--relay-space-04);
+}
+
+.relay-navigation__icon-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  background: transparent;
+  border: none;
+  color: var(--relay-gray-08);
+  cursor: pointer;
+  transition: color 0.2s ease, background-color 0.2s ease;
+}
+
+.relay-navigation__icon-button:hover {
+  color: var(--relay-purple-base);
+}
+
+.relay-navigation__icon-button:active {
+  color: var(--relay-purple-dark);
+}
+
+.relay-navigation__icon-button:focus-visible {
+  outline: 2px solid var(--relay-purple-base);
+  outline-offset: 2px;
+  border-radius: var(--relay-radius-01);
+}
+
+/* Avatar */
+.relay-navigation__avatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  background: var(--relay-gray-04);
+  border: none;
+  border-radius: var(--relay-radius-circle);
+  font-family: 'Helvetica', sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 25px;
+  color: var(--relay-gray-08);
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.relay-navigation__avatar:hover {
+  background: var(--relay-gray-05);
+}
+
+.relay-navigation__avatar:active {
+  transform: scale(0.95);
+}
+
+.relay-navigation__avatar:focus-visible {
+  outline: 2px solid var(--relay-purple-base);
+  outline-offset: 2px;
+}

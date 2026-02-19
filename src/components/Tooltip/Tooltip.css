@@ -1,0 +1,46 @@
+/* Tooltip Component Styles */
+
+.relay-tooltip {
+  position: relative;
+  display: inline-flex;
+}
+
+.relay-tooltip__content {
+  position: absolute;
+  background: var(--relay-gray-08);
+  color: var(--relay-gray-01);
+  padding: var(--relay-space-02) var(--relay-space-03);
+  border-radius: var(--relay-radius-01);
+  font-family: 'Helvetica', sans-serif;
+  font-size: 12px;
+  line-height: 16px;
+  white-space: nowrap;
+  z-index: 1000;
+  pointer-events: none;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* Position variants */
+.relay-tooltip__content--top {
+  bottom: calc(100% + var(--relay-space-02));
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.relay-tooltip__content--bottom {
+  top: calc(100% + var(--relay-space-02));
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.relay-tooltip__content--left {
+  right: calc(100% + var(--relay-space-02));
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.relay-tooltip__content--right {
+  left: calc(100% + var(--relay-space-02));
+  top: 50%;
+  transform: translateY(-50%);
+}

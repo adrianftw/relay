@@ -82,15 +82,26 @@ export const DonutChart = ({
       
       {/* Data segments */}
       {segments.map((segment, index) => (
-        <path
-          key={index}
-          className="relay-donut-chart__segment"
-          d={segment.path}
-          fill="none"
-          stroke={segment.color}
-          strokeWidth={thickness}
-          strokeLinecap="butt"
-        />
+        <g key={index}>
+          {/* White border */}
+          <path
+            className="relay-donut-chart__segment-border"
+            d={segment.path}
+            fill="none"
+            stroke="white"
+            strokeWidth={thickness + 4}
+            strokeLinecap="butt"
+          />
+          {/* Colored segment */}
+          <path
+            className="relay-donut-chart__segment"
+            d={segment.path}
+            fill="none"
+            stroke={segment.color}
+            strokeWidth={thickness}
+            strokeLinecap="butt"
+          />
+        </g>
       ))}
     </svg>
   );

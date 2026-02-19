@@ -8,12 +8,20 @@
   transition: stroke 0.3s ease;
 }
 
+.relay-donut-chart__segment-border {
+  transition: stroke-width 0.2s ease;
+}
+
 .relay-donut-chart__segment {
   transition: stroke-width 0.2s ease, opacity 0.2s ease;
 }
 
 /* Hover effect for interactive charts */
-.relay-donut-chart__segment:hover {
+g:hover .relay-donut-chart__segment-border {
+  stroke-width: 32px;
+}
+
+g:hover .relay-donut-chart__segment {
   stroke-width: 28px;
   cursor: pointer;
   opacity: 0.9;

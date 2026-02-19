@@ -89,7 +89,7 @@ export const DonutChart = ({
           fill="none"
           stroke={segment.color}
           strokeWidth={thickness}
-          strokeLinecap="round"
+          strokeLinecap="butt"
         />
       ))}
     </svg>

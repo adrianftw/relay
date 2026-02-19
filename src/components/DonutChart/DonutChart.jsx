@@ -25,7 +25,6 @@ export const DonutChart = ({
   const total = data.reduce((sum, item) => sum + item.value, 0);
   
   // Calculate percentages and cumulative angles
-  const padding = thickness; // Add padding for stroke and rounded caps
   const radius = (size / 2) - (thickness / 2);
   const circumference = 2 * Math.PI * radius;
   const center = size / 2;
@@ -60,7 +59,7 @@ export const DonutChart = ({
       className={classes}
       width={size}
       height={size}
-      viewBox={`${-padding} ${-padding} ${size + padding * 2} ${size + padding * 2}`}
+      style={{ overflow: 'visible' }}
       {...props}
     >
       {/* Background circle */}

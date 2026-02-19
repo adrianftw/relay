@@ -38,29 +38,25 @@
 }
 
 /* Help section */
-.relay-menu__help {
+.relay-menu__help-card {
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  gap: 16px;
+  padding: var(--relay-space-03);
+  border: 1px solid var(--relay-gray-03);
+  border-radius: var(--relay-radius-02);
+  background: var(--relay-gray-01);
+}
+
+.relay-menu__help-header {
+  display: flex;
+  flex-direction: column;
   gap: 11px;
-  padding: 0;
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  text-align: left;
-  width: 100%;
-}
-
-.relay-menu__help:hover .relay-menu__help-text {
-  text-decoration: underline;
-}
-
-.relay-menu__help:focus-visible {
-  outline: 2px solid var(--relay-purple-base);
-  outline-offset: 2px;
-  border-radius: var(--relay-radius-01);
+  align-items: flex-start;
 }
 
 .relay-menu__help-avatar {
+  position: relative;
   width: 34px;
   height: 34px;
   flex-shrink: 0;
@@ -78,6 +74,17 @@
   object-fit: cover;
 }
 
+.relay-menu__help-status {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 9px;
+  height: 9px;
+  background: var(--relay-success-light);
+  border: 2px solid var(--relay-gray-01);
+  border-radius: 50%;
+}
+
 .relay-menu__help-avatar-placeholder {
   font-family: 'Helvetica', sans-serif;
   font-size: 18px;
@@ -87,8 +94,45 @@
 
 .relay-menu__help-text {
   font-family: 'Helvetica', sans-serif;
-  font-size: 12px;
-  line-height: 16px;
+  font-size: 16px;
+  font-weight: bold;
+  line-height: 22px;
   color: var(--relay-gray-08);
-  flex: 1;
+  margin: 0;
+}
+
+.relay-menu__help-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--relay-space-02);
+  height: 34px;
+  padding: 12px 20px;
+  background: transparent;
+  border: 2px solid var(--relay-purple-base);
+  border-radius: 39px;
+  font-family: 'Helvetica', sans-serif;
+  font-size: 12px;
+  font-weight: bold;
+  line-height: 16px;
+  color: var(--relay-purple-base);
+  text-align: center;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+  width: 100%;
+}
+
+.relay-menu__help-button:hover {
+  background: var(--relay-purple-base);
+  color: var(--relay-gray-01);
+}
+
+.relay-menu__help-button:active {
+  background: var(--relay-purple-dark);
+  border-color: var(--relay-purple-dark);
+}
+
+.relay-menu__help-button:focus-visible {
+  outline: 2px solid var(--relay-purple-base);
+  outline-offset: 2px;
 }

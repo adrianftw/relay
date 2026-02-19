@@ -20,7 +20,7 @@ const Menu = ({
     { id: 'support', icon: 'support', label: 'Support' },
   ],
   showHelpSection = true,
-  helpText = 'Get help with a real expert',
+  helpText = 'Get help with live support',
   helpAvatar,
   onHelpClick,
   className = '',
@@ -73,20 +73,28 @@ const Menu = ({
 
           {/* Help section */}
           {showHelpSection && (
-            <button 
-              className="relay-menu__help"
-              onClick={onHelpClick}
-              type="button"
-            >
-              <div className="relay-menu__help-avatar">
-                {helpAvatar ? (
-                  <img src={helpAvatar} alt="Expert" className="relay-menu__help-avatar-img" />
-                ) : (
-                  <div className="relay-menu__help-avatar-placeholder">?</div>
-                )}
+            <div className="relay-menu__help-card">
+              <div className="relay-menu__help-header">
+                <div className="relay-menu__help-avatar">
+                  {helpAvatar ? (
+                    <>
+                      <img src={helpAvatar} alt="Expert" className="relay-menu__help-avatar-img" />
+                      <span className="relay-menu__help-status" />
+                    </>
+                  ) : (
+                    <div className="relay-menu__help-avatar-placeholder">?</div>
+                  )}
+                </div>
+                <p className="relay-menu__help-text">{helpText}</p>
               </div>
-              <span className="relay-menu__help-text">{helpText}</span>
-            </button>
+              <button 
+                className="relay-menu__help-button"
+                onClick={onHelpClick}
+                type="button"
+              >
+                Schedule call
+              </button>
+            </div>
           )}
         </div>
       </div>

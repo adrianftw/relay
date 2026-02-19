@@ -107,7 +107,7 @@
   justify-content: center;
   gap: var(--relay-space-02);
   height: 34px;
-  padding: 12px 20px;
+  padding: 8px 20px;
   background: transparent;
   border: 2px solid var(--relay-purple-base);
   border-radius: 39px;
@@ -120,6 +120,7 @@
   cursor: pointer;
   transition: background-color 0.2s ease, color 0.2s ease;
   width: 100%;
+  white-space: nowrap;
 }
 
 .relay-menu__help-button:hover {

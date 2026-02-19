@@ -7,7 +7,6 @@
   width: 100%;
   padding: var(--relay-space-03) var(--relay-space-05) var(--relay-space-03) var(--relay-space-03);
   border-bottom: 1px solid var(--relay-gray-04);
-  background: var(--relay-gray-01);
 }
 
 /* Left section: Logo and title */

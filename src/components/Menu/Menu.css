@@ -4,7 +4,6 @@
   display: flex;
   flex-direction: column;
   width: 203px;
-  background: var(--relay-gray-01);
   border-right: 1px solid var(--relay-gray-04);
   height: 100%;
 }
@@ -45,7 +44,6 @@
   padding: var(--relay-space-03);
   border: 1px solid var(--relay-gray-03);
   border-radius: var(--relay-radius-02);
-  background: var(--relay-gray-01);
 }
 
 .relay-menu__help-header {

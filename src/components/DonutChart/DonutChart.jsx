@@ -25,8 +25,10 @@ export const DonutChart = ({
   const total = data.reduce((sum, item) => sum + item.value, 0);
   
   // Calculate percentages and cumulative angles
+  const padding = thickness; // Add padding for stroke and rounded caps
   const radius = (size / 2) - (thickness / 2);
   const circumference = 2 * Math.PI * radius;
+  const center = size / 2;
   
   let cumulativePercent = 0;
   
@@ -58,14 +60,14 @@ export const DonutChart = ({
       className={classes}
       width={size}
       height={size}
-      viewBox={`0 0 ${size} ${size}`}
+      viewBox={`${-padding} ${-padding} ${size + padding * 2} ${size + padding * 2}`}
       {...props}
     >
       {/* Background circle */}
       <circle
         className="relay-donut-chart__background"
-        cx={size / 2}
-        cy={size / 2}
+        cx={center}
+        cy={center}
         r={radius}
         fill="none"
         stroke="var(--relay-gray-03)"
@@ -82,15 +84,15 @@ export const DonutChart = ({
           <circle
             key={index}
             className="relay-donut-chart__segment"
-            cx={size / 2}
-            cy={size / 2}
+            cx={center}
+            cy={center}
             r={radius}
             fill="none"
             stroke={segment.color}
             strokeWidth={thickness}
             strokeDasharray={`${segment.percent * circumference / 100} ${circumference}`}
             strokeDashoffset={0}
-            transform={`rotate(${rotation} ${size / 2} ${size / 2})`}
+            transform={`rotate(${rotation} ${center} ${center})`}
             strokeLinecap="round"
           />
         );

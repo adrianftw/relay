@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { DonutChart } from '../DataViz/DonutChart/DonutChart';
+import { DonutChart } from '../DonutChart/DonutChart';
 import './DeliveryDetailsCard.css';
 
 /**

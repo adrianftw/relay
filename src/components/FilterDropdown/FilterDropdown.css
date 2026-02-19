@@ -1,0 +1,119 @@
+/* FilterDropdown Component - Built with Relay Tokens */
+
+.relay-filter-dropdown {
+  position: relative;
+  display: inline-flex;
+  flex-direction: column;
+  gap: 4px;
+  width: 182px;
+}
+
+/* Toggle Button */
+.relay-filter-dropdown__button {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 0;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+.relay-filter-dropdown__button:hover {
+  opacity: 0.8;
+}
+
+.relay-filter-dropdown__button:focus-visible {
+  outline: 2px solid var(--relay-purple-base);
+  outline-offset: 2px;
+  border-radius: var(--relay-radius-01);
+}
+
+/* Label */
+.relay-filter-dropdown__label {
+  /* Figma: Paragraph/S */
+  font-family: 'Helvetica', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 0.875rem; /* 14px */
+  font-weight: 400;
+  line-height: 1.25rem; /* 20px */
+  color: var(--relay-purple-base);
+}
+
+/* Icon */
+.relay-filter-dropdown__icon {
+  color: var(--relay-purple-base);
+  flex-shrink: 0;
+}
+
+/* Dropdown Menu */
+.relay-filter-dropdown__menu {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  background: var(--relay-gray-01);
+  border: 1px solid var(--relay-gray-03);
+  border-radius: var(--relay-radius-01);
+  padding: var(--relay-space-02);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  animation: fadeIn 0.15s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Menu Items */
+.relay-filter-dropdown__item {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: var(--relay-space-02);
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--relay-gray-04);
+  cursor: pointer;
+  text-align: left;
+  transition: background-color 0.15s ease;
+  
+  /* Figma: Paragraph/XS */
+  font-family: 'Helvetica', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 0.75rem; /* 12px */
+  font-weight: 400;
+  line-height: 1rem; /* 16px */
+  color: var(--relay-purple-base);
+}
+
+.relay-filter-dropdown__item:last-child {
+  border-bottom: none;
+}
+
+.relay-filter-dropdown__item:hover {
+  background-color: var(--relay-gray-02);
+}
+
+.relay-filter-dropdown__item:active {
+  background-color: var(--relay-gray-03);
+}
+
+.relay-filter-dropdown__item:focus-visible {
+  outline: 2px solid var(--relay-purple-base);
+  outline-offset: -2px;
+  background-color: var(--relay-gray-02);
+}
+
+.relay-filter-dropdown__item[aria-selected="true"] {
+  font-weight: 700;
+  background-color: var(--relay-purple-lightest);
+}

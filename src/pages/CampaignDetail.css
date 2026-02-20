@@ -9,7 +9,7 @@
 .campaign-detail-page {
   /* Full page container */
   min-height: 100vh;
-  background: var(--relay-gray-01); /* white */
+  background: var(--relay-gray-02); /* Grayscale/02: #F3F6FA - light gray */
   padding: 32px; /* Page margins from grid system */
   display: flex;
   flex-direction: column;

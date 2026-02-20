@@ -34,16 +34,16 @@
 
 /* Map Column (4 columns) */
 .campaign-detail__map-container {
-  /* Map container with top and bottom padding */
+  /* Map container with top and bottom padding, stays fixed on scroll */
   position: sticky;
-  top: 32px;
+  top: 0;
   padding: 24px 0; /* 24px top and bottom padding */
-  height: calc(100vh - 64px); /* Full viewport height minus page padding */
+  height: calc(100vh - 61px); /* Full viewport height minus top navigation */
   min-height: 600px;
 }
 
 .campaign-detail__map-container > .campaign-map {
-  height: 100%;
+  height: calc(100% - 48px); /* Full height minus top and bottom padding */
 }
 
 /* ============================================ */

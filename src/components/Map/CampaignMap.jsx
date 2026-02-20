@@ -1,5 +1,5 @@
 import React, { useRef } from 'react';
-import Map, { NavigationControl, FullscreenControl } from 'react-map-gl';
+import Map, { NavigationControl, FullscreenControl } from 'react-map-gl/mapbox';
 import 'mapbox-gl/dist/mapbox-gl.css';
 import './CampaignMap.css';
 

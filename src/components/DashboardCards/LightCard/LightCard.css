@@ -1,9 +1,10 @@
 /* LightCard Component - Built with Relay Tokens */
 
 .relay-light-card {
-  /* Layout - Figma: 228px × 108px */
+  /* Layout - Figma: 228px × 108px (height flexible to fill parent) */
   width: 228px;
-  height: 108px;
+  height: 100%; /* Fill parent container */
+  min-height: 108px; /* Minimum height from Figma */
   
   /* Spacing - Figma: 24px horizontal, 16px vertical */
   padding: var(--relay-space-03) var(--relay-space-04); /* 16px 24px */

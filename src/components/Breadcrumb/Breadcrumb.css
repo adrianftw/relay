@@ -1,0 +1,97 @@
+/* Breadcrumb Component - Built with Relay Tokens */
+
+.relay-breadcrumb {
+  display: flex;
+  align-items: center;
+}
+
+/* Breadcrumb list */
+.relay-breadcrumb__list {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* Breadcrumb item */
+.relay-breadcrumb__item {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+/* Text styles - Figma: Paragraph/XS Bold (12px/16px Helvetica Bold) */
+.relay-breadcrumb__text,
+.relay-breadcrumb__link,
+.relay-breadcrumb__button {
+  font-family: 'Helvetica', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 0.75rem; /* 12px */
+  font-weight: 700; /* Bold */
+  line-height: 1rem; /* 16px */
+  color: var(--relay-purple-base); /* #333366 */
+  margin: 0;
+  flex-shrink: 0;
+}
+
+/* Link styles */
+.relay-breadcrumb__link {
+  text-decoration: none;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+.relay-breadcrumb__link:hover {
+  opacity: 0.7;
+  text-decoration: underline;
+}
+
+.relay-breadcrumb__link:focus {
+  outline: 2px solid var(--relay-purple-base);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+/* Button styles (for items without href) */
+.relay-breadcrumb__button {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+.relay-breadcrumb__button:hover {
+  opacity: 0.7;
+  text-decoration: underline;
+}
+
+.relay-breadcrumb__button:focus {
+  outline: 2px solid var(--relay-purple-base);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+/* Current page (last item) */
+.relay-breadcrumb__text--current {
+  cursor: default;
+}
+
+/* Separator container - Figma: 24px square with 8px padding */
+.relay-breadcrumb__separator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+}
+
+/* Separator icon - Figma: Custom "/" SVG, ~7px wide × 13px tall */
+.relay-breadcrumb__separator-icon {
+  width: 8px;
+  height: 14px;
+  color: var(--relay-purple-base); /* #333366 */
+  flex-shrink: 0;
+}

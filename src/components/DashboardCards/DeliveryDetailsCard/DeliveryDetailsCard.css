@@ -3,7 +3,7 @@
 .relay-delivery-details-card {
   /* Layout - Made flexible for responsive layouts */
   width: 100%; /* Flexible width to fit container */
-  height: 240px;
+  min-height: 240px;
   
   /* Spacing - Figma: 24px horizontal, 16px top, 32px bottom */
   padding: var(--relay-space-03) var(--relay-space-04) var(--relay-space-05) var(--relay-space-04); /* 16px 24px 32px 24px */

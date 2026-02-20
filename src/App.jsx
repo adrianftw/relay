@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { MainLayout } from './layouts/MainLayout';
+import { DetailLayout } from './layouts/DetailLayout';
 import { Dashboard } from './pages/Dashboard';
 import { Campaigns } from './pages/Campaigns';
 import { CampaignDetail } from './pages/CampaignDetail';
@@ -11,7 +12,7 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<MainLayout><Dashboard /></MainLayout>} />
-        <Route path="/campaigns" element={<MainLayout><Campaigns /></MainLayout>} />
+        <Route path="/campaigns" element={<MainLayout><Campaigns /></MDetailLayout><CampaignDetail /></Detail
         <Route path="/campaigns/:campaignId/:location/:zip" element={<MainLayout><CampaignDetail /></MainLayout>} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>

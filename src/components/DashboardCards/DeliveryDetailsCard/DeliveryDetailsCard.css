@@ -22,7 +22,7 @@
 .relay-delivery-details-card__content {
   display: flex;
   align-items: flex-start;
-  justify-content: space-between;
+  gap: 0;
   width: 100%;
   flex: 1;
 }

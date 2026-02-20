@@ -37,7 +37,7 @@
   background: #8B8B8B; /* Gray placeholder background */
   border-radius: var(--relay-radius-03); /* 16px rounded corners */
   margin: 24px 0; /* 24px top and bottom margin */
-  min-height: calc(100vh - 61px - 48px); /* Full height minus nav and margins */
+  height: calc(100% - 48px); /* Fill parent height minus top/bottom margins */
 }
 
 /* ============================================ */

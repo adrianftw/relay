@@ -46,11 +46,14 @@ export const CampaignDetail = () => {
 
   return (
     <div className="campaign-detail-page">
-      {/* Page Title */}
-      <h1 className="campaign-detail__title">Spring Mail Campaign</h1>
+      <div className="campaign-detail__grid">
+        {/* Left Column: Content (8 columns) */}
+        <div className="campaign-detail__content">
+          {/* Page Title */}
+          <h1 className="campaign-detail__title">Spring Mail Campaign</h1>
 
-      {/* Search and Filters Section */}
-      <div className="campaign-detail__filters">
+          {/* Search and Filters Section */}
+          <div className="campaign-detail__filters">
         <div className="campaign-detail__filters-left">
           <Search 
             value={searchValue}
@@ -146,6 +149,13 @@ export const CampaignDetail = () => {
           />
         </div>
       </section>
+        </div>
+
+        {/* Right Column: Placeholder Container (4 columns) */}
+        <div className="campaign-detail__placeholder">
+          {/* Placeholder for map or other content */}
+        </div>
+      </div>
     </div>
   );
 };

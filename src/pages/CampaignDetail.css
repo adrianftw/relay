@@ -10,10 +10,34 @@
   /* Full page container */
   min-height: 100vh;
   background: var(--relay-gray-02); /* Grayscale/02: #F3F6FA - light gray */
-  padding: 32px;
+}
+
+/* ============================================ */
+/* MAIN GRID LAYOUT - 8 columns content + 4 columns placeholder */
+/* ============================================ */
+
+.campaign-detail__grid {
+  display: grid;
+  grid-template-columns: calc((8 / 12) * 100% - 8px) calc((4 / 12) * 100% - 8px); /* 8 cols + 4 cols */
+  gap: var(--relay-space-03); /* 16px gutter between columns */
+  min-height: calc(100vh - 61px); /* Full viewport height minus top navigation */
+  padding: 0 32px; /* Horizontal padding only */
+}
+
+/* Content Column (8 columns) */
+.campaign-detail__content {
   display: flex;
   flex-direction: column;
   gap: var(--relay-space-05); /* 32px between sections */
+  padding: 32px 0; /* Vertical padding */
+}
+
+/* Placeholder Container (4 columns) */
+.campaign-detail__placeholder {
+  background: #8B8B8B; /* Gray placeholder background */
+  border-radius: var(--relay-radius-03); /* 16px rounded corners */
+  margin: 24px 0; /* 24px top and bottom margin */
+  min-height: calc(100vh - 61px - 48px); /* Full height minus nav and margins */
 }
 
 /* ============================================ */

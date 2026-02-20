@@ -11,7 +11,218 @@
   min-height: 100vh;
   background: var(--relay-gray-01); /* white */
   padding: 32px; /* Page margins from grid system */
+  display: flex;
+  flex-direction: column;
+  gap: var(--relay-space-05); /* 32px between major sections */
 }
+
+/* ============================================ */
+/* PAGE TITLE */
+/* ============================================ */
+
+.campaign-detail__title {
+  /* Typography - Figma: Header/H1 (36px/42px Bold) */
+  font-family: 'Helvetica', sans-serif;
+  font-size: 36px;
+  font-weight: bold;
+  line-height: 42px;
+  letter-spacing: 0;
+  
+  /* Color - Figma: Brand/Purple/Base (#333366) */
+  color: var(--relay-purple-base);
+  
+  /* Layout */
+  margin: 0;
+  width: 100%;
+}
+
+/* ============================================ */
+/* SEARCH AND FILTERS SECTION */
+/* ============================================ */
+
+.campaign-detail__filters {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--relay-space-05); /* 32px */
+  width: 100%;
+}
+
+.campaign-detail__filters-left {
+  display: flex;
+  align-items: center;
+  gap: var(--relay-space-02); /* 8px */
+}
+
+.campaign-detail__filters-right {
+  display: flex;
+  align-items: center;
+  gap: var(--relay-space-03); /* 16px */
+}
+
+/* Filter Button - Figma: "Demographic filters" */
+.campaign-detail__filter-button {
+  /* Layout */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--relay-space-02); /* 8px */
+  height: 42px;
+  padding: 8px var(--relay-space-03); /* 8px 16px */
+  
+  /* Background - Figma: White */
+  background-color: var(--relay-gray-01);
+  
+  /* Border - Figma: Grayscale/04 (#DADFE4) */
+  border: 1px solid var(--relay-gray-04);
+  border-radius: var(--relay-radius-02); /* 8px */
+  
+  /* Typography - Figma: Paragraph/XS (12px/16px Regular) */
+  font-family: 'Helvetica', sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 16px;
+  letter-spacing: 0;
+  
+  /* Color - Figma: Brand/Purple/Dark (#25254B) */
+  color: var(--relay-purple-dark);
+  
+  /* Interactions */
+  cursor: pointer;
+  transition: border-color 0.15s ease, background-color 0.15s ease;
+}
+
+.campaign-detail__filter-button:hover {
+  border-color: var(--relay-purple-base);
+  background-color: var(--relay-gray-02);
+}
+
+.campaign-detail__filter-button:focus {
+  outline: 2px solid var(--relay-purple-light);
+  outline-offset: 1px;
+}
+
+/* Sort/Filter Dropdown Group */
+.campaign-detail__sort {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.campaign-detail__sort-label {
+  /* Typography - Figma: Paragraph/S Bold (14px/20px Bold) */
+  font-family: 'Helvetica', sans-serif;
+  font-size: 14px;
+  font-weight: bold;
+  line-height: 20px;
+  letter-spacing: 0;
+  color: #000000;
+}
+
+/* Dropdown Button */
+.campaign-detail__dropdown {
+  /* Layout */
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 0;
+  
+  /* Reset button styles */
+  background: transparent;
+  border: none;
+  
+  /* Typography - Figma: Paragraph/S (14px/20px Regular) */
+  font-family: 'Helvetica', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  letter-spacing: 0;
+  
+  /* Color - Figma: Brand/Purple/Base (#333366) */
+  color: var(--relay-purple-base);
+  
+  /* Interactions */
+  cursor: pointer;
+  transition: color 0.15s ease;
+}
+
+.campaign-detail__dropdown:hover {
+  color: var(--relay-purple-light);
+}
+
+.campaign-detail__dropdown:focus {
+  outline: 2px solid var(--relay-purple-light);
+  outline-offset: 2px;
+  border-radius: var(--relay-radius-01);
+}
+
+/* ============================================ */
+/* DATA TABLE SECTION */
+/* ============================================ */
+
+.campaign-detail__table-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 826px; /* Figma table width */
+}
+
+/* Table Headers */
+.campaign-detail__table-header {
+  display: grid;
+  grid-template-columns: 118px 98px 149px 1fr;
+  gap: 48px;
+  padding: 0 var(--relay-space-03); /* 16px horizontal */
+  margin-bottom: var(--relay-space-03); /* 16px */
+}
+
+.campaign-detail__table-header-cell {
+  /* Typography - Figma: Paragraph/XS (12px/20px Regular) */
+  font-family: 'Helvetica', sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 20px;
+  letter-spacing: 0;
+  
+  /* Color - Figma: #6F6F6F */
+  color: #6F6F6F;
+}
+
+/* Table Body - Scrollable container */
+.campaign-detail__table-body {
+  display: flex;
+  flex-direction: column;
+  max-height: 468px; /* Figma: visible area height */
+  overflow-y: auto;
+  
+  /* Custom scrollbar styling */
+  scrollbar-width: thin;
+  scrollbar-color: var(--relay-gray-06) var(--relay-gray-02);
+}
+
+/* Webkit scrollbar styling */
+.campaign-detail__table-body::-webkit-scrollbar {
+  width: 11px;
+}
+
+.campaign-detail__table-body::-webkit-scrollbar-track {
+  background: var(--relay-gray-02);
+  border-radius: 28px;
+}
+
+.campaign-detail__table-body::-webkit-scrollbar-thumb {
+  background: var(--relay-gray-06);
+  border-radius: 28px;
+  border: 2px solid var(--relay-gray-02);
+}
+
+.campaign-detail__table-body::-webkit-scrollbar-thumb:hover {
+  background: var(--relay-gray-07);
+}
+
+/* ============================================ */
+/* DASHBOARD CARDS SECTION */
+/* ============================================ */
 
 /* Dashboard Cards Section - Spans 7 columns of 12 */
 .campaign-detail__dashboard {

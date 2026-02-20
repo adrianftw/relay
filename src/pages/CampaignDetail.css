@@ -200,8 +200,8 @@
 /* Table Headers */
 .campaign-detail__table-header {
   display: grid;
-  grid-template-columns: 118px 98px 149px 1fr;
-  gap: 48px;
+  grid-template-columns: 150px 100px 120px 1fr;
+  gap: 32px;
   padding: 0 var(--relay-space-03); /* 16px horizontal */
   margin-bottom: var(--relay-space-03); /* 16px */
 }

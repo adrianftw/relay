@@ -1,0 +1,61 @@
+/* IconLockup Component - Built with Relay Tokens */
+
+.relay-icon-lockup {
+  /* Layout */
+  display: flex;
+  align-items: center;
+  gap: var(--relay-space-02); /* 8px */
+}
+
+/* Icon Wrapper */
+.relay-icon-lockup__icon-wrapper {
+  display: flex;
+  align-items: center;
+  padding: var(--relay-space-01); /* 4px */
+  border-radius: var(--relay-radius-01); /* 4px */
+  flex-shrink: 0;
+}
+
+/* Light variant - Figma: #DDDDFF background, #333366 text */
+.relay-icon-lockup--light .relay-icon-lockup__icon-wrapper {
+  background: var(--relay-purple-lightest); /* #DDDDFF */
+}
+
+.relay-icon-lockup--light .relay-icon-lockup__icon {
+  color: var(--relay-purple-base); /* #333366 */
+}
+
+.relay-icon-lockup--light .relay-icon-lockup__label {
+  color: var(--relay-purple-base); /* #333366 */
+}
+
+/* Dark variant - Figma: #191935 background, white text */
+.relay-icon-lockup--dark .relay-icon-lockup__icon-wrapper {
+  background: var(--relay-purple-darkest); /* #191935 */
+}
+
+.relay-icon-lockup--dark .relay-icon-lockup__icon {
+  color: var(--relay-gray-01); /* white */
+}
+
+.relay-icon-lockup--dark .relay-icon-lockup__label {
+  color: var(--relay-gray-01); /* white */
+}
+
+/* Icon */
+.relay-icon-lockup__icon {
+  width: 16px;
+  height: 16px;
+  display: block;
+}
+
+/* Label */
+.relay-icon-lockup__label {
+  /* Figma: Paragraph/XS (12px/16px, Helvetica Regular) */
+  font-family: 'Helvetica', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 0.75rem; /* 12px */
+  font-weight: 400;
+  line-height: 1rem; /* 16px */
+  margin: 0;
+  flex-shrink: 0;
+}

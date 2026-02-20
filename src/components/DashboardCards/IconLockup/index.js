@@ -1,0 +1,1 @@
+export { IconLockup } from './IconLockup';

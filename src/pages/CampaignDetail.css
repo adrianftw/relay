@@ -34,6 +34,7 @@
   /* Layout */
   margin: 0;
   width: 100%;
+  max-width: calc((7 / 12) * 100% - 16px); /* 7 columns span - matches dashboard */
 }
 
 /* ============================================ */
@@ -46,12 +47,18 @@
   justify-content: space-between;
   gap: var(--relay-space-05); /* 32px */
   width: 100%;
+  max-width: calc((7 / 12) * 100% - 16px); /* 7 columns span - matches dashboard */
 }
 
 .campaign-detail__filters-left {
   display: flex;
   align-items: center;
   gap: var(--relay-space-02); /* 8px */
+}
+
+/* Override Search component width to fit in 7-column layout */
+.campaign-detail__filters-left .relay-search {
+  width: 228px; /* Reduced from 303px to fit layout */
 }
 
 .campaign-detail__filters-right {
@@ -164,7 +171,7 @@
   display: flex;
   flex-direction: column;
   width: 100%;
-  max-width: 826px; /* Figma table width */
+  max-width: calc((7 / 12) * 100% - 16px); /* 7 columns span - matches dashboard */
 }
 
 /* Table Headers */

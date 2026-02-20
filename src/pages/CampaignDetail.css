@@ -256,18 +256,20 @@
 
 /* Dashboard Cards Section - Spans full width of content column */
 .campaign-detail__dashboard {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Equal columns for DeliveryDetailsCard and metrics */
   gap: 16px; /* Gutter from grid system */
   margin-bottom: 32px;
+  min-height: 240px; /* Minimum height to match DeliveryDetailsCard */
 }
 
 /* Metrics Grid - 2x2 grid of Light Cards */
 .campaign-detail__metrics-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr); /* 4 equal columns across full width */
-  grid-template-rows: 1fr; /* Single row */
+  grid-template-columns: repeat(2, 1fr); /* 2 equal columns */
+  grid-template-rows: repeat(2, 1fr); /* 2 equal rows filling available height */
   gap: 16px; /* Gutter from grid system */
+  height: 100%; /* Fill parent (240px from DeliveryDetailsCard) */
 }
 
 /* Responsive adjustments */

@@ -52,64 +52,67 @@ export const CampaignDetail = () => {
           {/* Page Title */}
           <h1 className="campaign-detail__title">Spring Mail Campaign</h1>
 
-          {/* Search and Filters Section */}
-          <div className="campaign-detail__filters">
-        <div className="campaign-detail__filters-left">
-          <Search 
-            value={searchValue}
-            onChange={(e) => setSearchValue(e.target.value)}
-            placeholder="Search Cities, ZIPs, Counties"
-          />
-          
-          <button className="campaign-detail__filter-button">
-            <span>Demographic filters</span>
-            <MdFilterList size={16} />
-          </button>
-        </div>
-        
-        <div className="campaign-detail__filters-right">
-          <div className="campaign-detail__sort">
-            <label className="campaign-detail__sort-label">Sort by:</label>
-            <button className="campaign-detail__dropdown">
-              <span>{sortBy}</span>
-              <MdKeyboardArrowDown size={24} />
-            </button>
-          </div>
-          
-          <div className="campaign-detail__sort">
-            <label className="campaign-detail__sort-label">Region:</label>
-            <button className="campaign-detail__dropdown">
-              <span>{region}</span>
-              <MdKeyboardArrowDown size={24} />
-            </button>
-          </div>
-        </div>
-      </div>
+          {/* Chart Section - Contains filters and table (8 columns) */}
+          <div className="campaign-detail__chart-section">
+            {/* Search and Filters Section */}
+            <div className="campaign-detail__filters">
+              <div className="campaign-detail__filters-left">
+                <Search 
+                  value={searchValue}
+                  onChange={(e) => setSearchValue(e.target.value)}
+                  placeholder="Search Cities, ZIPs, Counties"
+                />
+                
+                <button className="campaign-detail__filter-button">
+                  <span>Demographic filters</span>
+                  <MdFilterList size={16} />
+                </button>
+              </div>
+              
+              <div className="campaign-detail__filters-right">
+                <div className="campaign-detail__sort">
+                  <label className="campaign-detail__sort-label">Sort by:</label>
+                  <button className="campaign-detail__dropdown">
+                    <span>{sortBy}</span>
+                    <MdKeyboardArrowDown size={24} />
+                  </button>
+                </div>
+                
+                <div className="campaign-detail__sort">
+                  <label className="campaign-detail__sort-label">Region:</label>
+                  <button className="campaign-detail__dropdown">
+                    <span>{region}</span>
+                    <MdKeyboardArrowDown size={24} />
+                  </button>
+                </div>
+              </div>
+            </div>
 
-      {/* Data Table Section */}
-      <div className="campaign-detail__table-container">
-        {/* Table Headers */}
-        <div className="campaign-detail__table-header">
-          <span className="campaign-detail__table-header-cell">ZIPs</span>
-          <span className="campaign-detail__table-header-cell">QR Scans</span>
-          <span className="campaign-detail__table-header-cell">Conversion</span>
-          <span className="campaign-detail__table-header-cell">Delivery Completion</span>
-        </div>
-        
-        {/* Table Rows */}
-        <div className="campaign-detail__table-body">
-          {areaData.map((area, index) => (
-            <AreaRow
-              key={index}
-              zip={area.zip}
-              qrScans={area.qrScans}
-              conversion={area.conversion}
-              progress={area.progress}
-              href={`/campaigns/spring-mail/seattle-wa/${9375 + index}`}
-            />
-          ))}
-        </div>
-      </div>
+            {/* Data Table Section */}
+            <div className="campaign-detail__table-container">
+              {/* Table Headers */}
+              <div className="campaign-detail__table-header">
+                <span className="campaign-detail__table-header-cell">ZIPs</span>
+                <span className="campaign-detail__table-header-cell">QR Scans</span>
+                <span className="campaign-detail__table-header-cell">Conversion</span>
+                <span className="campaign-detail__table-header-cell">Delivery Completion</span>
+              </div>
+              
+              {/* Table Rows */}
+              <div className="campaign-detail__table-body">
+                {areaData.map((area, index) => (
+                  <AreaRow
+                    key={index}
+                    zip={area.zip}
+                    qrScans={area.qrScans}
+                    conversion={area.conversion}
+                    progress={area.progress}
+                    href={`/campaigns/spring-mail/seattle-wa/${9375 + index}`}
+                  />
+                ))}
+              </div>
+            </div>
+          </div>
       {/* Dashboard Cards Section - Spans 7 columns */}
       <section className="campaign-detail__dashboard">
         <DeliveryDetailsCard

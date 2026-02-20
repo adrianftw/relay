@@ -63,6 +63,17 @@
 }
 
 /* ============================================ */
+/* CHART SECTION - Filters + Table (8 columns from Figma) */
+/* ============================================ */
+
+.campaign-detail__chart-section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--relay-space-03); /* 16px gap between filters and table */
+  width: 100%;
+}
+
+/* ============================================ */
 /* SEARCH AND FILTERS SECTION */
 /* ============================================ */
 

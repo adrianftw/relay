@@ -36,7 +36,7 @@
 .campaign-detail__map-container {
   /* Map container with top and bottom padding, stays fixed on scroll */
   position: sticky;
-  top: 0;
+  top: 61px; /* Stick below the top navigation */
   padding: 24px 0; /* 24px top and bottom padding */
   height: calc(100vh - 61px); /* Full viewport height minus top navigation */
   min-height: 600px;

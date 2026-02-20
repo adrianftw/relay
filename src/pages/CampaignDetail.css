@@ -263,11 +263,6 @@
   height: 240px; /* Match DeliveryDetailsCard height */
 }
 
-/* Override fixed width on DeliveryDetailsCard to allow flex layout */
-.campaign-detail__dashboard .relay-delivery-details-card {
-  width: 100%; /* Take up full grid cell width */
-}
-
 /* Metrics Grid - 2x2 grid of Light Cards */
 .campaign-detail__metrics-grid {
   display: grid;

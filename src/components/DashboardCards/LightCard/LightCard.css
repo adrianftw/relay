@@ -1,0 +1,51 @@
+/* LightCard Component - Built with Relay Tokens */
+
+.relay-light-card {
+  /* Layout - Figma: 228px × 108px */
+  width: 228px;
+  height: 108px;
+  
+  /* Spacing - Figma: 24px horizontal, 16px vertical */
+  padding: var(--relay-space-03) var(--relay-space-04); /* 16px 24px */
+  
+  /* Border - Figma: 1px solid #DDDDFF */
+  border: 1px solid var(--relay-purple-lightest); /* #DDDDFF */
+  border-radius: var(--relay-radius-02); /* 8px */
+  
+  /* Background - Figma: #f3f3ff (very light purple) */
+  background: #f3f3ff;
+  
+  /* Flex layout - column with space between */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* Stats container at bottom */
+.relay-light-card__stats {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  width: 100%;
+  color: var(--relay-purple-base); /* #333366 */
+}
+
+/* Large value - Figma: 31px Helvetica Bold */
+.relay-light-card__value {
+  font-family: 'Helvetica', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 1.9375rem; /* 31px */
+  font-weight: 700; /* Bold */
+  line-height: 1.9375rem; /* 31px */
+  margin: 0;
+  flex-shrink: 0;
+}
+
+/* Description - Figma: Paragraph/XS (12px/16px) */
+.relay-light-card__description {
+  font-family: 'Helvetica', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 0.75rem; /* 12px */
+  font-weight: 400; /* Regular */
+  line-height: 1rem; /* 16px */
+  margin: 0;
+  flex-shrink: 0;
+}

@@ -43,16 +43,10 @@ export const DeliveryDetailsCard = ({
       />
       
       <div className="relay-delivery-details-card__content">
-        <div className="relay-delivery-details-card__total">
-          <p className="relay-delivery-details-card__total-value">{total}</p>
-        </div>
-        
-        <div className="relay-delivery-details-card__visualization">
-          <DonutChart 
-            data={data}
-            size={112}
-            strokeWidth={20}
-          />
+        <div className="relay-delivery-details-card__left">
+          <div className="relay-delivery-details-card__total">
+            <p className="relay-delivery-details-card__total-value">{total}</p>
+          </div>
           
           <div className="relay-delivery-details-card__legend">
             {data.map((item, index) => (
@@ -70,6 +64,14 @@ export const DeliveryDetailsCard = ({
               </div>
             ))}
           </div>
+        </div>
+        
+        <div className="relay-delivery-details-card__chart">
+          <DonutChart 
+            data={data}
+            size={171}
+            strokeWidth={20}
+          />
         </div>
       </div>
     </div>

@@ -18,12 +18,21 @@
   gap: 13px;
 }
 
-/* Content area below IconLockup */
+/* Content area below IconLockup - Now horizontal layout */
 .relay-delivery-details-card__content {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  width: 100%;
+  flex: 1;
+}
+
+/* Left section - Total + Legend */
+.relay-delivery-details-card__left {
   display: flex;
   flex-direction: column;
   gap: var(--relay-space-02); /* 8px */
-  width: 100%; /* Flexible width */
+  width: 173px;
   height: 171px;
 }
 
@@ -46,21 +55,19 @@
   flex-shrink: 0;
 }
 
-/* Visualization section (chart + legend) */
-.relay-delivery-details-card__visualization {
-  display: flex;
-  gap: var(--relay-space-06); /* 40px */
-  align-items: center;
-  width: 100%;
-}
-
 /* Legend container */
 .relay-delivery-details-card__legend {
   display: flex;
   flex-direction: column;
   gap: 8px;
-  flex: 1;
-  min-width: 0;
+  width: 100%;
+}
+
+/* Chart container on right */
+.relay-delivery-details-card__chart {
+  width: 171px;
+  height: 171px;
+  flex-shrink: 0;
 }
 
 /* Legend item */

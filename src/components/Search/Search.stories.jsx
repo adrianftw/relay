@@ -1,14 +1,17 @@
+import React, { useState } from 'react';
 import { Search } from './Search';
 
 /**
- * Search component based on USWDS with Figma customizations
+ * Search component - Updated design from Figma
  * 
- * Customizations from Figma:
- * - Border radius: 8px (--relay-space-02)
- * - Button color: Purple Dark (--relay-purple-dark #25254B)
- * - Input border: Gray 05 (--relay-gray-05 #BDC3C9)
+ * Design specs:
+ * - Width: 303px
  * - Height: 42px
- * - Width: 290px (max-width)
+ * - Border: 1px solid #DADFE4 (--relay-gray-04)
+ * - Border radius: 8px
+ * - Background: White
+ * - Icon: Material Design Search (16px)
+ * - Font: Helvetica Regular, 12px/16px
  */
 export default {
   title: 'Relay Design System/Search',
@@ -18,72 +21,168 @@ export default {
   },
   tags: ['autodocs'],
   argTypes: {
+    value: {
+      control: 'text',
+      description: 'Current input value',
+    },
     placeholder: {
       control: 'text',
       description: 'Placeholder text for the search input',
     },
-    size: {
-      control: 'select',
-      options: ['small'],
-      description: 'Size variant from Figma',
+    onChange: {
+      action: 'changed',
+      description: 'Callback fired when input value changes',
     },
     onSubmit: {
-      action: 'searched',
-      description: 'Callback fired when form is submitted',
+      action: 'submitted',
+      description: 'Callback fired when Enter key is pressed',
     },
   },
 };
 
-// Default story
-export const Default = {
-  args: {
-    placeholder: 'Search',
-  },
+// Default story with state management
+export const Default = () => {
+  const [value, setValue] = useState('');
+  
+  return (
+    <Search 
+      value={value}
+      onChange={(e) => setValue(e.target.value)}
+      onSubmit={(val) => console.log('Search submitted:', val)}
+    />
+  );
 };
 
-// Small size (from Figma)
-export const Small = {
-  args: {
-    size: 'small',
-    placeholder: 'Search',
-  },
+// With default placeholder
+export const WithPlaceholder = () => {
+  const [value, setValue] = useState('');
+  
+  return (
+    <Search 
+      value={value}
+      onChange={(e) => setValue(e.target.value)}
+      placeholder="Search Cities, ZIPs, Counties"
+    />
+  );
 };
 
 // Custom placeholder
-export const CustomPlaceholder = {
-  args: {
-    placeholder: 'Search documentation...',
-  },
+export const CustomPlaceholder = () => {
+  const [value, setValue] = useState('');
+  
+  return (
+    <Search 
+      value={value}
+      onChange={(e) => setValue(e.target.value)}
+      placeholder="Type to search..."
+    />
+  );
 };
 
-// With submit handler example
-export const WithSubmitHandler = {
-  args: {
-    placeholder: 'Search',
-    onSubmit: (value) => {
-      console.log('Search submitted:', value);
-      alert(`Searching for: ${value}`);
-    },
-  },
+// With initial value
+export const WithValue = () => {
+  const [value, setValue] = useState('Seattle');
+  
+  return (
+    <Search 
+      value={value}
+      onChange={(e) => setValue(e.target.value)}
+    />
+  );
 };
 
-// Interactive example
-export const Interactive = {
-  render: () => {
-    const handleSubmit = (searchValue) => {
-      console.log('Search value:', searchValue);
-    };
+// With submit handler
+export const WithSubmitHandler = () => {
+  const [value, setValue] = useState('');
+  const [submitted, setSubmitted] = useState('');
+  
+  return (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+      <Search 
+        value={value}
+        onChange={(e) => setValue(e.target.value)}
+        onSubmit={(val) => {
+          setSubmitted(val);
+          console.log('Submitted:', val);
+        }}
+      />
+      {submitted && (
+        <div style={{ 
+          padding: '8px 16px', 
+          background: '#F0F0F0', 
+          borderRadius: '4px',
+          fontSize: '12px',
+          fontFamily: 'Helvetica'
+        }}>
+          Last search: <strong>{submitted}</strong>
+        </div>
+      )}
+    </div>
+  );
+};
 
-    return (
-      <div style={{ padding: '2rem' }}>
-        <h3 style={{ marginBottom: '1rem', fontFamily: 'Helvetica, Arial, sans-serif' }}>
-          Try searching:
-        </h3>
-        <Search 
-          placeholder="Type and press enter..." 
-          onSubmit={handleSubmit}
-        />
-      </div>
-    );
-  },
+// Interactive example with mock results
+export const Interactive = () => {
+  const [searchValue, setSearchValue] = useState('');
+  const [results, setResults] = useState([]);
+  
+  const mockResults = [
+    'Seattle, WA',
+    'Portland, OR',
+    'San Francisco, CA',
+    'Los Angeles, CA',
+  ];
+  
+  const handleSearch = (value) => {
+    if (value) {
+      const filtered = mockResults.filter(item => 
+        item.toLowerCase().includes(value.toLowerCase())
+      );
+      setResults(filtered);
+    } else {
+      setResults([]);
+    }
+  };
+  
+  return (
+    <div style={{ width: '303px' }}>
+      <Search 
+        value={searchValue}
+        onChange={(e) => {
+          setSearchValue(e.target.value);
+          handleSearch(e.target.value);
+        }}
+        onSubmit={handleSearch}
+        placeholder="Search Cities, ZIPs, Counties"
+      />
+      {results.length > 0 && (
+        <div style={{
+          marginTop: '8px',
+          border: '1px solid #DADFE4',
+          borderRadius: '8px',
+          background: 'white',
+          overflow: 'hidden'
+        }}>
+          {results.map((result, index) => (
+            <div 
+              key={index}
+              style={{
+                padding: '12px 16px',
+                borderBottom: index < results.length - 1 ? '1px solid #F0F0F0' : 'none',
+                fontSize: '12px',
+                fontFamily: 'Helvetica',
+                cursor: 'pointer'
+              }}
+              onClick={() => {
+                setSearchValue(result);
+                setResults([]);
+              }}
+            >
+              {result}
+            </div>
+          ))}
+        </div>
+      )}
+    </div>
+  );
 };

@@ -12,8 +12,8 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<MainLayout><Dashboard /></MainLayout>} />
-        <Route path="/campaigns" element={<MainLayout><Campaigns /></MDetailLayout><CampaignDetail /></Detail
-        <Route path="/campaigns/:campaignId/:location/:zip" element={<MainLayout><CampaignDetail /></MainLayout>} />
+        <Route path="/campaigns" element={<MainLayout><Campaigns /></MainLayout>} />
+        <Route path="/campaigns/:campaignId/:location/:zip" element={<DetailLayout><CampaignDetail /></DetailLayout>} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </BrowserRouter>

@@ -38,6 +38,8 @@
   border-radius: var(--relay-radius-03); /* 16px rounded corners */
   margin: 24px 0; /* 24px top and bottom margin */
   height: calc(100vh - 61px - 48px); /* Viewport height minus nav and margins */
+  position: sticky; /* Stays fixed when scrolling */
+  top: 85px; /* 61px nav + 24px top margin */
 }
 
 /* ============================================ */

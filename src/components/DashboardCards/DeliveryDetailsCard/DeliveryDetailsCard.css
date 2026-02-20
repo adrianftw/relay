@@ -1,9 +1,8 @@
 /* DeliveryDetailsCard Component - Built with Relay Tokens */
 
 .relay-delivery-details-card {
-  /* Layout - Figma: 350px × 240px, made flexible for responsive layouts */
+  /* Layout - Made flexible for responsive layouts */
   width: 100%; /* Flexible width to fit container */
-  max-width: 350px; /* Maximum width from Figma */
   height: 240px;
   
   /* Spacing - Figma: 24px horizontal, 16px vertical */

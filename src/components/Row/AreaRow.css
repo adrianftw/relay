@@ -1,0 +1,126 @@
+/* AreaRow Component Styles */
+/* Design specs from Figma:
+ * - Width: 820px
+ * - Padding: 16px (--relay-space-03)
+ * - Border bottom: 1px solid #DADFE4 (--relay-gray-04)
+ * - Font: Helvetica Regular/Bold, 14px/20px (Paragraph/S)
+ * - ZIP link: Bold, underlined, purple (#333366)
+ * - Metrics: Regular, black (#000000)
+ * - Progress bar: 124px × 10px, blue fill
+ */
+
+.relay-area-row {
+  display: flex;
+  flex-direction: column;
+  padding: var(--relay-space-03);
+  border-bottom: 1px solid var(--relay-gray-04);
+  width: 100%;
+  max-width: 820px;
+}
+
+.relay-area-row__content {
+  display: grid;
+  grid-template-columns: 118px 98px 149px 1fr;
+  gap: 0;
+  align-items: center;
+  width: 100%;
+}
+
+/* ZIP Code Link */
+.relay-area-row__link {
+  /* Typography - Figma: Paragraph/S Link (14px/20px Bold) */
+  font-family: 'Helvetica', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 20px;
+  letter-spacing: 0;
+  
+  /* Color - Figma: Brand/Purple/Base (#333366) */
+  color: var(--relay-purple-base);
+  
+  /* Underline */
+  text-decoration: underline;
+  text-decoration-skip-ink: none;
+  
+  /* Reset button/link styles */
+  background: transparent;
+  border: none;
+  padding: 0;
+  text-align: left;
+  cursor: pointer;
+  
+  /* Interactions */
+  transition: color 0.2s ease;
+}
+
+.relay-area-row__link:hover {
+  color: var(--relay-purple-light);
+}
+
+.relay-area-row__link:active {
+  color: var(--relay-purple-dark);
+}
+
+.relay-area-row__link:focus-visible {
+  outline: 2px solid var(--relay-purple-base);
+  outline-offset: 2px;
+  border-radius: var(--relay-radius-01);
+}
+
+.relay-area-row__zip-text {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 118px;
+}
+
+/* Metric Values (QR Scans, Conversion) */
+.relay-area-row__metric {
+  /* Typography - Figma: Paragraph/S (14px/20px Regular) */
+  font-family: 'Helvetica', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  letter-spacing: 0;
+  
+  /* Color - Figma: Black (#000000) */
+  color: #000000;
+}
+
+/* Progress Bar Container */
+.relay-area-row__progress {
+  display: flex;
+  align-items: center;
+  justify-self: start;
+  /* Fixed width from Figma: 124px track + 8px gap + ~50px label */
+  width: 190px;
+  min-width: 0; /* Allow flex shrinking */
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+  .relay-area-row__content {
+    grid-template-columns: 100px 80px 120px 1fr;
+    gap: var(--relay-space-02);
+  }
+  
+  .relay-area-row__zip-text {
+    width: 100px;
+  }
+}
+
+@media (max-width: 768px) {
+  .relay-area-row__content {
+    grid-template-columns: 1fr;
+    gap: var(--relay-space-02);
+  }
+  
+  .relay-area-row__zip-text {
+    width: auto;
+  }
+  
+  .relay-area-row__progress {
+    justify-self: stretch;
+  }
+}

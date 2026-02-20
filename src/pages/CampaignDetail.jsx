@@ -4,7 +4,6 @@ import { DeliveryDetailsCard } from '../components/DashboardCards/DeliveryDetail
 import { LightCard } from '../components/DashboardCards/LightCard';
 import { Search } from '../components/Search/Search';
 import AreaRow from '../components/Row/AreaRow';
-import { CampaignMap } from '../components/Map/CampaignMap';
 import './CampaignDetail.css';
 
 /**
@@ -47,15 +46,11 @@ export const CampaignDetail = () => {
 
   return (
     <div className="campaign-detail-page">
-      {/* Main Grid: 7 columns content + 5 columns map */}
-      <div className="campaign-detail__grid">
-        {/* Left Column: Content (7 columns) */}
-        <div className="campaign-detail__content">
-          {/* Page Title */}
-          <h1 className="campaign-detail__title">Spring Mail Campaign</h1>
+      {/* Page Title */}
+      <h1 className="campaign-detail__title">Spring Mail Campaign</h1>
 
-          {/* Search and Filters Section */}
-          <div className="campaign-detail__filters">
+      {/* Search and Filters Section */}
+      <div className="campaign-detail__filters">
         <div className="campaign-detail__filters-left">
           <Search 
             value={searchValue}
@@ -151,19 +146,6 @@ export const CampaignDetail = () => {
           />
         </div>
       </section>
-        </div>
-
-        {/* Right Column: Map (5 columns) */}
-        <div className="campaign-detail__map-container">
-          <CampaignMap
-            initialViewState={{
-              longitude: -122.4194,
-              latitude: 37.7749,
-              zoom: 11
-            }}
-          />
-        </div>
-      </div>
     </div>
   );
 };

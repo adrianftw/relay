@@ -8,45 +8,12 @@
 
 .campaign-detail-page {
   /* Full page container */
-  height: calc(100vh - 61px);
+  min-height: 100vh;
   background: var(--relay-gray-02); /* Grayscale/02: #F3F6FA - light gray */
-  padding: 0 32px; /* Only horizontal padding */
-}
-
-/* ============================================ */
-/* MAIN GRID LAYOUT - 8 columns content + 4 columns map */
-/* ============================================ */
-
-.campaign-detail__grid {
-  display: grid;
-  grid-template-columns: calc((8 / 12) * 100% - 8px) calc((4 / 12) * 100% - 8px); /* 8 cols + 4 cols */
-  gap: var(--relay-space-03); /* 16px gutter between columns */
-  align-items: start;
-  width: 100%;
-  height: calc(100vh - 61px); /* Full viewport height minus top navigation */
-}
-
-/* Content Column (8 columns) */
-.campaign-detail__content {
+  padding: 32px;
   display: flex;
   flex-direction: column;
   gap: var(--relay-space-05); /* 32px between sections */
-  overflow-y: auto; /* Only content scrolls */
-  height: 100%;
-  padding: 32px 8px 32px 0; /* Add top/bottom padding, space for scrollbar */
-}
-
-/* Map Column (4 columns) */
-.campaign-detail__map-container {
-  /* Map stays fixed, doesn't scroll */
-  position: sticky;
-  top: 0;
-  padding: 56px 0 24px 0; /* 56px top (32px + 24px), 24px bottom */
-  height: 100%;
-}
-
-.campaign-detail__map-container > .campaign-map {
-  height: calc(100% - 80px); /* Full height minus top and bottom padding */
 }
 
 /* ============================================ */

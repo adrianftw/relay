@@ -1,0 +1,109 @@
+/* DeliveryDetailsCard Component - Built with Relay Tokens */
+
+.relay-delivery-details-card {
+  /* Layout - Figma: 350px × 240px */
+  width: 350px;
+  height: 240px;
+  
+  /* Spacing - Figma: 24px horizontal, 16px vertical */
+  padding: var(--relay-space-03) var(--relay-space-04); /* 16px 24px */
+  
+  /* Background - Figma: #333366 (Brand/Purple/Base) */
+  background: var(--relay-purple-base); /* #333366 */
+  border-radius: var(--relay-radius-02); /* 8px */
+  
+  /* Flex layout - column with 13px gap */
+  display: flex;
+  flex-direction: column;
+  gap: 13px;
+}
+
+/* Content area below IconLockup */
+.relay-delivery-details-card__content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--relay-space-02); /* 8px */
+  width: 302px;
+  height: 171px;
+}
+
+/* Total section */
+.relay-delivery-details-card__total {
+  display: flex;
+  align-items: flex-end;
+  padding-bottom: 8px;
+  width: 100%;
+}
+
+/* Large total value - Figma: 36px Helvetica Bold white */
+.relay-delivery-details-card__total-value {
+  font-family: 'Helvetica', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 2.25rem; /* 36px */
+  font-weight: 700; /* Bold */
+  line-height: 2.25rem; /* 36px */
+  color: var(--relay-gray-01); /* white */
+  margin: 0;
+  flex-shrink: 0;
+}
+
+/* Visualization section (chart + legend) */
+.relay-delivery-details-card__visualization {
+  display: flex;
+  gap: var(--relay-space-06); /* 40px */
+  align-items: center;
+  width: 100%;
+}
+
+/* Legend container */
+.relay-delivery-details-card__legend {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex: 1;
+  min-width: 0;
+}
+
+/* Legend item */
+.relay-delivery-details-card__legend-item {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  width: 100%;
+}
+
+/* Legend color box - Figma: 12px square, 2px radius */
+.relay-delivery-details-card__legend-color {
+  width: 12px;
+  height: 12px;
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+/* Legend text container */
+.relay-delivery-details-card__legend-text {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex: 1;
+  min-width: 0;
+  color: var(--relay-gray-01); /* white */
+  font-size: 0.75rem; /* 12px */
+  line-height: 1rem; /* 16px */
+}
+
+/* Legend label - Figma: Paragraph/XS Bold */
+.relay-delivery-details-card__legend-label {
+  font-family: 'Helvetica', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-weight: 700; /* Bold */
+  margin: 0;
+  flex-shrink: 0;
+}
+
+/* Legend value - Figma: Paragraph/XS Regular */
+.relay-delivery-details-card__legend-value {
+  font-family: 'Helvetica', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-weight: 400; /* Regular */
+  margin: 0;
+  flex-shrink: 0;
+  text-align: right;
+}

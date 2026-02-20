@@ -1,0 +1,15 @@
+/* DonutChart Component */
+
+.relay-donut-chart {
+  display: block;
+  flex-shrink: 0;
+}
+
+/* Ensure clean rendering */
+.relay-donut-chart path {
+  transition: opacity 0.2s ease;
+}
+
+.relay-donut-chart path:hover {
+  opacity: 0.8;
+}

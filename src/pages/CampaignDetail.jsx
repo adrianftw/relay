@@ -156,7 +156,11 @@ export const CampaignDetail = () => {
     setMapViewState({
       longitude: lng,
       latitude: lat,
-      zoom: viewMode === 'cities' ? 8 : 13, // Zoom closer on individual ZIPs
+      // In ZIP view: zoom to 13 if not already zoomed in, otherwise maintain current zoom
+      // In cities view: zoom to 8
+      zoom: viewMode === 'zips' 
+        ? (mapViewState.zoom >= 13 ? mapViewState.zoom : 13)
+        : 8,
       transitionDuration: 1000 // Smooth 1-second transition
     });
   };

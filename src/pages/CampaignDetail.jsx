@@ -230,7 +230,9 @@ export const CampaignDetail = () => {
           )}
           
           {/* Page Title */}
-          <h1 className="campaign-detail__title">Spring Mail Campaign</h1>
+          <h1 className="campaign-detail__title">
+            {viewMode === 'cities' ? 'Spring Mail Campaign' : `${selectedCity.city}, ${selectedCity.state}`}
+          </h1>
 
           {/* Dashboard Cards Section */}
           <section className="campaign-detail__dashboard">

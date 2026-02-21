@@ -27,27 +27,19 @@
 /* Content Column (8 columns) */
 .campaign-detail__content {
   display: grid;
-  grid-template-rows: auto 1fr auto; /* Title, flexible chart section, fixed dashboard */
-  gap: var(--relay-space-05); /* 32px between sections */
+  grid-template-rows: auto auto 1fr auto; /* Breadcrumb, Title, flexible chart section, fixed dashboard */
+  row-gap: 0; /* Control spacing individually with margins */
   padding: 32px 0; /* Vertical padding */
   height: calc(100vh - 61px); /* Full viewport height minus nav */
   overflow: hidden; /* Prevent page scroll */
 }
 
-/* Placeholder Container (4 columns) */
-.campaign-detail__placeholder {
-  background: #8B8B8B; /* Gray placeholder background */
-  border-radius: var(--relay-radius-03); /* 16px rounded corners */
-  margin: 32px 0; /* Match content column vertical padding */
-  height: calc(100vh - 61px - 64px); /* Viewport height minus nav and margins (32px top + 32px bottom) */
-  position: sticky; /* Stays fixed when scrolling */
-  top: 93px; /* 61px nav + 32px top margin */
+/* Breadcrumb spacing */
+.campaign-detail__content > nav {
+  margin-bottom: var(--relay-space-02); /* 8px below breadcrumb */
 }
 
-/* ============================================ */
-/* PAGE TITLE */
-/* ============================================ */
-
+/* Title spacing */
 .campaign-detail__title {
   /* Typography - Figma: Header/H1 (36px/42px Bold) */
   font-family: 'Helvetica', sans-serif;
@@ -60,14 +52,11 @@
   color: var(--relay-purple-base);
   
   /* Layout */
-  margin: 0;
+  margin: 0 0 var(--relay-space-05) 0; /* 32px below title */
   width: 100%;
 }
 
-/* ============================================ */
-/* CHART SECTION - Filters + Table (8 columns from Figma) */
-/* ============================================ */
-
+/* Chart section spacing */
 .campaign-detail__chart-section {
   display: flex;
   flex-direction: column;
@@ -75,6 +64,17 @@
   width: 100%;
   min-height: 0; /* Allow flex shrinking */
   overflow: hidden; /* Contain scrollable table */
+  margin-bottom: var(--relay-space-05); /* 32px below chart */
+}
+
+/* Placeholder Container (4 columns) */
+.campaign-detail__placeholder {
+  background: #8B8B8B; /* Gray placeholder background */
+  border-radius: var(--relay-radius-03); /* 16px rounded corners */
+  margin: 32px 0; /* Match content column vertical padding */
+  height: calc(100vh - 61px - 64px); /* Viewport height minus nav and margins (32px top + 32px bottom) */
+  position: sticky; /* Stays fixed when scrolling */
+  top: 93px; /* 61px nav + 32px top margin */
 }
 
 /* ============================================ */

@@ -229,6 +229,26 @@
   color: #6F6F6F;
 }
 
+/* Sortable header cells */
+.campaign-detail__table-header-cell--sortable {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: color 0.15s ease;
+}
+
+.campaign-detail__table-header-cell--sortable:hover {
+  color: var(--relay-purple-base);
+}
+
+.campaign-detail__table-header-cell--sortable svg {
+  flex-shrink: 0;
+}
+
 /* Table Body - Scrollable container */
 .campaign-detail__table-body {
   display: flex;

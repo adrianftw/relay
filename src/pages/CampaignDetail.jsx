@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import Papa from 'papaparse';
-import { MdQrCode2, MdTrendingUp, MdAttachMoney, MdShoppingCart, MdFilterList, MdKeyboardArrowDown } from 'react-icons/md';
+import { MdQrCode2, MdTrendingUp, MdAttachMoney, MdShoppingCart, MdFilterList, MdKeyboardArrowDown, MdArrowUpward, MdArrowDownward } from 'react-icons/md';
 import { DeliveryDetailsCard } from '../components/DashboardCards/DeliveryDetailsCard';
 import { LightCard } from '../components/DashboardCards/LightCard';
 import { Search } from '../components/Search/Search';
@@ -22,10 +22,11 @@ import './CampaignDetail.css';
  */
 export const CampaignDetail = () => {
   const [searchValue, setSearchValue] = useState('');
-  const [sortBy, setSortBy] = useState('Conversion Rate');
   const [region, setRegion] = useState('All');
   const [areaData, setAreaData] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [sortColumn, setSortColumn] = useState(null); // 'qrScans' or 'conversion'
+  const [sortDirection, setSortDirection] = useState('desc'); // 'asc' or 'desc'
   
   // Map view state - controlled viewport
   const [mapViewState, setMapViewState] = useState({
@@ -78,19 +79,52 @@ export const CampaignDetail = () => {
     });
   }, []);
 
-  // Filter area data based on search value
-  const filteredAreaData = useMemo(() => {
-    if (!searchValue.trim()) {
-      return areaData;
+  // Handler to toggle column sorting
+  const handleSort = (column) => {
+    if (sortColumn === column) {
+      // Toggle direction if same column
+      setSortDirection(sortDirection === 'asc' ? 'desc' : 'asc');
+    } else {
+      // Set new column and default to descending
+      setSortColumn(column);
+      setSortDirection('desc');
     }
-    
-    const searchLower = searchValue.toLowerCase();
-    return areaData.filter(area => 
-      area.city.toLowerCase().includes(searchLower) ||
-      area.state.toLowerCase().includes(searchLower) ||
-      area.zip.toLowerCase().includes(searchLower)
-    );
-  }, [areaData, searchValue]);
+  };
+
+  // Filter and sort area data
+  const filteredAreaData = useMemo(() => {
+    // First, filter by search
+    let filtered = areaData;
+    if (searchValue.trim()) {
+      const searchLower = searchValue.toLowerCase();
+      filtered = areaData.filter(area => 
+        area.city.toLowerCase().includes(searchLower) ||
+        area.state.toLowerCase().includes(searchLower) ||
+        area.zip.toLowerCase().includes(searchLower)
+      );
+    }
+
+    // Then, sort if a column is selected
+    if (sortColumn) {
+      filtered = [...filtered].sort((a, b) => {
+        let aVal, bVal;
+        
+        if (sortColumn === 'qrScans' || sortColumn === 'conversion') {
+          // Parse percentage values (e.g., "5.6%" -> 5.6)
+          aVal = parseFloat(a[sortColumn]);
+          bVal = parseFloat(b[sortColumn]);
+        }
+        
+        if (sortDirection === 'asc') {
+          return aVal - bVal;
+        } else {
+          return bVal - aVal;
+        }
+      });
+    }
+
+    return filtered;
+  }, [areaData, searchValue, sortColumn, sortDirection]);
 
   // Sample data for DeliveryDetailsCard
   const deliveryData = [
@@ -127,14 +161,6 @@ export const CampaignDetail = () => {
               
               <div className="campaign-detail__filters-right">
                 <div className="campaign-detail__sort">
-                  <label className="campaign-detail__sort-label">Sort by:</label>
-                  <button className="campaign-detail__dropdown">
-                    <span>{sortBy}</span>
-                    <MdKeyboardArrowDown size={24} />
-                  </button>
-                </div>
-                
-                <div className="campaign-detail__sort">
                   <label className="campaign-detail__sort-label">Region:</label>
                   <button className="campaign-detail__dropdown">
                     <span>{region}</span>
@@ -150,8 +176,24 @@ export const CampaignDetail = () => {
               <div className="campaign-detail__table-header">
                 <span className="campaign-detail__table-header-cell">Cities</span>
                 <span className="campaign-detail__table-header-cell"></span> {/* Area Actions column */}
-                <span className="campaign-detail__table-header-cell">QR Scans</span>
-                <span className="campaign-detail__table-header-cell">Conversion</span>
+                <button 
+                  className="campaign-detail__table-header-cell campaign-detail__table-header-cell--sortable"
+                  onClick={() => handleSort('qrScans')}
+                >
+                  QR Scans
+                  {sortColumn === 'qrScans' && (
+                    sortDirection === 'asc' ? <MdArrowUpward size={16} /> : <MdArrowDownward size={16} />
+                  )}
+                </button>
+                <button 
+                  className="campaign-detail__table-header-cell campaign-detail__table-header-cell--sortable"
+                  onClick={() => handleSort('conversion')}
+                >
+                  Conversion
+                  {sortColumn === 'conversion' && (
+                    sortDirection === 'asc' ? <MdArrowUpward size={16} /> : <MdArrowDownward size={16} />
+                  )}
+                </button>
                 <span className="campaign-detail__table-header-cell">Delivery Completion</span>
               </div>
               

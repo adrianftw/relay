@@ -22,6 +22,8 @@ const AreaRow = ({
   conversion = '.02%',
   progress = 68,
   onZipClick,
+  onFocus,
+  onPin,
   href,
   className = '',
   ...props 
@@ -68,8 +70,8 @@ const AreaRow = ({
 
         {/* Area Actions - Focus and Pin icons */}
         <div className="relay-area-row__actions">
-          <RowIcon icon="focus" type="light" />
-          <RowIcon icon="pin" type="light" />
+          <RowIcon icon="focus" type="light" onClick={onFocus} />
+          <RowIcon icon="pin" type="light" onClick={onPin} />
         </div>
 
         {/* QR Scans Percentage */}

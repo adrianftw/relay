@@ -12,8 +12,11 @@ import './CampaignMap.css';
  * - Navigation controls (zoom, compass)
  * - Fullscreen control
  * - Responsive container
+ * - Controlled viewport via viewState prop
  */
 export const CampaignMap = ({
+  viewState,
+  onMove,
   initialViewState = {
     longitude: -122.4,
     latitude: 37.8,
@@ -29,7 +32,12 @@ export const CampaignMap = ({
       <Map
         ref={mapRef}
         mapboxAccessToken={mapboxAccessToken}
-        initialViewState={initialViewState}
+        {...(viewState ? { 
+          ...viewState,
+          onMove: onMove 
+        } : { 
+          initialViewState 
+        })}
         style={{ width: '100%', height: '100%' }}
         mapStyle={mapStyle}
         attributionControl={true}

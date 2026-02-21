@@ -26,6 +26,23 @@ export const CampaignDetail = () => {
   const [region, setRegion] = useState('All');
   const [areaData, setAreaData] = useState([]);
   const [loading, setLoading] = useState(true);
+  
+  // Map view state - controlled viewport
+  const [mapViewState, setMapViewState] = useState({
+    longitude: -122.4,
+    latitude: 37.8,
+    zoom: 9
+  });
+
+  // Handler to zoom map to a specific city
+  const handleFocusCity = (lat, lng) => {
+    setMapViewState({
+      longitude: lng,
+      latitude: lat,
+      zoom: 12, // Zoom in to city level
+      transitionDuration: 1000 // Smooth 1-second transition
+    });
+  };
 
   // Load and parse CSV data on mount
   useEffect(() => {
@@ -138,6 +155,7 @@ export const CampaignDetail = () => {
                       qrScans={area.qrScans}
                       conversion={area.conversion}
                       progress={area.progress}
+                      onFocus={() => handleFocusCity(area.lat, area.lng)}
                       href={`/campaigns/spring-mail/${area.state.toLowerCase()}/${area.city.toLowerCase().replace(/\s+/g, '-')}`}
                     />
                   ))
@@ -189,11 +207,8 @@ export const CampaignDetail = () => {
         {/* Right Column: Map Container (4 columns) */}
         <div className="campaign-detail__placeholder">
           <CampaignMap
-            initialViewState={{
-              longitude: -122.4,
-              latitude: 37.8,
-              zoom: 9
-            }}
+            viewState={mapViewState}
+            onMove={(evt) => setMapViewState(evt.viewState)}
           />
         </div>
       </div>

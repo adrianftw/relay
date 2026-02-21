@@ -7,6 +7,7 @@ import { Search } from '../components/Search/Search';
 import AreaRow from '../components/Row/AreaRow';
 import { CampaignMap } from '../components/Map/CampaignMap';
 import { BackButton } from '../components/Button/BackButton';
+import { useCountUp } from '../hooks/useCountUp';
 import './CampaignDetail.css';
 
 /**
@@ -289,13 +290,13 @@ export const CampaignDetail = () => {
       const returnedCount = totalPiecesSent - deliveredCount - enrouteCount - processingCount;
       
       return {
-        totalScans: totalScans.toLocaleString(),
-        qrScanRate: `${avgQRRate.toFixed(1)}%`,
-        qrScanCount: `${totalScans.toLocaleString()} scans`,
-        conversionRate: `${avgConversionRate.toFixed(2)}%`,
-        conversionCount: `${totalConversions.toLocaleString()} conversions`,
-        revenue: `$${totalRevenue.toLocaleString()}`,
-        cpa: `$${cpa.toFixed(2)}`,
+        totalScansRaw: totalScans,
+        qrScanRateRaw: avgQRRate,
+        totalScansCountRaw: totalScans,
+        conversionRateRaw: avgConversionRate,
+        conversionsCountRaw: totalConversions,
+        revenueRaw: totalRevenue,
+        cpaRaw: cpa,
         deliveryData: [
           { label: 'Enroute', value: enrouteCount, color: '#7DB7F1' },
           { label: 'Processing', value: processingCount, color: '#FFFFFF' },
@@ -307,13 +308,13 @@ export const CampaignDetail = () => {
     
     // Default values for cities view
     return {
-      totalScans: '50,5689',
-      qrScanRate: '9%',
-      qrScanCount: '532 scans',
-      conversionRate: '0.3%',
-      conversionCount: '154 conversions',
-      revenue: '$48,300',
-      cpa: '$3.95',
+      totalScansRaw: 50689,
+      qrScanRateRaw: 9,
+      totalScansCountRaw: 532,
+      conversionRateRaw: 0.3,
+      conversionsCountRaw: 154,
+      revenueRaw: 48300,
+      cpaRaw: 3.95,
       deliveryData: [
         { label: 'Enroute', value: 3452, color: '#7DB7F1' },
         { label: 'Processing', value: 3452, color: '#FFFFFF' },
@@ -322,6 +323,15 @@ export const CampaignDetail = () => {
       ]
     };
   }, [viewMode, areaData]);
+
+  // Animate metric values
+  const animatedTotalScans = useCountUp(dashboardMetrics.totalScansRaw);
+  const animatedQRRate = useCountUp(dashboardMetrics.qrScanRateRaw);
+  const animatedTotalScansCount = useCountUp(dashboardMetrics.totalScansCountRaw);
+  const animatedConversionRate = useCountUp(dashboardMetrics.conversionRateRaw);
+  const animatedConversionsCount = useCountUp(dashboardMetrics.conversionsCountRaw);
+  const animatedRevenue = useCountUp(dashboardMetrics.revenueRaw);
+  const animatedCPA = useCountUp(dashboardMetrics.cpaRaw);
 
   return (
     <div className="campaign-detail-page">
@@ -345,7 +355,7 @@ export const CampaignDetail = () => {
             <DeliveryDetailsCard
               icon={MdQrCode2}
               label="QR Scans"
-              total={dashboardMetrics.totalScans}
+              total={Math.round(animatedTotalScans).toLocaleString()}
               data={dashboardMetrics.deliveryData}
             />
             
@@ -353,28 +363,28 @@ export const CampaignDetail = () => {
               <LightCard
                 icon={MdQrCode2}
                 label="QR Scans"
-                value={dashboardMetrics.qrScanRate}
-                description={dashboardMetrics.qrScanCount}
+                value={`${animatedQRRate.toFixed(1)}%`}
+                description={`${Math.round(animatedTotalScansCount).toLocaleString()} scans`}
               />
               
               <LightCard
                 icon={MdTrendingUp}
                 label="Conversion Rate"
-                value={dashboardMetrics.conversionRate}
-                description={dashboardMetrics.conversionCount}
+                value={`${animatedConversionRate.toFixed(2)}%`}
+                description={`${Math.round(animatedConversionsCount).toLocaleString()} conversions`}
               />
               
               <LightCard
                 icon={MdAttachMoney}
                 label="Revenue Attached"
-                value={dashboardMetrics.revenue}
+                value={`$${Math.round(animatedRevenue).toLocaleString()}`}
                 description=""
               />
               
               <LightCard
                 icon={MdShoppingCart}
                 label="Cost Per Acquisition"
-                value={dashboardMetrics.cpa}
+                value={`$${animatedCPA.toFixed(2)}`}
                 description=""
               />
             </div>

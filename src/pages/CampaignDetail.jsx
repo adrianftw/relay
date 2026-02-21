@@ -146,6 +146,46 @@ export const CampaignDetail = () => {
           {/* Page Title */}
           <h1 className="campaign-detail__title">Spring Mail Campaign</h1>
 
+          {/* Dashboard Cards Section */}
+          <section className="campaign-detail__dashboard">
+            <DeliveryDetailsCard
+              icon={MdQrCode2}
+              label="QR Scans"
+              total="50,5689"
+              data={deliveryData}
+            />
+            
+            <div className="campaign-detail__metrics-grid">
+              <LightCard
+                icon={MdQrCode2}
+                label="QR Scans"
+                value="9%"
+                description="532 scans"
+              />
+              
+              <LightCard
+                icon={MdTrendingUp}
+                label="Conversion Rate"
+                value="0.3%"
+                description="154 conversions"
+              />
+              
+              <LightCard
+                icon={MdAttachMoney}
+                label="Revenue Attached"
+                value="$48,300"
+                description=""
+              />
+              
+              <LightCard
+                icon={MdShoppingCart}
+                label="Cost Per Acquisition"
+                value="$3.95"
+                description=""
+              />
+            </div>
+          </section>
+
           {/* Chart Section - Contains filters and table (8 columns) */}
           <div className="campaign-detail__chart-section">
             {/* Search and Filters Section */}
@@ -227,45 +267,6 @@ export const CampaignDetail = () => {
               </div>
             </div>
           </div>
-      {/* Dashboard Cards Section - Spans 7 columns */}
-      <section className="campaign-detail__dashboard">
-        <DeliveryDetailsCard
-          icon={MdQrCode2}
-          label="QR Scans"
-          total="50,5689"
-          data={deliveryData}
-        />
-        
-        <div className="campaign-detail__metrics-grid">
-          <LightCard
-            icon={MdQrCode2}
-            label="QR Scans"
-            value="9%"
-            description="532 scans"
-          />
-          
-          <LightCard
-            icon={MdTrendingUp}
-            label="Conversion Rate"
-            value="0.3%"
-            description="154 conversions"
-          />
-          
-          <LightCard
-            icon={MdAttachMoney}
-            label="Revenue Attached"
-            value="$48,300"
-            description=""
-          />
-          
-          <LightCard
-            icon={MdShoppingCart}
-            label="Cost Per Acquisition"
-            value="$3.95"
-            description=""
-          />
-        </div>
-      </section>
         </div>
 
         {/* Right Column: Map Container (4 columns) */}

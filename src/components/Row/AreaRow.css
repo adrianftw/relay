@@ -15,7 +15,6 @@
   padding: var(--relay-space-03);
   border-bottom: 1px solid var(--relay-gray-04);
   width: 100%;
-  max-width: 820px;
 }
 
 .relay-area-row__content {

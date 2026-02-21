@@ -19,7 +19,7 @@
 
 .relay-area-row__content {
   display: grid;
-  grid-template-columns: 150px 62px 100px 120px 1fr;
+  grid-template-columns: 150px 102px 100px 120px 1fr;
   gap: 32px;
   align-items: center;
   width: 100%;

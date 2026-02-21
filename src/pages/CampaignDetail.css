@@ -211,7 +211,7 @@
 /* Table Headers */
 .campaign-detail__table-header {
   display: grid;
-  grid-template-columns: 150px 62px 100px 120px 1fr;
+  grid-template-columns: 150px 102px 100px 120px 1fr;
   gap: 32px;
   padding: 0 var(--relay-space-03); /* 16px horizontal */
   margin-bottom: var(--relay-space-03); /* 16px */

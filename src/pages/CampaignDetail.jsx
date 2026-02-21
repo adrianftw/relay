@@ -93,6 +93,7 @@ export const CampaignDetail = () => {
               {/* Table Headers */}
               <div className="campaign-detail__table-header">
                 <span className="campaign-detail__table-header-cell">ZIPs</span>
+                <span className="campaign-detail__table-header-cell"></span> {/* Area Actions column */}
                 <span className="campaign-detail__table-header-cell">QR Scans</span>
                 <span className="campaign-detail__table-header-cell">Conversion</span>
                 <span className="campaign-detail__table-header-cell">Delivery Completion</span>

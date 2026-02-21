@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { ProgressBar } from '../ProgressBar/ProgressBar';
+import RowIcon from './RowIcon';
 import './AreaRow.css';
 
 /**
@@ -64,6 +65,12 @@ const AreaRow = ({
             {zipContent}
           </button>
         )}
+
+        {/* Area Actions - Focus and Pin icons */}
+        <div className="relay-area-row__actions">
+          <RowIcon icon="focus" type="light" />
+          <RowIcon icon="pin" type="light" />
+        </div>
 
         {/* QR Scans Percentage */}
         <span className="relay-area-row__metric">{qrScans}</span>

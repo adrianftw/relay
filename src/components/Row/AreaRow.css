@@ -19,10 +19,17 @@
 
 .relay-area-row__content {
   display: grid;
-  grid-template-columns: 150px 100px 120px 1fr;
+  grid-template-columns: 150px 62px 100px 120px 1fr;
   gap: 32px;
   align-items: center;
   width: 100%;
+}
+
+/* Area Actions - Container for Focus and Pin icons */
+.relay-area-row__actions {
+  display: flex;
+  align-items: center;
+  gap: var(--relay-space-03); /* 16px between icons */
 }
 
 /* ZIP Code Link */

@@ -40,13 +40,78 @@ export const CampaignDetail = () => {
   });
 
   // Handler to drill into a city and show its zip codes
-  const handleCityClick = (city) => {
+  const handleCityClick = async (city) => {
     setSelectedCity(city);
     setViewMode('zips');
     setSearchValue(''); // Clear search when drilling down
     setSortColumn(null); // Reset sort
     
-    // Generate zip code data for this city (simulate 5-15 zip codes per city)
+    // Check if this is Atlanta, GA - use real data
+    if (city.city === 'Atlanta' && city.state === 'GA') {
+      try {
+        const response = await fetch('/data/atlanta-zips.geojson');
+        const geojson = await response.json();
+        
+        // Calculate total conversions for percentage calculations
+        const totalConversions = geojson.features.reduce((sum, f) => sum + f.properties.conversions, 0);
+        
+        // Transform GeoJSON features to table data
+        const zipData = geojson.features.map(feature => {
+          const zip = feature.properties.zip;
+          const conversions = feature.properties.conversions;
+          
+          // Calculate center point of polygon/multipolygon for marker placement
+          let lat, lng;
+          if (feature.geometry.type === 'Polygon') {
+            const coords = feature.geometry.coordinates[0];
+            lng = coords.reduce((sum, c) => sum + c[0], 0) / coords.length;
+            lat = coords.reduce((sum, c) => sum + c[1], 0) / coords.length;
+          } else if (feature.geometry.type === 'MultiPolygon') {
+            const firstPoly = feature.geometry.coordinates[0][0];
+            lng = firstPoly.reduce((sum, c) => sum + c[0], 0) / firstPoly.length;
+            lat = firstPoly.reduce((sum, c) => sum + c[1], 0) / firstPoly.length;
+          }
+          
+          // Calculate percentages based on conversion numbers
+          // QR Scans: scale conversions to 2-16% range
+          const qrScanPercent = ((conversions / totalConversions) * 100 * 5).toFixed(1);
+          // Conversion: scale to 0.1-0.6% range  
+          const conversionPercent = ((conversions / totalConversions) * 100 * 0.2).toFixed(2);
+          
+          return {
+            city: city.city,
+            state: city.state,
+            zip: zip,
+            lat: lat,
+            lng: lng,
+            qrScans: `${qrScanPercent}%`,
+            conversion: `${conversionPercent}%`,
+            progress: Math.floor(Math.random() * 40 + 50), // Keep random for now
+          };
+        });
+        
+        setAreaData(zipData);
+      } catch (error) {
+        console.error('Error loading Atlanta ZIP data:', error);
+        // Fallback to generated data if load fails
+        generateRandomZipData(city);
+      }
+    } else {
+      // For other cities, generate random data
+      generateRandomZipData(city);
+    }
+    
+    // Zoom map to city
+    setMapViewState({
+      longitude: city.lng,
+      latitude: city.lat,
+      zoom: 11, // Closer zoom for zip code level
+      transitionDuration: 1000
+    });
+  };
+  
+  // Helper function to generate random ZIP data for non-Atlanta cities
+  const generateRandomZipData = (city) => {
     const numZips = Math.floor(Math.random() * 11) + 5; // 5-15 zips
     const zipData = Array.from({ length: numZips }, (_, i) => {
       // Generate realistic zip codes around the city
@@ -68,14 +133,6 @@ export const CampaignDetail = () => {
     });
     
     setAreaData(zipData);
-    
-    // Zoom map to city
-    setMapViewState({
-      longitude: city.lng,
-      latitude: city.lat,
-      zoom: 11, // Closer zoom for zip code level
-      transitionDuration: 1000
-    });
   };
   
   // Handler to go back to cities view

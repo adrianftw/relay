@@ -27,16 +27,16 @@
 /* Content Column (8 columns) */
 .campaign-detail__content {
   display: grid;
-  grid-template-rows: auto auto 1fr auto; /* Breadcrumb, Title, flexible chart section, fixed dashboard */
+  grid-template-rows: auto auto 1fr auto; /* Back button, Title, flexible chart section, fixed dashboard */
   row-gap: 0; /* Control spacing individually with margins */
   padding: 32px 0; /* Vertical padding */
   height: calc(100vh - 61px); /* Full viewport height minus nav */
   overflow: hidden; /* Prevent page scroll */
 }
 
-/* Breadcrumb spacing */
-.campaign-detail__content > nav {
-  margin-bottom: var(--relay-space-02); /* 8px below breadcrumb */
+/* Back button spacing */
+.campaign-detail__content > .relay-link-button {
+  margin-bottom: var(--relay-space-02); /* 8px below back button */
 }
 
 /* Title spacing */

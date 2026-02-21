@@ -6,7 +6,7 @@ import { LightCard } from '../components/DashboardCards/LightCard';
 import { Search } from '../components/Search/Search';
 import AreaRow from '../components/Row/AreaRow';
 import { CampaignMap } from '../components/Map/CampaignMap';
-import { Breadcrumb } from '../components/Breadcrumb/Breadcrumb';
+import LinkButton from '../components/Button/LinkButton';
 import './CampaignDetail.css';
 
 /**
@@ -140,8 +140,8 @@ export const CampaignDetail = () => {
       <div className="campaign-detail__grid">
         {/* Left Column: Content (8 columns) */}
         <div className="campaign-detail__content">
-          {/* Breadcrumb Navigation */}
-          <Breadcrumb items={['Campaigns', 'Spring Mail Campaign', 'Seattle, WA', '9375']} />
+          {/* Back Button */}
+          <LinkButton icon="left" href="/campaigns">Back to Campaigns</LinkButton>
           
           {/* Page Title */}
           <h1 className="campaign-detail__title">Spring Mail Campaign</h1>

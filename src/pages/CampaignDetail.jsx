@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import Papa from 'papaparse';
 import { MdQrCode2, MdTrendingUp, MdAttachMoney, MdShoppingCart, MdFilterList, MdKeyboardArrowDown } from 'react-icons/md';
 import { DeliveryDetailsCard } from '../components/DashboardCards/DeliveryDetailsCard';
@@ -78,6 +78,20 @@ export const CampaignDetail = () => {
     });
   }, []);
 
+  // Filter area data based on search value
+  const filteredAreaData = useMemo(() => {
+    if (!searchValue.trim()) {
+      return areaData;
+    }
+    
+    const searchLower = searchValue.toLowerCase();
+    return areaData.filter(area => 
+      area.city.toLowerCase().includes(searchLower) ||
+      area.state.toLowerCase().includes(searchLower) ||
+      area.zip.toLowerCase().includes(searchLower)
+    );
+  }, [areaData, searchValue]);
+
   // Sample data for DeliveryDetailsCard
   const deliveryData = [
     { label: 'Enroute', value: 3452, color: '#7DB7F1' },
@@ -147,8 +161,12 @@ export const CampaignDetail = () => {
                   <div style={{ padding: '24px', textAlign: 'center', color: '#666' }}>
                     Loading cities data...
                   </div>
+                ) : filteredAreaData.length === 0 ? (
+                  <div style={{ padding: '24px', textAlign: 'center', color: '#666' }}>
+                    No cities found matching "{searchValue}"
+                  </div>
                 ) : (
-                  areaData.map((area, index) => (
+                  filteredAreaData.map((area, index) => (
                     <AreaRow
                       key={index}
                       zip={area.zip}

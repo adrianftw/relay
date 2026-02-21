@@ -28,7 +28,9 @@ const BackButton = ({
 
   const content = (
     <>
-      <MdArrowBackIosNew size={iconSize} className="relay-back-button__icon" />
+      <span className="relay-back-button__icon-container">
+        <MdArrowBackIosNew size={iconSize} className="relay-back-button__icon" />
+      </span>
       <span className="relay-back-button__text">{children}</span>
     </>
   );

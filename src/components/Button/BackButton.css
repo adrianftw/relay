@@ -3,20 +3,30 @@
 .relay-back-button {
   display: inline-flex;
   align-items: center;
-  gap: var(--relay-space-01);
+  gap: var(--relay-space-02);
   color: var(--relay-purple-base);
   font-family: 'Helvetica', sans-serif;
   font-weight: bold;
   text-decoration: none;
-  background: white;
-  border: 1px solid var(--relay-purple-light);
-  border-radius: var(--relay-radius-02);
-  padding: var(--relay-space-02) var(--relay-space-03);
+  background: transparent;
+  border: none;
+  padding: 0;
   cursor: pointer;
   transition: all 0.2s ease;
 }
 
-.relay-back-button:hover {
+.relay-back-button__icon-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: white;
+  border: 1px solid var(--relay-purple-light);
+  border-radius: var(--relay-radius-02);
+  padding: var(--relay-space-02);
+  transition: all 0.2s ease;
+}
+
+.relay-back-button:hover .relay-back-button__icon-container {
   background: var(--relay-gray-01);
   border-color: var(--relay-purple-base);
 }
@@ -25,7 +35,7 @@
   transform: translateX(-2px);
 }
 
-.relay-back-button:active {
+.relay-back-button:active .relay-back-button__icon-container {
   background: var(--relay-gray-02);
   border-color: var(--relay-purple-dark);
 }

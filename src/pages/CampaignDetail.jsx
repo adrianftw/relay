@@ -39,7 +39,7 @@ export const CampaignDetail = () => {
     setMapViewState({
       longitude: lng,
       latitude: lat,
-      zoom: 10, // Zoom in to city level
+      zoom: 7, // Zoom in to city level
       transitionDuration: 1000 // Smooth 1-second transition
     });
   };

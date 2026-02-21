@@ -5,8 +5,8 @@
   width: 100%; /* Flexible width to fit container */
   min-height: 240px;
   
-  /* Spacing - 24px all sides */
-  padding: var(--relay-space-04); /* 24px */
+  /* Spacing - 16px all sides */
+  padding: var(--relay-space-03); /* 16px */
   
   /* Background - Figma: #333366 (Brand/Purple/Base) */
   background: var(--relay-purple-base); /* #333366 */

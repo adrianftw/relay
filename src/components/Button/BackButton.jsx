@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { MdArrowBack } from 'react-icons/md';
+import { MdArrowBackIosNew } from 'react-icons/md';
 import './BackButton.css';
 
 /**
@@ -28,7 +28,7 @@ const BackButton = ({
 
   const content = (
     <>
-      <MdArrowBack size={iconSize} className="relay-back-button__icon" />
+      <MdArrowBackIosNew size={iconSize} className="relay-back-button__icon" />
       <span className="relay-back-button__text">{children}</span>
     </>
   );

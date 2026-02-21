@@ -8,15 +8,17 @@
   font-family: 'Helvetica', sans-serif;
   font-weight: bold;
   text-decoration: none;
-  background: transparent;
-  border: none;
-  padding: 0;
+  background: white;
+  border: 1px solid var(--relay-purple-light);
+  border-radius: var(--relay-radius-02);
+  padding: var(--relay-space-02) var(--relay-space-03);
   cursor: pointer;
   transition: all 0.2s ease;
 }
 
 .relay-back-button:hover {
-  color: var(--relay-purple-light);
+  background: var(--relay-gray-01);
+  border-color: var(--relay-purple-base);
 }
 
 .relay-back-button:hover .relay-back-button__icon {
@@ -24,7 +26,8 @@
 }
 
 .relay-back-button:active {
-  color: var(--relay-purple-dark);
+  background: var(--relay-gray-02);
+  border-color: var(--relay-purple-dark);
 }
 
 .relay-back-button:focus-visible {

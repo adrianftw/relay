@@ -26,20 +26,22 @@
 
 /* Content Column (8 columns) */
 .campaign-detail__content {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-rows: auto 1fr auto; /* Title, flexible chart section, fixed dashboard */
   gap: var(--relay-space-05); /* 32px between sections */
   padding: 32px 0; /* Vertical padding */
+  height: calc(100vh - 61px); /* Full viewport height minus nav */
+  overflow: hidden; /* Prevent page scroll */
 }
 
 /* Placeholder Container (4 columns) */
 .campaign-detail__placeholder {
   background: #8B8B8B; /* Gray placeholder background */
   border-radius: var(--relay-radius-03); /* 16px rounded corners */
-  margin: 24px 0; /* 24px top and bottom margin */
-  height: calc(100vh - 61px - 48px); /* Viewport height minus nav and margins */
+  margin: 32px 0; /* Match content column vertical padding */
+  height: calc(100vh - 61px - 64px); /* Viewport height minus nav and margins (32px top + 32px bottom) */
   position: sticky; /* Stays fixed when scrolling */
-  top: 85px; /* 61px nav + 24px top margin */
+  top: 93px; /* 61px nav + 32px top margin */
 }
 
 /* ============================================ */
@@ -71,6 +73,8 @@
   flex-direction: column;
   gap: var(--relay-space-03); /* 16px gap between filters and table */
   width: 100%;
+  min-height: 0; /* Allow flex shrinking */
+  overflow: hidden; /* Contain scrollable table */
 }
 
 /* ============================================ */
@@ -206,6 +210,9 @@
   display: flex;
   flex-direction: column;
   width: 100%;
+  flex: 1; /* Fill available space in chart section */
+  min-height: 0; /* Allow flex shrinking */
+  overflow: hidden; /* Contain scrollable body */
 }
 
 /* Table Headers */
@@ -253,7 +260,7 @@
 .campaign-detail__table-body {
   display: flex;
   flex-direction: column;
-  max-height: 468px; /* Figma: visible area height */
+  flex: 1; /* Fill available space */
   overflow-y: auto;
   
   /* Custom scrollbar styling */
@@ -290,8 +297,8 @@
   display: grid;
   grid-template-columns: 1fr 1fr; /* Equal columns for DeliveryDetailsCard and metrics */
   gap: 16px; /* Gutter from grid system */
-  margin-bottom: 32px;
-  min-height: 240px; /* Minimum height to match DeliveryDetailsCard */
+  height: 240px; /* Fixed height to match map bottom alignment */
+  flex-shrink: 0; /* Prevent shrinking */
 }
 
 /* Metrics Grid - 2x2 grid of Light Cards */

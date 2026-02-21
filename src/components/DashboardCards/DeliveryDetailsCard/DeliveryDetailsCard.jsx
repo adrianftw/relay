@@ -36,43 +36,41 @@ export const DeliveryDetailsCard = ({
 
   return (
     <div className={classes} {...props}>
-      <IconLockup 
-        icon={icon} 
-        label={label} 
-        variant="dark"
-      />
-      
-      <div className="relay-delivery-details-card__content">
-        <div className="relay-delivery-details-card__left">
-          <div className="relay-delivery-details-card__total">
-            <p className="relay-delivery-details-card__total-value">{total}</p>
-          </div>
-          
-          <div className="relay-delivery-details-card__legend">
-            {data.map((item, index) => (
-              <div key={index} className="relay-delivery-details-card__legend-item">
-                <div 
-                  className="relay-delivery-details-card__legend-color" 
-                  style={{ backgroundColor: item.color }}
-                />
-                <div className="relay-delivery-details-card__legend-text">
-                  <p className="relay-delivery-details-card__legend-label">{item.label}</p>
-                  <p className="relay-delivery-details-card__legend-value">
-                    {item.value.toLocaleString()}
-                  </p>
-                </div>
-              </div>
-            ))}
-          </div>
+      <div className="relay-delivery-details-card__left">
+        <IconLockup 
+          icon={icon} 
+          label={label} 
+          variant="dark"
+        />
+        
+        <div className="relay-delivery-details-card__total">
+          <p className="relay-delivery-details-card__total-value">{total}</p>
         </div>
         
-        <div className="relay-delivery-details-card__chart">
-          <DonutChart 
-            data={data}
-            size={171}
-            strokeWidth={20}
-          />
+        <div className="relay-delivery-details-card__legend">
+          {data.map((item, index) => (
+            <div key={index} className="relay-delivery-details-card__legend-item">
+              <div 
+                className="relay-delivery-details-card__legend-color" 
+                style={{ backgroundColor: item.color }}
+              />
+              <div className="relay-delivery-details-card__legend-text">
+                <p className="relay-delivery-details-card__legend-label">{item.label}</p>
+                <p className="relay-delivery-details-card__legend-value">
+                  {item.value.toLocaleString()}
+                </p>
+              </div>
+            </div>
+          ))}
         </div>
+      </div>
+      
+      <div className="relay-delivery-details-card__chart">
+        <DonutChart 
+          data={data}
+          size={171}
+          strokeWidth={20}
+        />
       </div>
     </div>
   );

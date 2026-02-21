@@ -1,39 +1,30 @@
 /* DeliveryDetailsCard Component - Built with Relay Tokens */
 
 .relay-delivery-details-card {
-  /* Layout - Made flexible for responsive layouts */
+  /* Layout - Horizontal flex container */
   width: 100%; /* Flexible width to fit container */
   min-height: 240px;
   
-  /* Spacing - Figma: 24px horizontal, 16px top, 32px bottom */
-  padding: var(--relay-space-03) var(--relay-space-04) var(--relay-space-05) var(--relay-space-04); /* 16px 24px 32px 24px */
+  /* Spacing - Updated: 16px horizontal, 16px top, 16px bottom */
+  padding: var(--relay-space-03) var(--relay-space-03) var(--relay-space-03) var(--relay-space-04); /* 16px 16px 16px 24px */
   
   /* Background - Figma: #333366 (Brand/Purple/Base) */
   background: var(--relay-purple-base); /* #333366 */
   border-radius: var(--relay-radius-02); /* 8px */
   
-  /* Flex layout - column with 13px gap */
+  /* Flex layout - horizontal with gap */
   display: flex;
-  flex-direction: column;
-  gap: 13px;
-}
-
-/* Content area below IconLockup - Now horizontal layout */
-.relay-delivery-details-card__content {
-  display: flex;
-  align-items: flex-start;
+  flex-direction: row;
   gap: 0;
-  width: 100%;
-  flex: 1;
+  align-items: center;
 }
 
-/* Left section - Total + Legend */
+/* Left section - IconLockup + Total + Legend (hug contents) */
 .relay-delivery-details-card__left {
   display: flex;
   flex-direction: column;
-  gap: var(--relay-space-02); /* 8px */
-  width: 150px;
-  height: 171px;
+  gap: 13px;
+  width: fit-content; /* Hug contents */
   flex-shrink: 0;
 }
 
@@ -64,7 +55,7 @@
   width: 100%;
 }
 
-/* Chart container on right - flex container to center chart */
+/* Chart container - flex horizontally to center chart vertically */
 .relay-delivery-details-card__chart {
   display: flex;
   align-items: center;

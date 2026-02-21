@@ -22,8 +22,8 @@ export const CampaignMap = ({
     latitude: 37.8,
     zoom: 9
   },
-  mapboxAccessToken = 'import.meta.env.VITE_MAPBOX_ACCESS_TOKEN',
-  mapStyle = 'mapbox://styles/adrianthomasdesign/cmlu39aqq00aj01qp47dx8uol'
+  mapboxAccessToken = import.meta.env.VITE_MAPBOX_ACCESS_TOKEN,
+  mapStyle = import.meta.env.VITE_MAPBOX_STYLE || 'mapbox://styles/adrianthomasdesign/cmlu39aqq00aj01qp47dx8uol'
 }) => {
   const mapRef = useRef();
 

@@ -243,28 +243,6 @@ export const CampaignDetail = () => {
 
     return filtered;
   }, [areaData, searchValue, sortColumn, sortDirection]);
-  
-  // Generate map markers for zip codes with color coding based on QR scan percentage
-  const mapMarkers = useMemo(() => {
-    if (viewMode !== 'zips') return [];
-    
-    // Color scale function: lower % = red, higher % = green
-    const getColor = (qrScanPercent) => {
-      const percent = parseFloat(qrScanPercent);
-      // Scale: 0-5% = red, 5-10% = orange, 10-15% = yellow, 15%+ = green
-      if (percent < 5) return '#ef4444'; // red
-      if (percent < 10) return '#f97316'; // orange
-      if (percent < 15) return '#eab308'; // yellow
-      return '#22c55e'; // green
-    };
-    
-    return filteredAreaData.map(area => ({
-      lat: area.lat,
-      lng: area.lng,
-      color: getColor(area.qrScans),
-      label: `${area.zip}: ${area.qrScans} QR Scans`
-    }));
-  }, [viewMode, filteredAreaData]);
 
   // Conditional map style - use custom Atlanta style only when viewing Atlanta ZIPs
   const mapStyle = useMemo(() => {
@@ -428,7 +406,6 @@ export const CampaignDetail = () => {
           <CampaignMap
             viewState={mapViewState}
             onMove={(evt) => setMapViewState(evt.viewState)}
-            markers={mapMarkers}
             mapStyle={mapStyle}
           />
         </div>

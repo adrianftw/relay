@@ -152,14 +152,10 @@ export const CampaignDetail = () => {
 
   // Handler to zoom map to a specific area (city or ZIP)
   const handleFocusArea = (lat, lng) => {
-    // In ZIP view, always maintain current zoom level - only pan
-    // In cities view, use standard zoom level
-    const targetZoom = viewMode === 'zips' ? mapViewState.zoom : 8;
-    
     setMapViewState({
       longitude: lng,
       latitude: lat,
-      zoom: targetZoom, // Keep current zoom in ZIP view, use 8 for cities
+      zoom: viewMode === 'cities' ? 8 : 13, // Zoom closer on individual ZIPs
       transitionDuration: 1000 // Smooth 1-second transition
     });
   };

@@ -15,6 +15,12 @@
   padding: var(--relay-space-03);
   border-bottom: 1px solid var(--relay-gray-04);
   width: 100%;
+  transition: background-color 0.15s ease;
+  cursor: pointer;
+}
+
+.relay-area-row:hover {
+  background-color: var(--relay-gray-02); /* Light gray background on hover */
 }
 
 .relay-area-row__content {
@@ -30,6 +36,13 @@
   display: flex;
   align-items: center;
   gap: var(--relay-space-03); /* 16px between icons */
+  opacity: 0;
+  transition: opacity 0.15s ease;
+}
+
+/* Show Area Actions on row hover */
+.relay-area-row:hover .relay-area-row__actions {
+  opacity: 1;
 }
 
 /* ZIP Code Link */

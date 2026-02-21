@@ -23,8 +23,8 @@ const BackButton = ({
     className
   ].filter(Boolean).join(' ');
 
-  // Determine icon size based on button size
-  const iconSize = size === 'small' ? 16 : 20;
+  // Icon size for 24px container
+  const iconSize = 16;
 
   const content = (
     <>

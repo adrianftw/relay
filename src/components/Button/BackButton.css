@@ -19,11 +19,13 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 24px;
+  height: 24px;
   background: white;
   border: 1px solid var(--relay-purple-light);
   border-radius: var(--relay-radius-02);
-  padding: var(--relay-space-02);
   transition: all 0.2s ease;
+  flex-shrink: 0;
 }
 
 .relay-back-button:hover .relay-back-button__icon-container {

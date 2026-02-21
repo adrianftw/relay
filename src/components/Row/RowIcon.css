@@ -1,0 +1,74 @@
+/* RowIcon Component Styles */
+/* Design specs from Figma:
+ * - Size: 23px × 23px
+ * - Light type: White background (#FFFFFF), Purple icon (#333366)
+ * - Dark type: Purple background (#333366), White icon (#FFFFFF)
+ * - Rounded corners
+ */
+
+.relay-row-icon {
+  /* Layout */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 23px;
+  height: 23px;
+  padding: 0;
+  
+  /* Border */
+  border: none;
+  border-radius: 4px;
+  
+  /* Interactions */
+  cursor: pointer;
+  transition: opacity 0.15s ease, transform 0.15s ease;
+  
+  /* Reset button styles */
+  margin: 0;
+  font: inherit;
+}
+
+/* Light variant - white background, purple icon */
+.relay-row-icon--light {
+  background-color: var(--relay-gray-01); /* #FFFFFF */
+  color: var(--relay-purple-base); /* #333366 */
+}
+
+.relay-row-icon--light:hover {
+  opacity: 0.8;
+}
+
+.relay-row-icon--light:active {
+  transform: scale(0.95);
+}
+
+/* Dark variant - purple background, white icon */
+.relay-row-icon--dark {
+  background-color: var(--relay-purple-base); /* #333366 */
+  color: var(--relay-gray-01); /* #FFFFFF */
+}
+
+.relay-row-icon--dark:hover {
+  opacity: 0.9;
+}
+
+.relay-row-icon--dark:active {
+  transform: scale(0.95);
+}
+
+/* Icon SVG */
+.relay-row-icon__svg {
+  display: block;
+  width: 15px;
+  height: 15px;
+}
+
+/* Focus state for accessibility */
+.relay-row-icon:focus {
+  outline: 2px solid var(--relay-purple-light);
+  outline-offset: 2px;
+}
+
+.relay-row-icon:focus:not(:focus-visible) {
+  outline: none;
+}

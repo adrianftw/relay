@@ -35,7 +35,7 @@
 }
 
 /* Back button spacing */
-.campaign-detail__content > .relay-link-button {
+.campaign-detail__content > .relay-back-button {
   margin-bottom: var(--relay-space-02); /* 8px below back button */
 }
 

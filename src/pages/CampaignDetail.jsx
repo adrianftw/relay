@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import Papa from 'papaparse';
 import { MdQrCode2, MdTrendingUp, MdAttachMoney, MdShoppingCart, MdFilterList, MdKeyboardArrowDown } from 'react-icons/md';
 import { DeliveryDetailsCard } from '../components/DashboardCards/DeliveryDetailsCard';
 import { LightCard } from '../components/DashboardCards/LightCard';
@@ -23,6 +24,42 @@ export const CampaignDetail = () => {
   const [searchValue, setSearchValue] = useState('');
   const [sortBy, setSortBy] = useState('Conversion Rate');
   const [region, setRegion] = useState('All');
+  const [areaData, setAreaData] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  // Load and parse CSV data on mount
+  useEffect(() => {
+    Papa.parse('/data/uscities.csv', {
+      download: true,
+      header: true,
+      complete: (results) => {
+        // Transform CSV data into area data format
+        // Take first 50 cities and generate metrics
+        const transformedData = results.data
+          .filter(row => row.city && row.state_id && row.lat && row.lng) // Filter out empty rows
+          .slice(0, 50) // Limit to first 50 cities
+          .map((row, index) => ({
+            city: row.city,
+            state: row.state_id,
+            zip: `${row.city}, ${row.state_id}`,
+            lat: parseFloat(row.lat),
+            lng: parseFloat(row.lng),
+            population: parseInt(row.population) || 0,
+            // Generate realistic-looking metrics
+            qrScans: `${(Math.random() * 10 + 1).toFixed(1)}%`,
+            conversion: `${(Math.random() * 0.5).toFixed(2)}%`,
+            progress: Math.floor(Math.random() * 40 + 50), // 50-90%
+          }));
+        
+        setAreaData(transformedData);
+        setLoading(false);
+      },
+      error: (error) => {
+        console.error('Error loading CSV:', error);
+        setLoading(false);
+      }
+    });
+  }, []);
 
   // Sample data for DeliveryDetailsCard
   const deliveryData = [
@@ -30,19 +67,6 @@ export const CampaignDetail = () => {
     { label: 'Processing', value: 3452, color: '#FFFFFF' },
     { label: 'Delivered', value: 3452, color: '#A6A6EF' },
     { label: 'Returned', value: 3452, color: '#DA291C' },
-  ];
-
-  // Sample area data for table
-  const areaData = [
-    { zip: 'San Francisco, CA', qrScans: '5.6%', conversion: '.02%', progress: 68 },
-    { zip: 'San Francisco, CA', qrScans: '5.6%', conversion: '.02%', progress: 68 },
-    { zip: 'San Francisco, CA', qrScans: '5.6%', conversion: '.02%', progress: 68 },
-    { zip: 'San Francisco, CA', qrScans: '5.6%', conversion: '.02%', progress: 68 },
-    { zip: 'San Francisco, CA', qrScans: '5.6%', conversion: '.02%', progress: 68 },
-    { zip: 'San Francisco, CA', qrScans: '5.6%', conversion: '.02%', progress: 68 },
-    { zip: 'San Francisco, CA', qrScans: '5.6%', conversion: '.02%', progress: 68 },
-    { zip: 'San Francisco, CA', qrScans: '5.6%', conversion: '.02%', progress: 68 },
-    { zip: 'San Francisco, CA', qrScans: '5.6%', conversion: '.02%', progress: 68 },
   ];
 
   return (
@@ -93,7 +117,7 @@ export const CampaignDetail = () => {
             <div className="campaign-detail__table-container">
               {/* Table Headers */}
               <div className="campaign-detail__table-header">
-                <span className="campaign-detail__table-header-cell">ZIPs</span>
+                <span className="campaign-detail__table-header-cell">Cities</span>
                 <span className="campaign-detail__table-header-cell"></span> {/* Area Actions column */}
                 <span className="campaign-detail__table-header-cell">QR Scans</span>
                 <span className="campaign-detail__table-header-cell">Conversion</span>
@@ -102,16 +126,22 @@ export const CampaignDetail = () => {
               
               {/* Table Rows */}
               <div className="campaign-detail__table-body">
-                {areaData.map((area, index) => (
-                  <AreaRow
-                    key={index}
-                    zip={area.zip}
-                    qrScans={area.qrScans}
-                    conversion={area.conversion}
-                    progress={area.progress}
-                    href={`/campaigns/spring-mail/seattle-wa/${9375 + index}`}
-                  />
-                ))}
+                {loading ? (
+                  <div style={{ padding: '24px', textAlign: 'center', color: '#666' }}>
+                    Loading cities data...
+                  </div>
+                ) : (
+                  areaData.map((area, index) => (
+                    <AreaRow
+                      key={index}
+                      zip={area.zip}
+                      qrScans={area.qrScans}
+                      conversion={area.conversion}
+                      progress={area.progress}
+                      href={`/campaigns/spring-mail/${area.state.toLowerCase()}/${area.city.toLowerCase().replace(/\s+/g, '-')}`}
+                    />
+                  ))
+                )}
               </div>
             </div>
           </div>

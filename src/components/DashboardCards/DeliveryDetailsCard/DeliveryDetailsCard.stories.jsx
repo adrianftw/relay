@@ -79,7 +79,7 @@ export const StoreOrders = {
 // Different data distributions
 export const UnevenDistribution = {
   args: {
-    icon: MdQrCode2,
+    icon: MdMailOutline,
     label: 'Campaign Views',
     total: '156,432',
     data: [
@@ -100,8 +100,8 @@ export const MultipleCards = () => (
     padding: '20px'
   }}>
     <DeliveryDetailsCard 
-      icon={MdQrCode2}
-      label="QR Scans"
+      icon={MdMailOutline}
+      label="MailPieces"
       total="50,5689"
       data={[
         { label: 'Enroute', value: 3452, color: '#7DB7F1' },

@@ -28,6 +28,7 @@ export const CampaignMap = forwardRef(({
   mapStyle = import.meta.env.VITE_MAPBOX_STYLE || 'mapbox://styles/adrianthomasdesign/cmlu39aqq00aj01qp47dx8uol'
 }, ref) => {
   const mapRef = useRef();
+  const prevViewStateRef = useRef(viewState);
 
   // Expose map methods to parent
   useImperativeHandle(ref, () => ({
@@ -36,32 +37,53 @@ export const CampaignMap = forwardRef(({
 
   // Handle animated transitions when viewState changes with transitionDuration
   useEffect(() => {
+    const prevViewState = prevViewStateRef.current;
+    
     if (viewState && viewState.transitionDuration && mapRef.current) {
-      const map = mapRef.current.getMap();
-      if (map) {
-        map.flyTo({
-          center: [viewState.longitude, viewState.latitude],
-          zoom: viewState.zoom,
-          duration: viewState.transitionDuration,
-          essential: true
-        });
+      // Check if position/zoom actually changed
+      const hasChanged = !prevViewState || 
+        prevViewState.longitude !== viewState.longitude ||
+        prevViewState.latitude !== viewState.latitude ||
+        prevViewState.zoom !== viewState.zoom;
+      
+      if (hasChanged) {
+        const map = mapRef.current.getMap();
+        if (map) {
+          map.flyTo({
+            center: [viewState.longitude, viewState.latitude],
+            zoom: viewState.zoom,
+            duration: viewState.transitionDuration,
+            essential: true
+          });
+        }
       }
     }
-  }, [viewState?.longitude, viewState?.latitude, viewState?.zoom, viewState?.transitionDuration]);
+    
+    prevViewStateRef.current = viewState;
+  }, [viewState]);
+
+  // Determine which props to pass to Map based on whether we're animating
+  const mapProps = viewState ? (
+    viewState.transitionDuration ? {
+      // During animation, don't pass the new coordinates - let flyTo handle it
+      onMove: onMove
+    } : {
+      // No animation, update immediately
+      longitude: viewState.longitude,
+      latitude: viewState.latitude,
+      zoom: viewState.zoom,
+      onMove: onMove
+    }
+  ) : {
+    initialViewState
+  };
 
   return (
     <div className="campaign-map">
       <Map
         ref={mapRef}
         mapboxAccessToken={mapboxAccessToken}
-        {...(viewState ? { 
-          longitude: viewState.longitude,
-          latitude: viewState.latitude,
-          zoom: viewState.zoom,
-          onMove: onMove 
-        } : { 
-          initialViewState 
-        })}
+        {...mapProps}
         style={{ width: '100%', height: '100%' }}
         mapStyle={mapStyle}
         attributionControl={true}

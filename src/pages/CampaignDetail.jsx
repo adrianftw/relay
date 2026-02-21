@@ -101,12 +101,11 @@ export const CampaignDetail = () => {
       generateRandomZipData(city);
     }
     
-    // Zoom map to city
+    // Zoom map to city (no animation on initial drill-down)
     setMapViewState({
       longitude: city.lng,
       latitude: city.lat,
-      zoom: 11, // Closer zoom for zip code level
-      transitionDuration: 1000
+      zoom: 11 // Closer zoom for zip code level
     });
   };
   
@@ -143,21 +142,20 @@ export const CampaignDetail = () => {
     setSearchValue('');
     setSortColumn(null);
     
-    // Zoom out to show all cities
+    // Zoom out to show all cities (no animation on view change)
     setMapViewState({
       longitude: -95.7,
       latitude: 37.1,
-      zoom: 4,
-      transitionDuration: 1000
+      zoom: 4
     });
   };
 
-  // Handler to zoom map to a specific city
-  const handleFocusCity = (lat, lng) => {
+  // Handler to zoom map to a specific area (city or ZIP)
+  const handleFocusArea = (lat, lng) => {
     setMapViewState({
       longitude: lng,
       latitude: lat,
-      zoom: viewMode === 'cities' ? 8 : 11, // Different zoom for cities vs zips
+      zoom: viewMode === 'cities' ? 8 : 13, // Zoom closer on individual ZIPs
       transitionDuration: 1000 // Smooth 1-second transition
     });
   };
@@ -390,7 +388,7 @@ export const CampaignDetail = () => {
                       qrScans={area.qrScans}
                       conversion={area.conversion}
                       progress={area.progress}
-                      onFocus={() => handleFocusCity(area.lat, area.lng)}
+                      onFocus={() => handleFocusArea(area.lat, area.lng)}
                       onZipClick={viewMode === 'cities' ? () => handleCityClick(area) : undefined}
                       href={viewMode === 'cities' ? undefined : `/campaigns/spring-mail/${area.state.toLowerCase()}/${area.city.toLowerCase().replace(/\s+/g, '-')}/${area.zip}`}
                     />

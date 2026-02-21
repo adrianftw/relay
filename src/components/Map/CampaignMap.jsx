@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, useImperativeHandle, forwardRef, useEffect } from 'react';
 import Map, { NavigationControl, FullscreenControl, Marker } from 'react-map-gl/mapbox';
 import 'mapbox-gl/dist/mapbox-gl.css';
 import './CampaignMap.css';
@@ -13,8 +13,9 @@ import './CampaignMap.css';
  * - Fullscreen control
  * - Responsive container
  * - Controlled viewport via viewState prop
+ * - Animated transitions when transitionDuration is provided
  */
-export const CampaignMap = ({
+export const CampaignMap = forwardRef(({
   viewState,
   onMove,
   markers = [], // Array of { lat, lng, color, label } for zip code markers
@@ -25,8 +26,28 @@ export const CampaignMap = ({
   },
   mapboxAccessToken = import.meta.env.VITE_MAPBOX_ACCESS_TOKEN,
   mapStyle = import.meta.env.VITE_MAPBOX_STYLE || 'mapbox://styles/adrianthomasdesign/cmlu39aqq00aj01qp47dx8uol'
-}) => {
+}, ref) => {
   const mapRef = useRef();
+
+  // Expose map methods to parent
+  useImperativeHandle(ref, () => ({
+    getMap: () => mapRef.current?.getMap(),
+  }));
+
+  // Handle animated transitions when viewState changes with transitionDuration
+  useEffect(() => {
+    if (viewState && viewState.transitionDuration && mapRef.current) {
+      const map = mapRef.current.getMap();
+      if (map) {
+        map.flyTo({
+          center: [viewState.longitude, viewState.latitude],
+          zoom: viewState.zoom,
+          duration: viewState.transitionDuration,
+          essential: true
+        });
+      }
+    }
+  }, [viewState?.longitude, viewState?.latitude, viewState?.zoom, viewState?.transitionDuration]);
 
   return (
     <div className="campaign-map">
@@ -34,7 +55,9 @@ export const CampaignMap = ({
         ref={mapRef}
         mapboxAccessToken={mapboxAccessToken}
         {...(viewState ? { 
-          ...viewState,
+          longitude: viewState.longitude,
+          latitude: viewState.latitude,
+          zoom: viewState.zoom,
           onMove: onMove 
         } : { 
           initialViewState 
@@ -80,6 +103,8 @@ export const CampaignMap = ({
       </Map>
     </div>
   );
-};
+});
+
+CampaignMap.displayName = 'CampaignMap';
 
 export default CampaignMap;

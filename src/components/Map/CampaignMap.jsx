@@ -1,5 +1,5 @@
 import React, { useRef } from 'react';
-import Map, { NavigationControl, FullscreenControl } from 'react-map-gl/mapbox';
+import Map, { NavigationControl, FullscreenControl, Marker } from 'react-map-gl/mapbox';
 import 'mapbox-gl/dist/mapbox-gl.css';
 import './CampaignMap.css';
 
@@ -17,6 +17,7 @@ import './CampaignMap.css';
 export const CampaignMap = ({
   viewState,
   onMove,
+  markers = [], // Array of { lat, lng, color, label } for zip code markers
   initialViewState = {
     longitude: -122.4,
     latitude: 37.8,
@@ -47,6 +48,35 @@ export const CampaignMap = ({
         
         {/* Fullscreen Control */}
         <FullscreenControl position="top-right" />
+        
+        {/* Zip Code Markers with color coding */}
+        {markers.map((marker, index) => (
+          <Marker
+            key={index}
+            longitude={marker.lng}
+            latitude={marker.lat}
+            anchor="center"
+          >
+            <div
+              style={{
+                width: '20px',
+                height: '20px',
+                borderRadius: '50%',
+                backgroundColor: marker.color,
+                border: '2px solid white',
+                boxShadow: '0 2px 4px rgba(0,0,0,0.3)',
+                cursor: 'pointer',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                fontSize: '10px',
+                fontWeight: 'bold',
+                color: 'white'
+              }}
+              title={marker.label}
+            />
+          </Marker>
+        ))}
       </Map>
     </div>
   );

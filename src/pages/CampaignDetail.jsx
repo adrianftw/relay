@@ -28,6 +28,9 @@ export const CampaignDetail = () => {
   const [loading, setLoading] = useState(true);
   const [sortColumn, setSortColumn] = useState(null); // 'qrScans' or 'conversion'
   const [sortDirection, setSortDirection] = useState('desc'); // 'asc' or 'desc'
+  const [viewMode, setViewMode] = useState('cities'); // 'cities' or 'zips'
+  const [selectedCity, setSelectedCity] = useState(null); // { city, state, lat, lng }
+  const [allCitiesData, setAllCitiesData] = useState([]); // Store all cities for going back
   
   // Map view state - controlled viewport
   const [mapViewState, setMapViewState] = useState({
@@ -36,12 +39,68 @@ export const CampaignDetail = () => {
     zoom: 9
   });
 
+  // Handler to drill into a city and show its zip codes
+  const handleCityClick = (city) => {
+    setSelectedCity(city);
+    setViewMode('zips');
+    setSearchValue(''); // Clear search when drilling down
+    setSortColumn(null); // Reset sort
+    
+    // Generate zip code data for this city (simulate 5-15 zip codes per city)
+    const numZips = Math.floor(Math.random() * 11) + 5; // 5-15 zips
+    const zipData = Array.from({ length: numZips }, (_, i) => {
+      // Generate realistic zip codes around the city
+      const baseZip = 10000 + Math.floor(Math.random() * 89999);
+      const latOffset = (Math.random() - 0.5) * 0.1; // ~5 mile radius
+      const lngOffset = (Math.random() - 0.5) * 0.1;
+      
+      return {
+        city: city.city,
+        state: city.state,
+        zip: String(baseZip + i),
+        lat: city.lat + latOffset,
+        lng: city.lng + lngOffset,
+        // Generate metrics for zips
+        qrScans: `${(Math.random() * 15 + 2).toFixed(1)}%`,
+        conversion: `${(Math.random() * 0.8).toFixed(2)}%`,
+        progress: Math.floor(Math.random() * 40 + 50),
+      };
+    });
+    
+    setAreaData(zipData);
+    
+    // Zoom map to city
+    setMapViewState({
+      longitude: city.lng,
+      latitude: city.lat,
+      zoom: 11, // Closer zoom for zip code level
+      transitionDuration: 1000
+    });
+  };
+  
+  // Handler to go back to cities view
+  const handleBackToCities = () => {
+    setViewMode('cities');
+    setSelectedCity(null);
+    setAreaData(allCitiesData);
+    setSearchValue('');
+    setSortColumn(null);
+    
+    // Zoom out to show all cities
+    setMapViewState({
+      longitude: -95.7,
+      latitude: 37.1,
+      zoom: 4,
+      transitionDuration: 1000
+    });
+  };
+
   // Handler to zoom map to a specific city
   const handleFocusCity = (lat, lng) => {
     setMapViewState({
       longitude: lng,
       latitude: lat,
-      zoom: 8, // Zoom in to city level
+      zoom: viewMode === 'cities' ? 8 : 11, // Different zoom for cities vs zips
       transitionDuration: 1000 // Smooth 1-second transition
     });
   };
@@ -71,6 +130,7 @@ export const CampaignDetail = () => {
           }));
         
         setAreaData(transformedData);
+        setAllCitiesData(transformedData);
         setLoading(false);
       },
       error: (error) => {
@@ -126,6 +186,28 @@ export const CampaignDetail = () => {
 
     return filtered;
   }, [areaData, searchValue, sortColumn, sortDirection]);
+  
+  // Generate map markers for zip codes with color coding based on QR scan percentage
+  const mapMarkers = useMemo(() => {
+    if (viewMode !== 'zips') return [];
+    
+    // Color scale function: lower % = red, higher % = green
+    const getColor = (qrScanPercent) => {
+      const percent = parseFloat(qrScanPercent);
+      // Scale: 0-5% = red, 5-10% = orange, 10-15% = yellow, 15%+ = green
+      if (percent < 5) return '#ef4444'; // red
+      if (percent < 10) return '#f97316'; // orange
+      if (percent < 15) return '#eab308'; // yellow
+      return '#22c55e'; // green
+    };
+    
+    return filteredAreaData.map(area => ({
+      lat: area.lat,
+      lng: area.lng,
+      color: getColor(area.qrScans),
+      label: `${area.zip}: ${area.qrScans} QR Scans`
+    }));
+  }, [viewMode, filteredAreaData]);
 
   // Sample data for DeliveryDetailsCard
   const deliveryData = [
@@ -141,7 +223,11 @@ export const CampaignDetail = () => {
         {/* Left Column: Content (8 columns) */}
         <div className="campaign-detail__content">
           {/* Back Button */}
-          <BackButton href="/campaigns">Back to Campaigns</BackButton>
+          {viewMode === 'cities' ? (
+            <BackButton href="/campaigns">Back to Campaigns</BackButton>
+          ) : (
+            <BackButton onClick={handleBackToCities}>Spring Mail Campaign</BackButton>
+          )}
           
           {/* Page Title */}
           <h1 className="campaign-detail__title">Spring Mail Campaign</h1>
@@ -194,7 +280,7 @@ export const CampaignDetail = () => {
                 <Search 
                   value={searchValue}
                   onChange={(e) => setSearchValue(e.target.value)}
-                  placeholder="Search Cities, ZIPs, Counties"
+                  placeholder={viewMode === 'cities' ? "Search Cities, States" : "Search ZIP Codes"}
                 />
                 
                 <button className="campaign-detail__filter-button">
@@ -218,7 +304,7 @@ export const CampaignDetail = () => {
             <div className="campaign-detail__table-container">
               {/* Table Headers */}
               <div className="campaign-detail__table-header">
-                <span className="campaign-detail__table-header-cell">Cities</span>
+                <span className="campaign-detail__table-header-cell">{viewMode === 'cities' ? 'Cities' : 'ZIPs'}</span>
                 <span className="campaign-detail__table-header-cell"></span> {/* Area Actions column */}
                 <button 
                   className="campaign-detail__table-header-cell campaign-detail__table-header-cell--sortable"
@@ -245,11 +331,11 @@ export const CampaignDetail = () => {
               <div className="campaign-detail__table-body">
                 {loading ? (
                   <div style={{ padding: '24px', textAlign: 'center', color: '#666' }}>
-                    Loading cities data...
+                    Loading {viewMode === 'cities' ? 'cities' : 'ZIP codes'} data...
                   </div>
                 ) : filteredAreaData.length === 0 ? (
                   <div style={{ padding: '24px', textAlign: 'center', color: '#666' }}>
-                    No cities found matching "{searchValue}"
+                    No {viewMode === 'cities' ? 'cities' : 'ZIP codes'} found matching "{searchValue}"
                   </div>
                 ) : (
                   filteredAreaData.map((area, index) => (
@@ -260,7 +346,8 @@ export const CampaignDetail = () => {
                       conversion={area.conversion}
                       progress={area.progress}
                       onFocus={() => handleFocusCity(area.lat, area.lng)}
-                      href={`/campaigns/spring-mail/${area.state.toLowerCase()}/${area.city.toLowerCase().replace(/\s+/g, '-')}`}
+                      onZipClick={viewMode === 'cities' ? () => handleCityClick(area) : undefined}
+                      href={viewMode === 'cities' ? undefined : `/campaigns/spring-mail/${area.state.toLowerCase()}/${area.city.toLowerCase().replace(/\s+/g, '-')}/${area.zip}`}
                     />
                   ))
                 )}
@@ -274,6 +361,7 @@ export const CampaignDetail = () => {
           <CampaignMap
             viewState={mapViewState}
             onMove={(evt) => setMapViewState(evt.viewState)}
+            markers={mapMarkers}
           />
         </div>
       </div>

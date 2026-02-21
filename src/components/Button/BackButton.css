@@ -1,0 +1,76 @@
+/* BackButton Component Styles */
+
+.relay-back-button {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--relay-space-01);
+  color: var(--relay-purple-base);
+  font-family: 'Helvetica', sans-serif;
+  font-weight: bold;
+  text-decoration: none;
+  background: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.relay-back-button:hover {
+  color: var(--relay-purple-light);
+}
+
+.relay-back-button:hover .relay-back-button__icon {
+  transform: translateX(-2px);
+}
+
+.relay-back-button:active {
+  color: var(--relay-purple-dark);
+}
+
+.relay-back-button:focus-visible {
+  outline: 2px solid var(--relay-purple-base);
+  outline-offset: 4px;
+  border-radius: var(--relay-radius-01);
+}
+
+/* Disabled state */
+.relay-back-button--disabled,
+.relay-back-button:disabled {
+  color: var(--relay-gray-05);
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.relay-back-button--disabled .relay-back-button__icon,
+.relay-back-button:disabled .relay-back-button__icon {
+  transform: none;
+}
+
+/* Size variants */
+.relay-back-button--small {
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.relay-back-button--medium {
+  font-size: 16px;
+  line-height: 22px;
+}
+
+.relay-back-button--large {
+  font-size: 18px;
+  line-height: 28px;
+}
+
+/* Icon styling */
+.relay-back-button__icon {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  transition: transform 0.2s ease;
+}
+
+.relay-back-button__text {
+  display: flex;
+  align-items: center;
+}

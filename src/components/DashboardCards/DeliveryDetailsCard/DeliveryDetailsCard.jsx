@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { MdQrCode2 } from 'react-icons/md';
+import { MdMailOutline } from 'react-icons/md';
 import { IconLockup } from '../IconLockup';
 import { DonutChart } from '../DonutChart';
 import './DeliveryDetailsCard.css';
@@ -17,7 +17,7 @@ import './DeliveryDetailsCard.css';
  * - 350px × 240px fixed size
  */
 export const DeliveryDetailsCard = ({ 
-  icon = MdQrCode2,
+  icon = MdMailOutline,
   label = 'QR Scans',
   total = '50,5689',
   data = [
@@ -96,8 +96,8 @@ DeliveryDetailsCard.propTypes = {
 };
 
 DeliveryDetailsCard.defaultProps = {
-  icon: MdQrCode2,
-  label: 'QR Scans',
+  icon: MdMailOutline,
+  label: 'MailPieces',
   total: '50,5689',
   data: [
     { label: 'Enroute', value: 3452, color: '#7DB7F1' },

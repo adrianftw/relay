@@ -1,7 +1,7 @@
 import React from 'react';
 import { DeliveryDetailsCard } from './DeliveryDetailsCard';
 import { 
-  MdQrCode2, 
+  MdMailOutline, 
   MdLocalShipping,
   MdInventory,
   MdStore,
@@ -16,11 +16,11 @@ export default {
   tags: ['autodocs'],
 };
 
-// Default - QR Scans
+// Default - MailPieces
 export const Default = {
   args: {
-    icon: MdQrCode2,
-    label: 'QR Scans',
+    icon: MdMailOutline,
+    label: 'MailPieces',
     total: '50,5689',
     data: [
       { label: 'Enroute', value: 3452, color: '#7DB7F1' },

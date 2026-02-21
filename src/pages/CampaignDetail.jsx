@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import Papa from 'papaparse';
-import { MdQrCode2, MdTrendingUp, MdAttachMoney, MdShoppingCart, MdFilterList, MdKeyboardArrowDown, MdArrowUpward, MdArrowDownward } from 'react-icons/md';
+import { MdQrCode2, MdMailOutline, MdTrendingUp, MdAttachMoney, MdShoppingCart, MdFilterList, MdKeyboardArrowDown, MdArrowUpward, MdArrowDownward } from 'react-icons/md';
 import { DeliveryDetailsCard } from '../components/DashboardCards/DeliveryDetailsCard';
 import { LightCard } from '../components/DashboardCards/LightCard';
 import { Search } from '../components/Search/Search';
@@ -353,8 +353,8 @@ export const CampaignDetail = () => {
           {/* Dashboard Cards Section */}
           <section className="campaign-detail__dashboard">
             <DeliveryDetailsCard
-              icon={MdQrCode2}
-              label="QR Scans"
+              icon={MdMailOutline}
+              label="MailPieces"
               total={Math.round(animatedTotalScans).toLocaleString()}
               data={dashboardMetrics.deliveryData}
             />

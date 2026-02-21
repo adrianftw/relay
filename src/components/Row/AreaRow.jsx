@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { ProgressBar } from '../ProgressBar/ProgressBar';
 import RowIcon from './RowIcon';
+import { Tooltip } from '../Tooltip/Tooltip';
 import './AreaRow.css';
 
 /**
@@ -68,8 +69,12 @@ const AreaRow = ({
 
         {/* Area Actions - Focus and Pin icons */}
         <div className="relay-area-row__actions">
-          <RowIcon icon="focus" type="light" />
-          <RowIcon icon="pin" type="light" />
+          <Tooltip content="Focus on area" position="top" delay={200}>
+            <RowIcon icon="focus" type="light" />
+          </Tooltip>
+          <Tooltip content="Pin area" position="top" delay={200}>
+            <RowIcon icon="pin" type="light" />
+          </Tooltip>
         </div>
 
         {/* QR Scans Percentage */}

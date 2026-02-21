@@ -4,6 +4,7 @@ import { DeliveryDetailsCard } from '../components/DashboardCards/DeliveryDetail
 import { LightCard } from '../components/DashboardCards/LightCard';
 import { Search } from '../components/Search/Search';
 import AreaRow from '../components/Row/AreaRow';
+import { CampaignMap } from '../components/Map/CampaignMap';
 import './CampaignDetail.css';
 
 /**
@@ -155,9 +156,15 @@ export const CampaignDetail = () => {
       </section>
         </div>
 
-        {/* Right Column: Placeholder Container (4 columns) */}
+        {/* Right Column: Map Container (4 columns) */}
         <div className="campaign-detail__placeholder">
-          {/* Placeholder for map or other content */}
+          <CampaignMap
+            initialViewState={{
+              longitude: -122.4,
+              latitude: 37.8,
+              zoom: 9
+            }}
+          />
         </div>
       </div>
     </div>

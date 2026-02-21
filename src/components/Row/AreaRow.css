@@ -36,13 +36,29 @@
   display: flex;
   align-items: center;
   gap: var(--relay-space-03); /* 16px between icons */
-  opacity: 0;
-  transition: opacity 0.15s ease;
 }
 
-/* Show Area Actions on row hover */
-.relay-area-row:hover .relay-area-row__actions {
+/* Individual action buttons - hidden by default */
+.relay-area-row__actions > button {
+  opacity: 0;
+  transform: translateY(4px);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+/* First button - Focus icon */
+.relay-area-row__actions > button:first-child {
+  transition-delay: 0s;
+}
+
+/* Second button - Pin icon */
+.relay-area-row__actions > button:nth-child(2) {
+  transition-delay: 0.08s;
+}
+
+/* Show Area Actions on row hover - staggered animation */
+.relay-area-row:hover .relay-area-row__actions > button {
   opacity: 1;
+  transform: translateY(0);
 }
 
 /* ZIP Code Link */

@@ -250,13 +250,78 @@ export const CampaignDetail = () => {
     return import.meta.env.VITE_MAPBOX_STYLE || 'mapbox://styles/adrianthomasdesign/cmlu39aqq00aj01qp47dx8uol';
   }, [viewMode, selectedCity]);
 
-  // Sample data for DeliveryDetailsCard
-  const deliveryData = [
-    { label: 'Enroute', value: 3452, color: '#7DB7F1' },
-    { label: 'Processing', value: 3452, color: '#FFFFFF' },
-    { label: 'Delivered', value: 3452, color: '#A6A6EF' },
-    { label: 'Returned', value: 3452, color: '#DA291C' },
-  ];
+  // Calculate dashboard metrics based on current data
+  const dashboardMetrics = useMemo(() => {
+    if (viewMode === 'zips' && areaData.length > 0) {
+      // Calculate from ZIP data
+      const totalZips = areaData.length;
+      
+      // Calculate average QR scan rate
+      const avgQRRate = areaData.reduce((sum, area) => {
+        return sum + parseFloat(area.qrScans);
+      }, 0) / totalZips;
+      
+      // Calculate average conversion rate
+      const avgConversionRate = areaData.reduce((sum, area) => {
+        return sum + parseFloat(area.conversion);
+      }, 0) / totalZips;
+      
+      // Assume ~10,000 pieces sent per ZIP on average for total scans calculation
+      const approximatePiecesPerZip = 10000;
+      const totalPiecesSent = totalZips * approximatePiecesPerZip;
+      const totalScans = Math.round(totalPiecesSent * (avgQRRate / 100));
+      const totalConversions = Math.round(totalScans * (avgConversionRate / 100));
+      
+      // Calculate revenue (assuming $300 average order value)
+      const avgOrderValue = 300;
+      const totalRevenue = totalConversions * avgOrderValue;
+      
+      // Calculate CPA (assuming $0.50 cost per piece)
+      const costPerPiece = 0.50;
+      const totalCost = totalPiecesSent * costPerPiece;
+      const cpa = totalConversions > 0 ? totalCost / totalConversions : 0;
+      
+      // Calculate delivery status distribution based on progress
+      const avgProgress = areaData.reduce((sum, area) => sum + area.progress, 0) / totalZips;
+      const deliveredCount = Math.round(totalPiecesSent * (avgProgress / 100));
+      const enrouteCount = Math.round(totalPiecesSent * 0.15);
+      const processingCount = Math.round(totalPiecesSent * 0.10);
+      const returnedCount = totalPiecesSent - deliveredCount - enrouteCount - processingCount;
+      
+      return {
+        totalScans: totalScans.toLocaleString(),
+        qrScanRate: `${avgQRRate.toFixed(1)}%`,
+        qrScanCount: `${totalScans.toLocaleString()} scans`,
+        conversionRate: `${avgConversionRate.toFixed(2)}%`,
+        conversionCount: `${totalConversions.toLocaleString()} conversions`,
+        revenue: `$${totalRevenue.toLocaleString()}`,
+        cpa: `$${cpa.toFixed(2)}`,
+        deliveryData: [
+          { label: 'Enroute', value: enrouteCount, color: '#7DB7F1' },
+          { label: 'Processing', value: processingCount, color: '#FFFFFF' },
+          { label: 'Delivered', value: deliveredCount, color: '#A6A6EF' },
+          { label: 'Returned', value: returnedCount, color: '#DA291C' },
+        ]
+      };
+    }
+    
+    // Default values for cities view
+    return {
+      totalScans: '50,5689',
+      qrScanRate: '9%',
+      qrScanCount: '532 scans',
+      conversionRate: '0.3%',
+      conversionCount: '154 conversions',
+      revenue: '$48,300',
+      cpa: '$3.95',
+      deliveryData: [
+        { label: 'Enroute', value: 3452, color: '#7DB7F1' },
+        { label: 'Processing', value: 3452, color: '#FFFFFF' },
+        { label: 'Delivered', value: 3452, color: '#A6A6EF' },
+        { label: 'Returned', value: 3452, color: '#DA291C' },
+      ]
+    };
+  }, [viewMode, areaData]);
 
   return (
     <div className="campaign-detail-page">
@@ -280,36 +345,36 @@ export const CampaignDetail = () => {
             <DeliveryDetailsCard
               icon={MdQrCode2}
               label="QR Scans"
-              total="50,5689"
-              data={deliveryData}
+              total={dashboardMetrics.totalScans}
+              data={dashboardMetrics.deliveryData}
             />
             
             <div className="campaign-detail__metrics-grid">
               <LightCard
                 icon={MdQrCode2}
                 label="QR Scans"
-                value="9%"
-                description="532 scans"
+                value={dashboardMetrics.qrScanRate}
+                description={dashboardMetrics.qrScanCount}
               />
               
               <LightCard
                 icon={MdTrendingUp}
                 label="Conversion Rate"
-                value="0.3%"
-                description="154 conversions"
+                value={dashboardMetrics.conversionRate}
+                description={dashboardMetrics.conversionCount}
               />
               
               <LightCard
                 icon={MdAttachMoney}
                 label="Revenue Attached"
-                value="$48,300"
+                value={dashboardMetrics.revenue}
                 description=""
               />
               
               <LightCard
                 icon={MdShoppingCart}
                 label="Cost Per Acquisition"
-                value="$3.95"
+                value={dashboardMetrics.cpa}
                 description=""
               />
             </div>

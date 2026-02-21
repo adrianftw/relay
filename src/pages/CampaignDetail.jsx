@@ -266,6 +266,14 @@ export const CampaignDetail = () => {
     }));
   }, [viewMode, filteredAreaData]);
 
+  // Conditional map style - use custom Atlanta style only when viewing Atlanta ZIPs
+  const mapStyle = useMemo(() => {
+    if (viewMode === 'zips' && selectedCity?.city === 'Atlanta' && selectedCity?.state === 'GA') {
+      return 'mapbox://styles/adrianthomasdesign/cmlwkt6vw000601s7hzuh3zm6';
+    }
+    return import.meta.env.VITE_MAPBOX_STYLE || 'mapbox://styles/adrianthomasdesign/cmlu39aqq00aj01qp47dx8uol';
+  }, [viewMode, selectedCity]);
+
   // Sample data for DeliveryDetailsCard
   const deliveryData = [
     { label: 'Enroute', value: 3452, color: '#7DB7F1' },
@@ -421,6 +429,7 @@ export const CampaignDetail = () => {
             viewState={mapViewState}
             onMove={(evt) => setMapViewState(evt.viewState)}
             markers={mapMarkers}
+            mapStyle={mapStyle}
           />
         </div>
       </div>

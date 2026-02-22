@@ -248,11 +248,13 @@ export const CampaignDetail = () => {
   }, [areaData, searchValue, sortColumn, sortDirection]);
 
   // Conditional map style - use custom Atlanta style only when viewing Atlanta ZIPs
+  // Add timestamp for cache-busting to force style reload
   const mapStyle = useMemo(() => {
+    const timestamp = Date.now();
     if (viewMode === 'zips' && selectedCity?.city === 'Atlanta' && selectedCity?.state === 'GA') {
-      return 'mapbox://styles/adrianthomasdesign/cmlwkt6vw000601s7hzuh3zm6';
+      return `mapbox://styles/adrianthomasdesign/cmlwkt6vw000601s7hzuh3zm6?fresh=${timestamp}`;
     }
-    return import.meta.env.VITE_MAPBOX_STYLE || 'mapbox://styles/adrianthomasdesign/cmlu39aqq00aj01qp47dx8uol';
+    return `${import.meta.env.VITE_MAPBOX_STYLE || 'mapbox://styles/adrianthomasdesign/cmlu39aqq00aj01qp47dx8uol'}?fresh=${timestamp}`;
   }, [viewMode, selectedCity]);
 
   // Calculate dashboard metrics based on current data

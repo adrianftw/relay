@@ -19,12 +19,12 @@
   align-items: center;
 }
 
-/* Left section - IconLockup + Total + Legend (hug contents) */
+/* Left section - IconLockup + Total + Legend */
 .relay-delivery-details-card__left {
   display: flex;
   flex-direction: column;
   gap: 13px;
-  width: fit-content; /* Hug contents */
+  width: 172px;
   flex-shrink: 0;
 }
 

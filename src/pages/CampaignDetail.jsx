@@ -271,9 +271,8 @@ export const CampaignDetail = () => {
         return sum + parseFloat(area.conversion);
       }, 0) / totalZips;
       
-      // Assume ~10,000 pieces sent per ZIP on average for total scans calculation
-      const approximatePiecesPerZip = 10000;
-      const totalPiecesSent = totalZips * approximatePiecesPerZip;
+      // Total mail pieces for Atlanta campaign
+      const totalPiecesSent = 102836491;
       const totalScans = Math.round(totalPiecesSent * (avgQRRate / 100));
       const totalConversions = Math.round(totalScans * (avgConversionRate / 100));
       
@@ -286,12 +285,11 @@ export const CampaignDetail = () => {
       const totalCost = totalPiecesSent * costPerPiece;
       const cpa = totalConversions > 0 ? totalCost / totalConversions : 0;
       
-      // Calculate delivery status distribution based on progress
-      const avgProgress = areaData.reduce((sum, area) => sum + area.progress, 0) / totalZips;
-      const deliveredCount = Math.round(totalPiecesSent * (avgProgress / 100));
-      const enrouteCount = Math.round(totalPiecesSent * 0.15);
-      const processingCount = Math.round(totalPiecesSent * 0.10);
-      const returnedCount = totalPiecesSent - deliveredCount - enrouteCount - processingCount;
+      // Delivery status distribution - realistic numbers that add up to total
+      const deliveredCount = 82269193;  // ~80% delivered
+      const enrouteCount = 15425474;    // ~15% in transit
+      const processingCount = 4113460;  // ~4% processing
+      const returnedCount = 1028364;    // ~1% returned (small as requested)
       
       return {
         totalScansRaw: totalScans,
@@ -320,10 +318,10 @@ export const CampaignDetail = () => {
       revenueRaw: 48300,
       cpaRaw: 3.95,
       deliveryData: [
-        { label: 'Enroute', value: 3452, color: '#7DB7F1' },
-        { label: 'Processing', value: 3452, color: '#FFFFFF' },
-        { label: 'Delivered', value: 3452, color: '#A6A6EF' },
-        { label: 'Returned', value: 3452, color: '#DA291C' },
+        { label: 'Enroute', value: 7603, color: '#7DB7F1' },
+        { label: 'Processing', value: 2028, color: '#FFFFFF' },
+        { label: 'Delivered', value: 40551, color: '#A6A6EF' },
+        { label: 'Returned', value: 507, color: '#DA291C' },
       ]
     };
   }, [viewMode, areaData]);

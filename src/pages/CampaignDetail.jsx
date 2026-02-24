@@ -292,6 +292,7 @@ export const CampaignDetail = () => {
       const returnedCount = 4291;     // ~1% returned (small as requested)
       
       return {
+        totalPiecesSentRaw: totalPiecesSent,
         totalScansRaw: totalScans,
         qrScanRateRaw: avgQRRate,
         totalScansCountRaw: totalScans,
@@ -310,6 +311,7 @@ export const CampaignDetail = () => {
     
     // Default values for cities view
     return {
+      totalPiecesSentRaw: 50689,
       totalScansRaw: 50689,
       qrScanRateRaw: 9,
       totalScansCountRaw: 532,
@@ -327,6 +329,7 @@ export const CampaignDetail = () => {
   }, [viewMode, areaData]);
 
   // Animate metric values
+  const animatedTotalPiecesSent = useCountUp(dashboardMetrics.totalPiecesSentRaw);
   const animatedTotalScans = useCountUp(dashboardMetrics.totalScansRaw);
   const animatedQRRate = useCountUp(dashboardMetrics.qrScanRateRaw);
   const animatedTotalScansCount = useCountUp(dashboardMetrics.totalScansCountRaw);
@@ -357,7 +360,7 @@ export const CampaignDetail = () => {
             <DeliveryDetailsCard
               icon={MdMailOutline}
               label="MailPieces"
-              total={Math.round(animatedTotalScans).toLocaleString()}
+              total={Math.round(animatedTotalPiecesSent).toLocaleString()}
               data={dashboardMetrics.deliveryData}
             />
             

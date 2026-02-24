@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import Papa from 'papaparse';
-import { MdQrCode2, MdMailOutline, MdTrendingUp, MdAttachMoney, MdShoppingCart, MdAccountCircle, MdFilterList, MdKeyboardArrowDown, MdArrowUpward, MdArrowDownward } from 'react-icons/md';
+import { MdQrCode2, MdMailOutline, MdShowChart, MdAttachMoney, MdShoppingCart, MdPerson, MdFilterList, MdKeyboardArrowDown, MdArrowUpward, MdArrowDownward } from 'react-icons/md';
 import { DeliveryDetailsCard } from '../components/DashboardCards/DeliveryDetailsCard';
 import { LightCard } from '../components/DashboardCards/LightCard';
 import { Search } from '../components/Search/Search';
@@ -373,7 +373,7 @@ export const CampaignDetail = () => {
               />
               
               <LightCard
-                icon={MdTrendingUp}
+                icon={MdShowChart}
                 label="Conversion Rate"
                 value={`${animatedConversionRate.toFixed(2)}%`}
                 description={`${Math.round(animatedConversionsCount).toLocaleString()} conversions`}
@@ -387,7 +387,7 @@ export const CampaignDetail = () => {
               />
               
               <LightCard
-                icon={MdAccountCircle}
+                icon={MdPerson}
                 label="Cost Per Acquisition"
                 value={`$${animatedCPA.toFixed(2)}`}
                 description=""

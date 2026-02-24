@@ -311,7 +311,7 @@ export const CampaignDetail = () => {
     
     // Default values for cities view - multi-regional campaign
     return {
-      totalPiecesSentRaw: 30000000,
+      totalPiecesSentRaw: 31495912,
       totalScansRaw: 50689,
       qrScanRateRaw: 9,
       totalScansCountRaw: 532,
@@ -320,10 +320,10 @@ export const CampaignDetail = () => {
       revenueRaw: 48300,
       cpaRaw: 3.95,
       deliveryData: [
-        { label: 'Enroute', value: 4500000, color: '#7DB7F1' },
-        { label: 'Processing', value: 1200000, color: '#FFFFFF' },
-        { label: 'Delivered', value: 24000000, color: '#A6A6EF' },
-        { label: 'Returned', value: 300000, color: '#DA291C' },
+        { label: 'Enroute', value: 9448774, color: '#7DB7F1' },
+        { label: 'Processing', value: 2834632, color: '#FFFFFF' },
+        { label: 'Delivered', value: 18897547, color: '#A6A6EF' },
+        { label: 'Returned', value: 314959, color: '#DA291C' },
       ]
     };
   }, [viewMode, areaData]);

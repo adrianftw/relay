@@ -272,7 +272,7 @@ export const CampaignDetail = () => {
       }, 0) / totalZips;
       
       // Total mail pieces for Atlanta campaign
-      const totalPiecesSent = 102836491;
+      const totalPiecesSent = 429048;
       const totalScans = Math.round(totalPiecesSent * (avgQRRate / 100));
       const totalConversions = Math.round(totalScans * (avgConversionRate / 100));
       
@@ -286,10 +286,10 @@ export const CampaignDetail = () => {
       const cpa = totalConversions > 0 ? totalCost / totalConversions : 0;
       
       // Delivery status distribution - realistic numbers that add up to total
-      const deliveredCount = 82269193;  // ~80% delivered
-      const enrouteCount = 15425474;    // ~15% in transit
-      const processingCount = 4113460;  // ~4% processing
-      const returnedCount = 1028364;    // ~1% returned (small as requested)
+      const deliveredCount = 343238;  // ~80% delivered
+      const enrouteCount = 64357;     // ~15% in transit
+      const processingCount = 17162;  // ~4% processing
+      const returnedCount = 4291;     // ~1% returned (small as requested)
       
       return {
         totalScansRaw: totalScans,

@@ -300,6 +300,7 @@
   height: 240px; /* Fixed height to match map bottom alignment */
   flex-shrink: 0; /* Prevent shrinking */
   margin-bottom: var(--relay-space-05); /* 32px below dashboard */
+  width: 100%; /* Full width of parent container */
 }
 
 /* Metrics Grid - 2x2 grid of Light Cards */
@@ -309,16 +310,18 @@
   grid-template-rows: repeat(2, 1fr); /* 2 equal rows filling available height */
   gap: 16px; /* Gutter from grid system */
   height: 100%; /* Fill parent (240px from DeliveryDetailsCard) */
+  width: 100%; /* Full width of parent */
 }
 
 /* Responsive adjustments */
 @media (max-width: 1400px) {
   .campaign-detail__dashboard {
-    max-width: 100%;
+    width: 100%;
   }
   
   .campaign-detail__metrics-grid {
-    grid-template-columns: repeat(2, minmax(200px, 228px));
+    grid-template-columns: repeat(2, 1fr);
+    width: 100%;
   }
 }
 

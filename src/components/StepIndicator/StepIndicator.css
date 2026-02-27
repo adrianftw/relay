@@ -1,0 +1,199 @@
+/**
+ * StepIndicator Component Styles
+ * 
+ * Following USWDS Step Indicator patterns with Relay design tokens
+ * 
+ * States:
+ * - complete: Purple background (--relay-purple-base)
+ * - active: Blue text (--relay-blue-base), partial progress bar
+ * - default: Gray (--relay-gray-04 background, --relay-gray-07 text)
+ */
+
+/* Container */
+.relay-step-indicator {
+  width: 100%;
+  margin: var(--relay-space-03) 0; /* 16px top/bottom */
+}
+
+/* Step list */
+.relay-step-indicator__list {
+  display: flex;
+  gap: 2px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  counter-reset: step-counter;
+}
+
+/* Individual step segment */
+.relay-step-indicator__segment {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--relay-space-02); /* 8px */
+  position: relative;
+}
+
+/* Progress bar */
+.relay-step-indicator__segment-bar {
+  height: 8px;
+  width: 100%;
+  background-color: var(--relay-gray-04); /* Default: light gray */
+  transition: background-color 0.3s ease;
+  position: relative;
+}
+
+/* Complete state - full purple bar */
+.relay-step-indicator__segment--complete .relay-step-indicator__segment-bar {
+  background-color: var(--relay-purple-base); /* #333366 */
+}
+
+/* Active state - half blue, half gray bar */
+.relay-step-indicator__segment--active .relay-step-indicator__segment-bar {
+  background: linear-gradient(
+    to right,
+    var(--relay-blue-base) 0%,
+    var(--relay-blue-base) 50%,
+    var(--relay-gray-04) 50%,
+    var(--relay-gray-04) 100%
+  );
+}
+
+/* Label container */
+.relay-step-indicator__segment-label {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+/* Step heading/text */
+.relay-step-indicator__segment-heading {
+  font-family: 'Helvetica', sans-serif;
+  font-size: 1rem; /* 16px */
+  line-height: 1.375; /* 22px */
+  font-weight: 400; /* Regular */
+  color: var(--relay-gray-07); /* #4F5458 - Grayscale/07 */
+  margin: 0;
+}
+
+/* Active step - bold blue text */
+.relay-step-indicator__segment--active .relay-step-indicator__segment-heading {
+  font-weight: 700; /* Bold */
+  color: var(--relay-blue-base); /* #004B87 - Brand/Blue/Base */
+}
+
+/* Complete step - regular gray text */
+.relay-step-indicator__segment--complete .relay-step-indicator__segment-heading {
+  color: var(--relay-gray-07); /* #4F5458 */
+}
+
+/* Default step - lighter gray text */
+.relay-step-indicator__segment--default .relay-step-indicator__segment-heading {
+  color: var(--relay-gray-06); /* #74787C - Grayscale/06 */
+}
+
+/* Step counter (optional) */
+.relay-step-indicator__segment-counter {
+  font-family: 'Helvetica', sans-serif;
+  font-size: 0.875rem; /* 14px */
+  font-weight: 700;
+  color: var(--relay-gray-06);
+  margin-bottom: 4px;
+  display: none; /* Hidden by default, shown with counters variant */
+}
+
+/* Show counters when enabled */
+.relay-step-indicator:not(.relay-step-indicator--counters-none) .relay-step-indicator__segment-counter {
+  display: block;
+}
+
+/* Active step counter */
+.relay-step-indicator__segment--active .relay-step-indicator__segment-counter {
+  color: var(--relay-blue-base);
+}
+
+/* Complete step counter */
+.relay-step-indicator__segment--complete .relay-step-indicator__segment-counter {
+  color: var(--relay-purple-base);
+}
+
+/* ============================================ */
+/* VARIANTS */
+/* ============================================ */
+
+/* Centered labels */
+.relay-step-indicator--centered .relay-step-indicator__segment-label {
+  align-items: center;
+  text-align: center;
+}
+
+.relay-step-indicator--centered .relay-step-indicator__segment-heading {
+  text-align: center;
+}
+
+/* No labels variant */
+.relay-step-indicator--no-labels .relay-step-indicator__segment-label {
+  display: none;
+}
+
+/* Small counters variant */
+.relay-step-indicator--counters-small .relay-step-indicator__segment-counter {
+  font-size: 0.75rem; /* 12px */
+}
+
+/* ============================================ */
+/* ACCESSIBILITY */
+/* ============================================ */
+
+/* Screen reader only text for step status */
+.relay-step-indicator__segment[aria-current="step"]::before {
+  content: "Current step: ";
+  position: absolute;
+  left: -10000px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+/* ============================================ */
+/* RESPONSIVE */
+/* ============================================ */
+
+/* Mobile: Stack vertically on small screens */
+@media (max-width: 640px) {
+  .relay-step-indicator__list {
+    flex-direction: column;
+    gap: var(--relay-space-02); /* 8px */
+  }
+
+  .relay-step-indicator__segment {
+    flex-direction: row;
+    gap: var(--relay-space-03); /* 16px */
+  }
+
+  .relay-step-indicator__segment-bar {
+    width: 8px;
+    height: auto;
+    min-height: 48px;
+  }
+
+  /* Vertical bars for mobile */
+  .relay-step-indicator__segment--active .relay-step-indicator__segment-bar {
+    background: linear-gradient(
+      to bottom,
+      var(--relay-blue-base) 0%,
+      var(--relay-blue-base) 50%,
+      var(--relay-gray-04) 50%,
+      var(--relay-gray-04) 100%
+    );
+  }
+
+  .relay-step-indicator__segment-label {
+    flex: 1;
+  }
+
+  .relay-step-indicator--centered .relay-step-indicator__segment-label {
+    align-items: flex-start;
+    text-align: left;
+  }
+}

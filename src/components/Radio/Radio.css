@@ -4,7 +4,6 @@
 .relay-radio {
   position: relative;
   display: flex;
-  align-items: flex-start;
   margin-bottom: var(--relay-space-02); /* 8px */
 }
 
@@ -19,44 +18,80 @@
 
 .relay-radio__label {
   display: flex;
-  align-items: center;
-  gap: var(--relay-space-02); /* 8px */
+  width: 100%;
   cursor: pointer;
   user-select: none;
-  color: var(--relay-gray-08);
-  font-size: 1rem;
-  line-height: 1.5;
-  min-height: 24px;
+  background-color: var(--relay-gray-01);
+  border: 1px solid var(--relay-gray-04); /* Gray border when unchecked */
+  border-radius: var(--relay-radius-02); /* 8px */
+  overflow: hidden;
+  transition: all 0.2s ease-in-out;
+}
+
+/* Left section with the atom icon */
+.relay-radio__icon-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  flex-shrink: 0;
+  background-color: var(--relay-gray-02); /* Light gray background */
+  border-right: 1px solid var(--relay-gray-04);
+  padding: var(--relay-space-03) 0; /* 16px top/bottom */
+  transition: all 0.2s ease-in-out;
 }
 
 .relay-radio__atom {
   flex-shrink: 0;
 }
 
+/* Right section with label text */
+.relay-radio__text-container {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  padding: var(--relay-space-04); /* 24px */
+  min-height: 64px;
+}
+
 .relay-radio__text {
-  padding-top: 2px; /* Optical alignment */
+  color: var(--relay-gray-08);
+  font-size: 1rem;
+  line-height: 1.375; /* 22px */
+}
+
+/* Checked state - purple border and background */
+.relay-radio__input:checked + .relay-radio__label {
+  border: 2px solid var(--relay-purple-base); /* Purple 2px border */
+  padding: 0; /* Account for larger border */
+}
+
+.relay-radio__input:checked + .relay-radio__label .relay-radio__icon-container {
+  background-color: var(--relay-purple-lightest); /* Light purple background */
+  border-right: 2px solid var(--relay-purple-base);
 }
 
 /* Hover state */
 .relay-radio:not(.relay-radio--disabled) .relay-radio__label:hover {
+  border-color: var(--relay-purple-dark);
+}
+
+.relay-radio:not(.relay-radio--disabled) .relay-radio__label:hover .relay-radio__text {
   color: var(--relay-purple-dark);
 }
 
 /* Focus state for accessibility */
-.relay-radio__input:focus + .relay-radio__label .relay-radio__atom {
+.relay-radio__input:focus + .relay-radio__label {
   outline: 2px solid var(--relay-purple-base);
   outline-offset: 2px;
-  border-radius: 50%;
 }
 
 /* Disabled state */
 .relay-radio--disabled .relay-radio__label {
   cursor: not-allowed;
-  color: var(--relay-gray-06);
   opacity: 0.6;
 }
 
-/* Active/pressed state */
-.relay-radio__input:active:not(:disabled) + .relay-radio__label .relay-radio__atom {
-  transform: scale(0.95);
+.relay-radio--disabled .relay-radio__text {
+  color: var(--relay-gray-06);
 }

@@ -46,13 +46,17 @@ const Radio = ({
         {...props}
       />
       <label htmlFor={inputId} className="relay-radio__label">
-        <SelectionAtom 
-          type="radio" 
-          checked={checked} 
-          disabled={disabled}
-          className="relay-radio__atom"
-        />
-        {label && <span className="relay-radio__text">{label}</span>}
+        <div className="relay-radio__icon-container">
+          <SelectionAtom 
+            type="radio" 
+            checked={checked} 
+            disabled={disabled}
+            className="relay-radio__atom"
+          />
+        </div>
+        <div className="relay-radio__text-container">
+          {label && <span className="relay-radio__text">{label}</span>}
+        </div>
       </label>
     </div>
   );

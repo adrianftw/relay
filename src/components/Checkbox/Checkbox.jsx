@@ -46,13 +46,17 @@ const Checkbox = ({
         {...props}
       />
       <label htmlFor={inputId} className="relay-checkbox__label">
-        <SelectionAtom 
-          type="checkbox" 
-          checked={checked} 
-          disabled={disabled}
-          className="relay-checkbox__atom"
-        />
-        {label && <span className="relay-checkbox__text">{label}</span>}
+        <div className="relay-checkbox__icon-container">
+          <SelectionAtom 
+            type="checkbox" 
+            checked={checked} 
+            disabled={disabled}
+            className="relay-checkbox__atom"
+          />
+        </div>
+        <div className="relay-checkbox__text-container">
+          {label && <span className="relay-checkbox__text">{label}</span>}
+        </div>
       </label>
     </div>
   );

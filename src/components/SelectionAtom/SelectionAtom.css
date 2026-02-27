@@ -1,0 +1,48 @@
+/* SelectionAtom Component Styles */
+/* Uses Relay Design System Tokens */
+
+.relay-selection-atom {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.relay-selection-atom__icon {
+  width: 100%;
+  height: 100%;
+  display: block;
+  transition: color 0.15s ease-in-out;
+}
+
+/* Default/Unchecked State */
+.relay-selection-atom__icon {
+  color: var(--relay-gray-06); /* Grayscale/06 from Figma */
+}
+
+/* Checked State */
+.relay-selection-atom--checked .relay-selection-atom__icon {
+  color: var(--relay-purple-base); /* Brand/Purple/Base from Figma */
+}
+
+/* Disabled State */
+.relay-selection-atom--disabled .relay-selection-atom__icon {
+  color: var(--relay-gray-04);
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Hover State (when not disabled) */
+.relay-selection-atom:not(.relay-selection-atom--disabled):hover .relay-selection-atom__icon {
+  color: var(--relay-purple-dark);
+}
+
+/* Focus State (for accessibility) */
+.relay-selection-atom:focus-within .relay-selection-atom__icon {
+  outline: 2px solid var(--relay-purple-base);
+  outline-offset: 2px;
+  border-radius: var(--relay-radius-01);
+}

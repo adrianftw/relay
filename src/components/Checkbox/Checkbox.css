@@ -1,0 +1,62 @@
+/* Checkbox Component Styles */
+/* Follows USWDS patterns with Relay design tokens */
+
+.relay-checkbox {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: var(--relay-space-02); /* 8px */
+}
+
+/* Hide the native input but keep it accessible */
+.relay-checkbox__input {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+}
+
+.relay-checkbox__label {
+  display: flex;
+  align-items: center;
+  gap: var(--relay-space-02); /* 8px */
+  cursor: pointer;
+  user-select: none;
+  color: var(--relay-gray-08);
+  font-size: 1rem;
+  line-height: 1.5;
+  min-height: 24px;
+}
+
+.relay-checkbox__atom {
+  flex-shrink: 0;
+}
+
+.relay-checkbox__text {
+  padding-top: 2px; /* Optical alignment */
+}
+
+/* Hover state */
+.relay-checkbox:not(.relay-checkbox--disabled) .relay-checkbox__label:hover {
+  color: var(--relay-purple-dark);
+}
+
+/* Focus state for accessibility */
+.relay-checkbox__input:focus + .relay-checkbox__label .relay-checkbox__atom {
+  outline: 2px solid var(--relay-purple-base);
+  outline-offset: 2px;
+  border-radius: var(--relay-radius-01);
+}
+
+/* Disabled state */
+.relay-checkbox--disabled .relay-checkbox__label {
+  cursor: not-allowed;
+  color: var(--relay-gray-06);
+  opacity: 0.6;
+}
+
+/* Active/pressed state */
+.relay-checkbox__input:active:not(:disabled) + .relay-checkbox__label .relay-checkbox__atom {
+  transform: scale(0.95);
+}

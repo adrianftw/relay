@@ -54,10 +54,25 @@
   min-height: 64px;
 }
 
+.relay-checkbox__content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--relay-space-01); /* 4px */
+  width: 100%;
+}
+
 .relay-checkbox__text {
   color: var(--relay-gray-08);
-  font-size: 1rem;
+  font-size: 1rem; /* 16px */
   line-height: 1.375; /* 22px */
+  font-weight: 700; /* Bold when description exists */
+}
+
+.relay-checkbox__description {
+  color: var(--relay-gray-08);
+  font-size: 0.875rem; /* 14px */
+  line-height: 1.43; /* 20px */
+  font-weight: 400; /* Regular */
 }
 
 /* Checked state - purple border and background */

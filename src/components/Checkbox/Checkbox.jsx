@@ -12,6 +12,7 @@ const Checkbox = ({
   name,
   value,
   label,
+  description,
   checked = false,
   disabled = false,
   onChange,
@@ -55,7 +56,12 @@ const Checkbox = ({
           />
         </div>
         <div className="relay-checkbox__text-container">
-          {label && <span className="relay-checkbox__text">{label}</span>}
+          {label && (
+            <div className="relay-checkbox__content">
+              <span className="relay-checkbox__text">{label}</span>
+              {description && <span className="relay-checkbox__description">{description}</span>}
+            </div>
+          )}
         </div>
       </label>
     </div>
@@ -71,6 +77,8 @@ Checkbox.propTypes = {
   value: PropTypes.string,
   /** Label text */
   label: PropTypes.string,
+  /** Optional description text below the label */
+  description: PropTypes.string,
   /** Whether the checkbox is checked */
   checked: PropTypes.bool,
   /** Whether the checkbox is disabled */

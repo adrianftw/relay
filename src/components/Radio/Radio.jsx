@@ -12,6 +12,7 @@ const Radio = ({
   name,
   value,
   label,
+  description,
   checked = false,
   disabled = false,
   onChange,
@@ -55,7 +56,12 @@ const Radio = ({
           />
         </div>
         <div className="relay-radio__text-container">
-          {label && <span className="relay-radio__text">{label}</span>}
+          {label && (
+            <div className="relay-radio__content">
+              <span className="relay-radio__text">{label}</span>
+              {description && <span className="relay-radio__description">{description}</span>}
+            </div>
+          )}
         </div>
       </label>
     </div>
@@ -71,6 +77,8 @@ Radio.propTypes = {
   value: PropTypes.string.isRequired,
   /** Label text */
   label: PropTypes.string,
+  /** Optional description text below the label */
+  description: PropTypes.string,
   /** Whether the radio is checked */
   checked: PropTypes.bool,
   /** Whether the radio is disabled */

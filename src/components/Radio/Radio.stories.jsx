@@ -21,6 +21,10 @@ export default {
       control: 'text',
       description: 'Label text for the radio button',
     },
+    description: {
+      control: 'text',
+      description: 'Optional description text below the label',
+    },
   },
 };
 
@@ -136,6 +140,27 @@ export const LongLabel = {
     value: 'option1',
     label: 'This is a radio button with a much longer label that demonstrates how the text wraps when it exceeds the available width.',
     checked: false,
+  },
+};
+
+// With description
+export const WithDescription = {
+  args: {
+    name: 'example',
+    value: 'option1',
+    label: 'Selection',
+    description: 'Lorem ipsum dolor sit amet consectetur. Consequat fames purus amet elementum tellus auctor accumsan amet.',
+    checked: false,
+  },
+};
+
+export const WithDescriptionChecked = {
+  args: {
+    name: 'example',
+    value: 'option1',
+    label: 'Selection',
+    description: 'Lorem ipsum dolor sit amet consectetur. Consequat fames purus amet elementum tellus auctor accumsan amet.',
+    checked: true,
   },
 };
 

@@ -7,21 +7,21 @@ export default {
     docs: {
       description: {
         component: `
-Progress tracking component following USWDS Step Indicator patterns with Relay design tokens.
+Progress tracking component using the **USWDS Step Indicator** component with Relay design token overrides.
 
 **Features:**
-- Shows user's progress through multi-step process
-- Three states: complete (purple), active (blue), default (gray)
-- Supports labels, counters, and centered variants
-- Fully responsive (horizontal on desktop, vertical on mobile)
-- Following USWDS accessibility patterns
+- Uses actual USWDS Step Indicator markup and functionality
+- All USWDS features preserved: responsive behavior, accessibility, semantic HTML
+- Styled with Relay design tokens for brand consistency
+- Three states: complete (purple), current (blue), default (gray)
+- Fully responsive (horizontal on desktop, vertical on mobile per USWDS)
 
 **Based on:** [USWDS Step Indicator](https://designsystem.digital.gov/components/step-indicator/)
 
-**States:**
-- **Complete:** Purple background (\`--relay-purple-base\`)
-- **Active:** Blue text (\`--relay-blue-base\`), half-filled progress bar
-- **Default:** Gray (\`--relay-gray-04\` background, \`--relay-gray-06\` text)
+**Relay Token Overrides:**
+- **Complete:** Purple background (\`--relay-purple-base\` #333366)
+- **Current:** Blue text (\`--relay-blue-base\` #004B87), half-filled progress bar  
+- **Default:** Gray (\`--relay-gray-04\` #DADFE4 background, \`--relay-gray-06\` text)
         `,
       },
     },

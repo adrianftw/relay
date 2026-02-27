@@ -1,199 +1,147 @@
 /**
  * StepIndicator Component Styles
  * 
- * Following USWDS Step Indicator patterns with Relay design tokens
+ * Uses USWDS Step Indicator with Relay design token overrides
  * 
  * States:
- * - complete: Purple background (--relay-purple-base)
- * - active: Blue text (--relay-blue-base), partial progress bar
- * - default: Gray (--relay-gray-04 background, --relay-gray-07 text)
+ * - complete: Purple background (--relay-purple-base #333366)
+ * - current: Blue text (--relay-blue-base #004B87)
+ * - default: Gray (--relay-gray-04 #DADFE4 background)
+ * 
+ * @see https://designsystem.digital.gov/components/step-indicator/
  */
 
-/* Container */
-.relay-step-indicator {
-  width: 100%;
-  margin: var(--relay-space-03) 0; /* 16px top/bottom */
+/* Import USWDS Step Indicator base styles */
+/* We'll override colors with Relay tokens below */
+@import url('../../../node_modules/@uswds/uswds/dist/css/uswds.css') layer(uswds);
+
+/* ============================================ */
+/* RELAY TOKEN OVERRIDES */
+/* Override USWDS colors with Relay design tokens */
+/* ============================================ */
+
+/* Container spacing */
+.usa-step-indicator {
+  margin: var(--relay-space-03) 0; /* 16px top/bottom instead of USWDS default */
+  font-family: 'Helvetica', 'Source Sans Pro Web', 'Helvetica Neue', sans-serif;
 }
 
-/* Step list */
-.relay-step-indicator__list {
-  display: flex;
-  gap: 2px;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  counter-reset: step-counter;
+/* Segment bar - default state (gray) */
+.usa-step-indicator__segment::after {
+  background-color: var(--relay-gray-04) !important; /* #DADFE4 - Grayscale/04 */
 }
 
-/* Individual step segment */
-.relay-step-indicator__segment {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  gap: var(--relay-space-02); /* 8px */
-  position: relative;
+/* Segment bar - complete state (purple) */
+.usa-step-indicator__segment--complete::after {
+  background-color: var(--relay-purple-base) !important; /* #333366 - Brand/Purple/Base */
 }
 
-/* Progress bar */
-.relay-step-indicator__segment-bar {
-  height: 8px;
-  width: 100%;
-  background-color: var(--relay-gray-04); /* Default: light gray */
-  transition: background-color 0.3s ease;
-  position: relative;
-}
-
-/* Complete state - full purple bar */
-.relay-step-indicator__segment--complete .relay-step-indicator__segment-bar {
-  background-color: var(--relay-purple-base); /* #333366 */
-}
-
-/* Active state - half blue, half gray bar */
-.relay-step-indicator__segment--active .relay-step-indicator__segment-bar {
-  background: linear-gradient(
-    to right,
-    var(--relay-blue-base) 0%,
-    var(--relay-blue-base) 50%,
-    var(--relay-gray-04) 50%,
-    var(--relay-gray-04) 100%
-  );
-}
-
-/* Label container */
-.relay-step-indicator__segment-label {
-  display: flex;
-  flex-direction: column;
-  gap: 0;
-}
-
-/* Step heading/text */
-.relay-step-indicator__segment-heading {
-  font-family: 'Helvetica', sans-serif;
-  font-size: 1rem; /* 16px */
-  line-height: 1.375; /* 22px */
-  font-weight: 400; /* Regular */
+/* Complete segment label color */
+.usa-step-indicator__segment--complete .usa-step-indicator__segment-label {
   color: var(--relay-gray-07); /* #4F5458 - Grayscale/07 */
-  margin: 0;
 }
 
-/* Active step - bold blue text */
-.relay-step-indicator__segment--active .relay-step-indicator__segment-heading {
-  font-weight: 700; /* Bold */
-  color: var(--relay-blue-base); /* #004B87 - Brand/Blue/Base */
+/* Segment bar - current/active state (blue) */
+.usa-step-indicator__segment--current::after {
+  background-color: var(--relay-blue-base) !important; /* #004B87 - Brand/Blue/Base */
+  /* Keep USWDS gradient behavior for half-filled bar */
+  background-image: linear-gradient(
+    to right,
+    var(--relay-blue-base) 50%,
+    var(--relay-gray-04) 50%
+  ) !important;
 }
 
-/* Complete step - regular gray text */
-.relay-step-indicator__segment--complete .relay-step-indicator__segment-heading {
-  color: var(--relay-gray-07); /* #4F5458 */
+/* Current/active segment label - bold blue text */
+.usa-step-indicator__segment--current .usa-step-indicator__segment-label {
+  color: var(--relay-blue-base) !important; /* #004B87 - Brand/Blue/Base */
+  font-weight: 700 !important; /* Bold */
 }
 
-/* Default step - lighter gray text */
-.relay-step-indicator__segment--default .relay-step-indicator__segment-heading {
+/* Default segment label color (not started) */
+.usa-step-indicator__segment .usa-step-indicator__segment-label {
   color: var(--relay-gray-06); /* #74787C - Grayscale/06 */
 }
 
-/* Step counter (optional) */
-.relay-step-indicator__segment-counter {
+/* Heading typography */
+.usa-step-indicator__heading {
+  font-family: 'Helvetica', sans-serif;
+  font-size: 1rem; /* 16px */
+  line-height: 1.375; /* 22px */
+  font-weight: 400; /* Regular by default */
+}
+
+/* Active step heading - bold */
+.usa-step-indicator__segment--current .usa-step-indicator__heading {
+  font-weight: 700; /* Bold - Paragraph/Baseline Bold */
+}
+
+/* Step counter/number styling (if used) */
+.usa-step-indicator__segment-number {
   font-family: 'Helvetica', sans-serif;
   font-size: 0.875rem; /* 14px */
   font-weight: 700;
   color: var(--relay-gray-06);
-  margin-bottom: 4px;
-  display: none; /* Hidden by default, shown with counters variant */
-}
-
-/* Show counters when enabled */
-.relay-step-indicator:not(.relay-step-indicator--counters-none) .relay-step-indicator__segment-counter {
   display: block;
+  margin-bottom: 4px;
 }
 
-/* Active step counter */
-.relay-step-indicator__segment--active .relay-step-indicator__segment-counter {
+.usa-step-indicator__segment--current .usa-step-indicator__segment-number {
   color: var(--relay-blue-base);
 }
 
-/* Complete step counter */
-.relay-step-indicator__segment--complete .relay-step-indicator__segment-counter {
+.usa-step-indicator__segment--complete .usa-step-indicator__segment-number {
   color: var(--relay-purple-base);
 }
 
 /* ============================================ */
-/* VARIANTS */
+/* VARIANTS - Extend USWDS with custom variants */
 /* ============================================ */
 
-/* Centered labels */
-.relay-step-indicator--centered .relay-step-indicator__segment-label {
+/* Centered labels variant */
+.usa-step-indicator--centered .usa-step-indicator__segment-label {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
   align-items: center;
-  text-align: center;
 }
 
-.relay-step-indicator--centered .relay-step-indicator__segment-heading {
+.usa-step-indicator--centered .usa-step-indicator__heading {
   text-align: center;
-}
-
-/* No labels variant */
-.relay-step-indicator--no-labels .relay-step-indicator__segment-label {
-  display: none;
 }
 
 /* Small counters variant */
-.relay-step-indicator--counters-small .relay-step-indicator__segment-counter {
+.usa-step-indicator--counters-small .usa-step-indicator__segment-number {
   font-size: 0.75rem; /* 12px */
 }
 
-/* ============================================ */
-/* ACCESSIBILITY */
-/* ============================================ */
-
-/* Screen reader only text for step status */
-.relay-step-indicator__segment[aria-current="step"]::before {
-  content: "Current step: ";
-  position: absolute;
-  left: -10000px;
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
+/* Hide counters variant */
+.usa-step-indicator--counters-none .usa-step-indicator__segment-number {
+  display: none;
 }
 
 /* ============================================ */
-/* RESPONSIVE */
+/* RESPONSIVE - USWDS handles this, we just adjust colors */
 /* ============================================ */
 
-/* Mobile: Stack vertically on small screens */
+/* Mobile vertical layout uses USWDS responsive behavior */
 @media (max-width: 640px) {
-  .relay-step-indicator__list {
-    flex-direction: column;
-    gap: var(--relay-space-02); /* 8px */
+  /* Ensure Relay colors apply in mobile view too */
+  .usa-step-indicator__segment::after {
+    background-color: var(--relay-gray-04) !important;
   }
 
-  .relay-step-indicator__segment {
-    flex-direction: row;
-    gap: var(--relay-space-03); /* 16px */
+  .usa-step-indicator__segment--complete::after {
+    background-color: var(--relay-purple-base) !important;
   }
 
-  .relay-step-indicator__segment-bar {
-    width: 8px;
-    height: auto;
-    min-height: 48px;
-  }
-
-  /* Vertical bars for mobile */
-  .relay-step-indicator__segment--active .relay-step-indicator__segment-bar {
-    background: linear-gradient(
+  .usa-step-indicator__segment--current::after {
+    background-color: var(--relay-blue-base) !important;
+    background-image: linear-gradient(
       to bottom,
-      var(--relay-blue-base) 0%,
       var(--relay-blue-base) 50%,
-      var(--relay-gray-04) 50%,
-      var(--relay-gray-04) 100%
-    );
-  }
-
-  .relay-step-indicator__segment-label {
-    flex: 1;
-  }
-
-  .relay-step-indicator--centered .relay-step-indicator__segment-label {
-    align-items: flex-start;
-    text-align: left;
+      var(--relay-gray-04) 50%
+    ) !important;
   }
 }
+

@@ -9,40 +9,74 @@
   height: 24px;
   position: relative;
   flex-shrink: 0;
+  background-color: var(--relay-gray-01); /* White background */
+  transition: all 0.15s ease-in-out;
 }
 
-.relay-selection-atom__icon {
-  width: 100%;
-  height: 100%;
-  display: block;
-  transition: color 0.15s ease-in-out;
+/* Radio button styling */
+.relay-selection-atom--radio {
+  border: 2px solid var(--relay-gray-06);
+  border-radius: 50%; /* Circular */
 }
 
-/* Default/Unchecked State */
-.relay-selection-atom__icon {
-  color: var(--relay-gray-06); /* Grayscale/06 from Figma */
+.relay-selection-atom--radio.relay-selection-atom--checked {
+  border-color: var(--relay-purple-base);
+  background-color: var(--relay-gray-01);
 }
 
-/* Checked State */
-.relay-selection-atom--checked .relay-selection-atom__icon {
-  color: var(--relay-purple-base); /* Brand/Purple/Base from Figma */
+/* Checkbox styling */
+.relay-selection-atom--checkbox {
+  border: 2px solid var(--relay-gray-06);
+  border-radius: var(--relay-radius-01); /* Slightly rounded corners */
+}
+
+.relay-selection-atom--checkbox.relay-selection-atom--checked {
+  border-color: var(--relay-purple-base);
+  background-color: var(--relay-purple-base); /* Filled background when checked */
+}
+
+/* Radio inner dot (when checked) */
+.relay-selection-atom__radio-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: var(--relay-purple-base);
+}
+
+/* Checkbox checkmark icon */
+.relay-selection-atom__checkmark {
+  width: 18px;
+  height: 18px;
+  color: var(--relay-gray-01); /* White checkmark */
 }
 
 /* Disabled State */
-.relay-selection-atom--disabled .relay-selection-atom__icon {
-  color: var(--relay-gray-04);
+.relay-selection-atom--disabled {
+  border-color: var(--relay-gray-04);
   opacity: 0.5;
   cursor: not-allowed;
 }
 
+.relay-selection-atom--disabled.relay-selection-atom--checked {
+  background-color: var(--relay-gray-04);
+  border-color: var(--relay-gray-04);
+}
+
+.relay-selection-atom--disabled .relay-selection-atom__radio-dot {
+  background-color: var(--relay-gray-04);
+}
+
+.relay-selection-atom--disabled .relay-selection-atom__checkmark {
+  color: var(--relay-gray-01);
+}
+
 /* Hover State (when not disabled) */
-.relay-selection-atom:not(.relay-selection-atom--disabled):hover .relay-selection-atom__icon {
-  color: var(--relay-purple-dark);
+.relay-selection-atom:not(.relay-selection-atom--disabled):hover {
+  border-color: var(--relay-purple-dark);
 }
 
 /* Focus State (for accessibility) */
-.relay-selection-atom:focus-within .relay-selection-atom__icon {
+.relay-selection-atom:focus-within {
   outline: 2px solid var(--relay-purple-base);
   outline-offset: 2px;
-  border-radius: var(--relay-radius-01);
 }

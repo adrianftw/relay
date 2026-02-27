@@ -1,11 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { 
-  MdRadioButtonUnchecked, 
-  MdRadioButtonChecked, 
-  MdCheckBoxOutlineBlank, 
-  MdCheckBox 
-} from 'react-icons/md';
+import { MdCheck } from 'react-icons/md';
 import './SelectionAtom.css';
 
 /**
@@ -19,19 +14,15 @@ const SelectionAtom = ({
   className = '',
   ...props 
 }) => {
-  const getIcon = () => {
+  const getInnerElement = () => {
+    if (!checked) return null;
+    
     if (type === 'radio') {
-      return checked ? (
-        <MdRadioButtonChecked className="relay-selection-atom__icon" />
-      ) : (
-        <MdRadioButtonUnchecked className="relay-selection-atom__icon" />
-      );
+      // Render a filled circle for checked radio
+      return <div className="relay-selection-atom__radio-dot" />;
     } else {
-      return checked ? (
-        <MdCheckBox className="relay-selection-atom__icon" />
-      ) : (
-        <MdCheckBoxOutlineBlank className="relay-selection-atom__icon" />
-      );
+      // Render checkmark icon for checked checkbox
+      return <MdCheck className="relay-selection-atom__checkmark" />;
     }
   };
 
@@ -45,7 +36,7 @@ const SelectionAtom = ({
 
   return (
     <div className={classNames} {...props}>
-      {getIcon()}
+      {getInnerElement()}
     </div>
   );
 };

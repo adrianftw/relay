@@ -9,6 +9,7 @@ export { default as SelectionAtom } from './SelectionAtom/SelectionAtom';
 export { default as Radio } from './Radio/Radio';
 export { default as Checkbox } from './Checkbox/Checkbox';
 export { default as StepIndicator } from './StepIndicator/StepIndicator';
+export { default as TextInput } from './TextInput/TextInput';
 
 // Add more component exports as you build them:
 // export { Alert } from './Alert';

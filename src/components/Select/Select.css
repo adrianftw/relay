@@ -1,0 +1,250 @@
+/**
+ * Select Component Styles
+ * 
+ * Uses USWDS Select with Relay design token overrides
+ * Matches TextInput component styling with custom dropdown icon
+ * 
+ * Customizations:
+ * - Taller height: 64px (matches TextInput)
+ * - Rounded corners: --relay-radius-02 (8px)
+ * - Material Design arrow icon (MdKeyboardArrowDown)
+ * - Relay color palette
+ * - Helvetica font family
+ * - Custom label and hint typography (matches TextInput)
+ * 
+ * @see https://designsystem.digital.gov/components/select/
+ */
+
+/* Import USWDS Select base styles */
+@import url('../../../node_modules/@uswds/uswds/dist/css/uswds.css') layer(uswds);
+
+/* ============================================ */
+/* RELAY TOKEN OVERRIDES */
+/* Matches TextInput component styling */
+/* ============================================ */
+
+/* Wrapper spacing */
+.relay-select {
+  margin-bottom: var(--relay-space-03); /* 16px */
+}
+
+/* Label - Bold, larger text (matches TextInput) */
+.relay-label {
+  font-family: 'Helvetica', sans-serif !important;
+  font-size: 1.125rem !important; /* 18px - Paragraph/XL Bold */
+  font-weight: 700 !important; /* Bold */
+  line-height: 1.556 !important; /* 28px line height */
+  color: var(--relay-gray-08) !important; /* #232527 - Grayscale/08 */
+  margin-bottom: 0 !important;
+  display: block;
+}
+
+/* Required asterisk */
+.relay-label__required {
+  color: var(--relay-red-base); /* #DA291C */
+}
+
+/* Hint/Helper text (matches TextInput) */
+.relay-hint,
+.usa-hint {
+  font-family: 'Helvetica', sans-serif !important;
+  font-size: 0.875rem !important; /* 14px - Paragraph/S */
+  font-weight: 400 !important; /* Regular */
+  line-height: 1.429 !important; /* 20px line height */
+  color: var(--relay-gray-07) !important; /* #4F5458 - Grayscale/07 */
+  margin-top: 0 !important;
+  margin-bottom: var(--relay-space-02) !important; /* 8px */
+}
+
+/* Select wrapper - contains select and icon */
+.relay-select-wrapper {
+  position: relative;
+  display: block;
+}
+
+/* Select field - Taller with rounded corners (matches TextInput) */
+.relay-select-input,
+.usa-select {
+  font-family: 'Helvetica', sans-serif !important;
+  font-size: 1rem !important; /* 16px */
+  line-height: 1.375 !important; /* 22px */
+  height: 64px !important; /* Taller - matches TextInput */
+  padding: var(--relay-space-03) var(--relay-space-04) !important; /* 16px 24px */
+  padding-right: 48px !important; /* Extra space for icon */
+  
+  /* Rounded corners */
+  border-radius: var(--relay-radius-02) !important; /* 8px */
+  
+  /* Colors */
+  background-color: var(--relay-gray-01) !important; /* #FFFFFF - White */
+  border: 1px solid var(--relay-gray-05) !important; /* #BDC3C9 - Grayscale/05 */
+  color: var(--relay-gray-08) !important; /* #232527 */
+  
+  /* Remove default arrow */
+  -webkit-appearance: none !important;
+  -moz-appearance: none !important;
+  appearance: none !important;
+  background-image: none !important;
+  
+  /* Transitions */
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  
+  /* Full width */
+  width: 100%;
+  display: block;
+  cursor: pointer;
+}
+
+/* Custom dropdown icon - Material Design */
+.relay-select-icon {
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 24px;
+  color: var(--relay-gray-08); /* #232527 */
+  pointer-events: none; /* Allow clicks to pass through to select */
+  transition: color 0.15s ease-in-out;
+}
+
+/* Focus state */
+.relay-select-input:focus,
+.usa-select:focus {
+  outline: none !important;
+  border-color: var(--relay-purple-base) !important; /* #333366 - Brand/Purple/Base */
+  box-shadow: 0 0 0 2px var(--relay-purple-light) !important; /* #6464B7 - Purple glow */
+}
+
+.relay-select-wrapper:focus-within .relay-select-icon {
+  color: var(--relay-purple-base); /* Icon turns purple on focus */
+}
+
+/* Hover state (when not disabled) */
+.relay-select-input:hover:not(:disabled),
+.usa-select:hover:not(:disabled) {
+  border-color: var(--relay-gray-06) !important; /* #74787C - Darker on hover */
+}
+
+.relay-select-wrapper:hover .relay-select-icon {
+  color: var(--relay-gray-06); /* Icon darkens on hover */
+}
+
+/* Disabled state */
+.relay-select-input:disabled,
+.usa-select:disabled {
+  background-color: var(--relay-gray-02) !important; /* #F3F6FA - Light gray */
+  color: var(--relay-gray-06) !important; /* #74787C */
+  border-color: var(--relay-gray-04) !important; /* #DADFE4 */
+  cursor: not-allowed;
+  opacity: 1;
+}
+
+.relay-select--disabled .relay-select-icon {
+  color: var(--relay-gray-06); /* Grayed out icon */
+  opacity: 0.5;
+}
+
+/* Placeholder styling (first disabled option) */
+.relay-select-input option:disabled,
+.usa-select option:disabled {
+  color: var(--relay-gray-06) !important; /* #74787C - Grayscale/06 */
+}
+
+/* Error state */
+.relay-select--error .relay-select-input,
+.relay-select--error .usa-select,
+.usa-select--error {
+  border-color: var(--relay-red-base) !important; /* #DA291C - Utility/Red/Base */
+  border-width: 2px !important;
+}
+
+.relay-select--error .relay-select-input:focus,
+.relay-select--error .usa-select:focus,
+.usa-select--error:focus {
+  box-shadow: 0 0 0 2px var(--relay-red-light) !important; /* #F9695E - Red glow */
+}
+
+.relay-select--error .relay-select-icon {
+  color: var(--relay-red-base);
+}
+
+/* Error message */
+.relay-error-message,
+.usa-error-message {
+  font-family: 'Helvetica', sans-serif !important;
+  font-size: 0.875rem !important; /* 14px */
+  font-weight: 700 !important; /* Bold for errors */
+  line-height: 1.429 !important; /* 20px */
+  color: var(--relay-red-base) !important; /* #DA291C */
+  margin-top: var(--relay-space-02) !important; /* 8px */
+  display: flex;
+  align-items: flex-start;
+}
+
+/* Success state */
+.relay-select--success .relay-select-input,
+.relay-select--success .usa-select,
+.usa-select--success {
+  border-color: var(--relay-success-base) !important; /* #24A041 - Utility/Success/Base */
+  border-width: 2px !important;
+}
+
+.relay-select--success .relay-select-input:focus,
+.relay-select--success .usa-select:focus,
+.usa-select--success:focus {
+  box-shadow: 0 0 0 2px var(--relay-success-light) !important; /* #41D764 - Success glow */
+}
+
+.relay-select--success .relay-select-icon {
+  color: var(--relay-success-base);
+}
+
+/* Success message */
+.relay-success-message,
+.usa-success-message {
+  font-family: 'Helvetica', sans-serif !important;
+  font-size: 0.875rem !important; /* 14px */
+  font-weight: 700 !important; /* Bold */
+  line-height: 1.429 !important; /* 20px */
+  color: var(--relay-success-base) !important; /* #24A041 */
+  margin-top: var(--relay-space-02) !important; /* 8px */
+  display: flex;
+  align-items: flex-start;
+}
+
+/* ============================================ */
+/* RESPONSIVE */
+/* ============================================ */
+
+/* Maintain height on mobile */
+@media (max-width: 640px) {
+  .relay-select-input,
+  .usa-select {
+    height: 64px !important; /* Keep tall height on mobile */
+  }
+  
+  .relay-select-icon {
+    font-size: 24px; /* Maintain icon size */
+  }
+}
+
+/* ============================================ */
+/* OPTION STYLING */
+/* ============================================ */
+
+/* Style the dropdown options */
+.relay-select-input option,
+.usa-select option {
+  font-family: 'Helvetica', sans-serif;
+  font-size: 1rem; /* 16px */
+  padding: 8px;
+  background-color: var(--relay-gray-01);
+  color: var(--relay-gray-08);
+}
+
+/* Disabled options */
+.relay-select-input option:disabled,
+.usa-select option:disabled {
+  color: var(--relay-gray-06);
+  font-style: italic;
+}
